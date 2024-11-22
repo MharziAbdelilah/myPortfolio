@@ -1,13 +1,205 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+html{
+  font-family: Poppins, sans-serif;
+  letter-spacing: 0.1px;
+  scroll-behavior: smooth;
+  box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+
+
+*, *::before , *::after{box-sizing: inherit;}
+
+
+*{
+  padding: 0;
+  margin: 0;
+}
+
+:root{
+  --primary : #000 ;
+  --secondary: rgba(24 ,24 ,27 ,0.5);
+  --border : rgba(63,63,70,0.4);
+  --titleM: rgb(244 244 245);
+  --title: linear-gradient(90deg, #fff 0%, #864ff5 50%, #3c2072 100%); /* Gradient for title */
+  --nameText:#fff;
+  --subtitle: rgb(161 161 170);
+  --bgHeader: rgb(39,39,42);
+  --blue: rgb(93,188,252);
+  --bgicon: #000;
+  --icon-hover: #d4d4d8;
+
+  --container-padding: 4.8rem;
+}
+
+.light{
+  --primary: rgb(237, 226, 251); /* Light purple - creativity */
+   --secondary: rgb(237, 230, 246); /* Clean white */    /* can i return this code when i want  */
+  --border: rgba(149, 117, 205, 0.4); /* Light purple border */
+  --titleM: rgb(49, 27, 146); /* Deep purple - strength */
+  --title: linear-gradient(90deg, #000 0%, #864ff5 50%, #3c2072 100%); /* Gradient for title */
+  --nameText: #000;
+  --subtitle: rgb(94, 53, 177); /* Medium purple */
+  --bgHeader: rgb(248, 247, 249); /* Very light purple */
+  --blue: rgb(92, 107, 192); /* Indigo - trust */
+  --icon-hover: #673ab7; /* Deep purple - emphasis */
+  --bgicon:#fff;
+
+/*
+i can chagne with this code and code abov
+  --primary : rgb(250 ,250,250);
+  --secondary: rgb(255,255,255);
+  --border : rgba(202,202,202,0.518);
+  --title : rgb(39 39 42);
+  --subtitle: rgb(82 82 91);
+  --bgHeader: rgb(253,253,253);
+  --blue: rgb(0,149,246);
+  --icon-hover: #333;
+  */
+}
+
+/* Add this to apply the gradient text effect */
+.title{
+  background: var(--title);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+body{
+   background-color: var(--primary); 
+  color: var(--title);  
+ 
+}
+/* n9der nbdel la taille de version desktop wla ndir shadow l border*/
+.container{
+  border:  2px solid var(--border) ;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: var(--secondary);
+  padding: 0 var(--container-padding);
+}
+
+.divder {
+  border-bottom: 1px solid var(--border);
+  margin: 3rem 0;
+  width: calc(100% + var(--container-padding) +  var(--container-padding));
+  margin-left:  calc(var(--container-padding) * -1);
+}
+
+li{
+  list-style: none;
+}
+a{
+  text-decoration: none;
+  color: inherit;
+  transition: 0.2s;
+}
+
+.flex{
+  display: flex;
+  align-items: center;
+}
+
+/*just for testing  */
+.border{
+  border: 2px solid red;
+}
+
+button {
+  all:  unset;  
+  color: #ffffff;
+}
+button:hover {
+  cursor: pointer;
+}
+
+button:active {
+  scale: 0.9;
+}
+button:disabled{
+  opacity: 0.4;
+  cursor: not-allowed;
+  
+}
+
+::-webkit-scrollbar{
+  width: 0.8rem;
+}
+::-webkit-scrollbar-track{
+  border: 7px solid var(--primary);
+  box-shadow: insert 0 0 2.5px 2px rgba(0 , 0, 0, 0.5);
+  border-radius: 4px;
+  background-color: #d4d4d8;
+}
+
+::-webkit-scrollbar-thumb{
+  background-color:#888 ;
+  border-radius: 2px;
+  transition: 03s;
+}
+
+::-webkit-scrollbar-thumb:hover{
+  background-color: #555;
+}
+
+
+
+
+.scroll2Top{
+  background-color: #b08bf8;
+  width: 2.6rem;
+  height: 2.6rem;
+  border-radius: 50%;
+  position: fixed;
+  bottom: 2rem;
+  right: 3%;
+  text-align: center  ;
+  border: 1px solid rgba(255,255,255,0.2);
+  font-size: 1.6rem;
+}
+
+.scroll2Top:hover{
+  background-color: #824dee;
+  transition: background-color 0.8s ease;
+}
+
+
+
+
+
+@media (max-width: 1000px){
+  .container{
+    --container-padding: 1.7rem;
+    padding: 0 var(--container-padding);
+  }
+
+  .divder {
+
+    width: calc(100% +var(--container-padding) + var(--container-padding));
+    margin-left: calc(var(--container-padding) * -1);
+  }
+}
+
+@media (max-width: 600px){
+  .container{
+    width: 98%;
+    padding: 0 var(--container-padding);
+  }
+
+
+  .scroll2Top{
+    opacity: 0.6;
+    width: 2.2rem;
+  height: 2.2rem;
+    transition: 0.3s;
+  }
+
+  .scroll2Top:hover{
+    opacity: 1;
+  }
 }

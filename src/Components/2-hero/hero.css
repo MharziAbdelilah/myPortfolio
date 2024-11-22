@@ -1,0 +1,270 @@
+/*******************
+table of content
+====================
+  1- left section
+  2- right section ==> animation
+*/
+
+section.hero {
+
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: row;
+  max-width:100%;
+  margin: 3.1rem auto;
+  padding: 0 1rem;
+
+}
+
+/*******************
+  1-left section
+==================*/
+
+section.hero .left-section .border {
+  flex: 1;
+  max-width: 1000px;
+  padding-right: 2rem;
+
+}
+
+section.hero .parent-avatar.flex {
+  position: relative;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  width: fit-content;
+}
+
+section.hero .avatar {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 2px solid var(--blue);
+  padding: 3px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+section.hero .avatar:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.15);
+}
+
+section.hero .icon-verified {
+  position: absolute;
+  bottom: 10px;
+  right: -10px;
+  color: var(--blue);
+  font-size: 1.4rem;
+  background-color: var(--bgicon);
+  border-radius: 50%;
+  padding: 2px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+section.hero .text-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  text-align: left;
+}
+
+section.hero .name-text {
+  font-size: 2.8rem;
+  color: var(--nameText);
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-top: 0.5rem;
+  text-transform: capitalize;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+section.hero h1.title {
+  font-size: 3.5rem;
+  line-height: 1.2;
+  margin: 0.5rem 0;
+  color: var(--title);
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  text-align: left;
+}
+
+section.hero p.sub-title {
+  color: var(--subtitle);
+  font-size: 1.3rem;
+  line-height: 1.8;
+  margin-bottom: 2rem;
+  max-width: 90%;
+  text-align: left;
+  font-weight: 400;
+}
+
+section.hero .allicons {
+  display: flex;
+  gap: 2rem;
+  margin-top: 1rem;
+}
+
+section.hero .allicons .icon {
+  font-size: 1.5rem;
+  color: var(--subtitle);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+section.hero .allicons .icon:hover {
+  color: var(--blue);
+  transform: translateY(-3px);
+}
+
+/*******************
+  2-right section ==> animation
+==================*/
+/*with this width the animation will be 130% of the width of the left section but i want it just 90% because i want text to be more readable*/
+.animation {
+  width: 90%;
+  transform: translate(50px, 30px);
+}
+
+/* Media query for smaller screens */
+@media (max-width: 968px) {
+  section.hero h1.title {
+    font-size: 2.8rem;
+  }
+  
+  section.hero p.sub-title {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  section.hero {
+    flex-direction: column;
+    padding: 0 1.5rem;
+    margin-top: 2rem;
+  }
+
+  section.hero .left-section {
+    
+    padding-right: 0;
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+  }
+
+  section.hero h1.title {
+    font-size: 2.3rem;
+    text-align: left;
+  }
+
+  section.hero p.sub-title {
+    max-width: 100%;
+    text-align: left;
+  }
+
+  section.hero .animation {
+    width: 100%;
+    transform: none;
+    margin-top: 3rem;
+  }
+
+  section.hero .parent-avatar.flex {
+    align-self: center;
+  }
+
+  section.hero .icon-verified {
+    bottom: 10px;
+    right: -10px;
+  }
+
+  section.hero .name-text {
+    font-size: 1.8rem;
+  }
+
+  section.hero p.sub-title {
+    font-size: 1.2rem;
+  }
+}
+
+/* Media query to hide right section between 770px and 1200px */
+@media (min-width: 770px) and (max-width: 1200px) {
+  section.hero .right-section {
+    display: none;
+  }
+}
+
+/* Profile picture enlargement styles */
+@keyframes enlarge {
+  from {
+    transform: translate(-50%, -50%) scale(0.5);
+  }
+  to {
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: translate(-50%, -50%) scale(0.5);
+  }
+  to {
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+/* Combined animation for enlargement and rotation */
+.enlarged-profile {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  max-width: 600px;
+  z-index: 1001; /* Ensure it appears above the backdrop */
+  animation: rotate 0.7s ease-in-out;
+}
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 1000;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.icon-close {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  font-size: 1.3rem;
+  color: var(--title);
+  cursor: pointer;
+  z-index: 1002; /* Ensure it appears above everything else */
+}
+
+.icon-close:hover {
+  font-size: 1.6rem;
+  color: crimson;
+  transition: 0.3s;
+  rotate: 180deg;
+} 
+
+/* Animation for fade-in effect */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Add blur effect to the entire page except the enlarged profile picture */
+body.blurred .hero {
+  filter: blur(8px);
+}
