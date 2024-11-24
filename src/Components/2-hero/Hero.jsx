@@ -82,8 +82,15 @@ function Hero() {
           </div>
         </div>
 
-        <div className='right-section animation'>
-          <Lottie animationData={pcAnimation} />
+        <div className='right-section'>
+          <motion.div 
+            className='animation'
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
+            <Lottie animationData={pcAnimation} />
+          </motion.div>
         </div>
       </section>
 

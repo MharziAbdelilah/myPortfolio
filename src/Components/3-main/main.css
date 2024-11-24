@@ -1,22 +1,30 @@
-/*******************
-table of content
-====================
-  1- left Section ==> Button
-  2- right Section ==> card my project
-  3- Responsive Design
-*/
+/*==============================================
+  TABLE OF CONTENTS:
+  1. Main Layout
+  2. Filter Section Styles
+     2.1 Desktop Filter Buttons
+     2.2 Mobile Filter Toggle
+     2.3 Filter Dropdown
+  3. Projects Grid Section
+     3.1 Card Layout
+     3.2 Card Content
+     3.3 Card Icons
+  4. Animations
+  5. Responsive Design
+  6. Theme Variations
+===============================================*/
 
-main.flex{
+/* ================ 1. MAIN LAYOUT ================ */
+main.flex {
   gap: 2.64rem;
   align-items: start;
 }
-/**************************
-  1-left Section ==> Button
-============================*/
-main section.left-section.flex{
+
+/* ================ 2. FILTER SECTION STYLES ================ */
+/* 2.1 Desktop Filter Buttons */
+main section.left-section.flex {
   flex-direction: column;
   gap: 10px;
-  
 }
 
 main section.left-section.flex button{
@@ -56,19 +64,63 @@ main section.left-section.flex button.active{
   border: 1px solid rgba(135, 81, 245, 0.8);
 }
 
+/* 2.2 Mobile Filter Toggle */
+.filter-container {
+  position: relative;
+  width: 100%;
+}
 
+.mobile-filter-toggle {
+  display: none;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.25rem !important;
+  background: linear-gradient(135deg, #5731a2, #8751f5) !important;
+  border: none !important;
+  box-shadow: 0 4px 15px rgba(87, 49, 162, 0.15);
+  transition: all 0.3s ease !important;
+}
 
+.mobile-filter-toggle:hover {
+  transform: translateY(-1px) !important;
+  box-shadow: 0 6px 20px rgba(87, 49, 162, 0.2) !important;
+}
 
+.toggle-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
 
+.toggle-icon {
+  font-size: 1.2rem;
+}
 
+.toggle-label {
+  font-weight: 500;
+}
 
+.icon-arrow-down {
+  font-size: 1.2rem;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
 
-/*************************************
-  2-right Section ==> card my project
-======================================*/
+.icon-arrow-down.open {
+  transform: rotate(180deg);
+}
 
-main section.right-section.flex{
-   flex-grow: 1; 
+/* 2.3 Filter Dropdown */
+.filter-options {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* ================ 3. PROJECTS GRID SECTION ================ */
+/* 3.1 Card Layout */
+main section.right-section.flex {
+  flex-grow: 1;
   flex-wrap: wrap;
   justify-content: center;
   column-gap: 16px;
@@ -128,35 +180,115 @@ main section.right-section.flex{
   cursor: pointer;
 }
 
-.card a.link{
+.card a.link,
+.card button.link {
   font-size: 0.9rem;
   color: var(--blue);
   margin-right: 12px;
 }
 
-/*==================================
- 3- Responsive Design
-======================================*/
+.light .card a.link,
+.light .card button.link {
+  color: var(--nameText);
+}
 
+.light .card a.link:hover,
+.light .card button.link:hover {
+  color: var(--blue);
+}
+
+/* ================ 4. ANIMATIONS ================ */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ================ 5. RESPONSIVE DESIGN ================ */
 @media (max-width: 600px) {
-  main.flex{
+  main.flex {
     flex-direction: column;
-    gap: 2.64;
-    align-items: center;
+    gap: 2.64rem;
+    align-items: stretch;
+    padding: 0 1rem;
   }
 
-
-  main section.left-section.flex{
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
+  main section.left-section.flex {
+    flex-direction: column;
+    width: 100%;
   }
 
-  main section.left-section.flex button{
-    width: 7rem;
-    padding: 0.8rem 0;
-    font-size: 0.9rem;
-    background: linear-gradient(to right, #5731a2, #8751f5);
+  .mobile-filter-toggle {
+    display: flex;
   }
+
+  .filter-options {
+    display: none;
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    right: 0;
+    background: rgba(45, 45, 45, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    padding: 8px;
+    z-index: 10;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    animation: slideDown 0.2s ease-out;
+  }
+
+  .light .filter-options {
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  }
+
+  .filter-options.show {
+    display: flex;
+  }
+
+  .filter-option {
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+    width: 100% !important;
+    text-align: left !important;
+    padding: 0.875rem 1rem !important;
+    border-radius: 8px !important;
+    transition: all 0.2s ease !important;
+    background: transparent !important;
+    border: none !important;
+  }
+
+  .filter-option:hover {
+    background: rgba(135, 81, 245, 0.1) !important;
+    transform: translateX(4px) !important;
+  }
+
+  .filter-option.active {
+    background: linear-gradient(135deg, #5731a2, #8751f5) !important;
+    font-weight: 500 !important;
+  }
+
+  .option-icon {
+    font-size: 1.2rem;
+  }
+
+  .option-label {
+    font-size: 0.95rem;
+  }
+
+  main section.right-section.flex {
+    padding: 0;
+  }
+}
+
+/* ================ 6. THEME VARIATIONS ================ */
+.light main section.left-section.flex button {
+  background: linear-gradient(to right, #5731a2, #8751f5);
+  color: white;
 }

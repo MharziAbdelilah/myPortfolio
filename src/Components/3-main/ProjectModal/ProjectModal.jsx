@@ -1,11 +1,88 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import './ProjectModal.css';
 import { motion } from 'framer-motion';
 
 const ProjectModal = ({ project, onClose, isOpen }) => {
-  const [viewMode, setViewMode] = useState('technical'); // 'technical' or 'simple'
+  const [viewMode, setViewMode] = useState('technical');
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const imagesRef = useRef(null);
+  const scrollPosition = useRef(0);
+
+  // Get images array safely
+  const getImages = () => {
+    if (!project) return [];
+    return project.images?.length > 0 ? project.images : [project.imgPath];
+  };
+
+  // Lock body scroll when modal opens
+  useEffect(() => {
+    if (isOpen) {
+      scrollPosition.current = window.pageYOffset;
+      document.body.classList.add('modal-open');
+      document.body.style.top = `-${scrollPosition.current}px`;
+    } else {
+      document.body.classList.remove('modal-open');
+      document.body.style.top = '';
+      window.scrollTo(0, scrollPosition.current);
+    }
+
+    return () => {
+      document.body.classList.remove('modal-open');
+      document.body.style.top = '';
+    };
+  }, [isOpen]);
+
+  // Updated image scroll handler
+  useEffect(() => {
+    const handleScroll = () => {
+      if (imagesRef.current) {
+        const container = imagesRef.current;
+        const scrollLeft = container.scrollLeft;
+        const containerWidth = container.offsetWidth;
+        
+        // Calculate current image index based on scroll position
+        const currentIndex = Math.min(
+          Math.floor((scrollLeft + containerWidth / 2) / containerWidth),
+          getImages().length - 1
+        );
+        
+        setCurrentImageIndex(currentIndex);
+      }
+    };
+
+    const imagesContainer = imagesRef.current;
+    if (imagesContainer) {
+      imagesContainer.addEventListener('scroll', handleScroll);
+      
+      // Use 'scrollend' event with fallback
+      if ('onscrollend' in window) {
+        imagesContainer.addEventListener('scrollend', handleScroll);
+      }
+
+      return () => {
+        imagesContainer.removeEventListener('scroll', handleScroll);
+        if ('onscrollend' in window) {
+          imagesContainer.removeEventListener('scrollend', handleScroll);
+        }
+      };
+    }
+  }, [project]); // Changed dependency to project
+
+  // Updated scrollToImage function
+  const scrollToImage = (index) => {
+    if (imagesRef.current) {
+      const imageWidth = imagesRef.current.offsetWidth;
+      imagesRef.current.scrollTo({
+        left: imageWidth * index,
+        behavior: 'smooth'
+      });
+      setCurrentImageIndex(index);
+    }
+  };
 
   if (!isOpen || !project) return null;
+
+  const images = getImages();
 
   return (
     <motion.div 
@@ -23,22 +100,41 @@ const ProjectModal = ({ project, onClose, isOpen }) => {
         onClick={e => e.stopPropagation()}
       >
         <div className="modal-left">
-          <div className="project-images">
-            {project.images?.length > 0 ? (
-              project.images.map((image, index) => (
-                <img 
-                  key={index}
-                  src={image} 
-                  alt={`${project.projectTitle} screenshot ${index + 1}`} 
-                />
-              ))
-            ) : (
+          <div 
+            className="project-images" 
+            ref={imagesRef}
+            onTouchStart={() => {}}
+          >
+            {images.map((image, index) => (
               <img 
-                src={project.imgPath} 
-                alt={project.projectTitle} 
+                key={index}
+                src={image} 
+                alt={`${project.projectTitle} screenshot ${index + 1}`}
+                loading={index === 0 ? "eager" : "lazy"}
+                onLoad={() => {
+                  if (index === currentImageIndex) {
+                    setCurrentImageIndex(index);
+                  }
+                }}
               />
-            )}
+            ))}
           </div>
+          {images.length > 0 && (
+            <>
+              <div className="image-counter">
+                {currentImageIndex + 1} / {images.length}
+              </div>
+              <div className="image-dots">
+                {images.map((_, index) => (
+                  <div
+                    key={index}
+                    className={`dot ${currentImageIndex === index ? 'active' : ''}`}
+                    onClick={() => scrollToImage(index)}
+                  />
+                ))}
+              </div>
+            </>
+          )}
         </div>
         
         <div className="modal-right">

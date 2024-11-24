@@ -35,29 +35,44 @@ html{
 }
 
 .light{
-  --primary: rgb(237, 226, 251); /* Light purple - creativity */
-   --secondary: rgb(237, 230, 246); /* Clean white */    /* can i return this code when i want  */
+  --primary: rgb(237, 226, 251); /* Light purple background */
+  --secondary: rgb(237, 230, 246); /* Slightly darker background for containers */
   --border: rgba(149, 117, 205, 0.4); /* Light purple border */
-  --titleM: rgb(49, 27, 146); /* Deep purple - strength */
-  --title: linear-gradient(90deg, #000 0%, #864ff5 50%, #3c2072 100%); /* Gradient for title */
-  --nameText: #000;
-  --subtitle: rgb(94, 53, 177); /* Medium purple */
-  --bgHeader: rgb(248, 247, 249); /* Very light purple */
-  --blue: rgb(92, 107, 192); /* Indigo - trust */
-  --icon-hover: #673ab7; /* Deep purple - emphasis */
-  --bgicon:#fff;
+  --titleM: rgb(49, 27, 146); /* Deep purple for main titles */
+  --title: linear-gradient(90deg, #3c2072 0%, #864ff5 50%, #3c2072 100%); /* Adjusted gradient for better contrast */
+  --nameText: #2d1b69; /* Dark purple for regular text */
+  --subtitle: #4a3b89; /* Medium purple for subtitles - improved contrast */
+  --bgHeader: rgb(248, 247, 249); /* Very light purple background */
+  --blue: #4a3b89; /* Adjusted for better visibility */
+  --icon-hover: #3c2072; /* Darker purple for hover states */
+  --bgicon: #fff;
+}
 
-/*
-i can chagne with this code and code abov
-  --primary : rgb(250 ,250,250);
-  --secondary: rgb(255,255,255);
-  --border : rgba(202,202,202,0.518);
-  --title : rgb(39 39 42);
-  --subtitle: rgb(82 82 91);
-  --bgHeader: rgb(253,253,253);
-  --blue: rgb(0,149,246);
-  --icon-hover: #333;
-  */
+/* Add these new styles to ensure text visibility in light mode */
+.light .filter-option {
+  color: #2d1b69 !important; /* Dark purple for dropdown text */
+}
+
+.light .mobile-filter-toggle {
+  color: #fff !important; /* White text for the toggle button */
+}
+
+.light .card .box .title {
+  background: var(--title);
+  -webkit-background-clip: text;
+  color: #2d1b69; /* Fallback color */
+}
+
+.light .card .box .sub-title {
+  color: var(--subtitle);
+}
+
+.light .filter-options button {
+  color: var(--nameText);
+}
+
+.light .filter-options button.active {
+  color: #fff !important;
 }
 
 /* Add this to apply the gradient text effect */
@@ -174,7 +189,7 @@ button:disabled{
 
 @media (max-width: 1000px){
   .container{
-    --container-padding: 1.7rem;
+    --container-padding: 0rem;
     padding: 0 var(--container-padding);
   }
 
@@ -187,7 +202,7 @@ button:disabled{
 
 @media (max-width: 600px){
   .container{
-    width: 98%;
+    width: 100%;
     padding: 0 var(--container-padding);
   }
 

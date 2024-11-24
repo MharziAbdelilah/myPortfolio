@@ -9,7 +9,7 @@ export const myProjects = [
       "JWT-based authentication with refresh tokens",
       "Real-time updates using WebSocket connections",
       "Responsive design with Material-UI components",
-      "Advanced caching system for improved performance"
+      "Advanced caching system for improved performances"
     ],
     keyFeatures: [
       "See all your sales and orders in one place",
@@ -22,7 +22,8 @@ export const myProjects = [
     images: [
       "https://picsum.photos/seed/ecom1/600/400",
       "https://picsum.photos/seed/ecom2/600/400",
-      "https://picsum.photos/seed/ecom3/600/400"
+      "https://picsum.photos/seed/ecom3/600/400", 
+      "https://picsum.photos/seed/ecom4/600/400"
     ],
     technologies: ["React", "Node.js", "MongoDB", "Express", "MUI"],
     liveDemo: "https://dashboard-demo.com",
