@@ -1,0 +1,313 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(3px);
+}
+
+.modal-content {
+  background: var(--secondary);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  width: 90%;
+  max-width: 1000px;
+  height: 80vh;
+  display: flex;
+  overflow: hidden;
+  position: relative;
+  color: var(--titleM);
+}
+
+.modal-left {
+  flex: 1;
+  padding: 2rem;
+  overflow-y: auto;
+  background: var(--primary);
+}
+
+.modal-right {
+  flex: 1;
+  padding: 2rem;
+  background: var(--secondary);
+}
+
+.project-images {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.project-images img {
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.modal-right h2 {
+  color: var(--titleM);
+  margin-bottom: 1rem;
+}
+
+.project-description {
+  color: var(--subtitle);
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.tech-tag {
+  background: linear-gradient(to right, #5731a2, #8751f5);
+  color: white;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+}
+
+.modal-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.modal-btn {
+  padding: 0.8rem 1.5rem;
+  border-radius: 5px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.modal-btn.primary {
+  background: linear-gradient(to right, #5731a2, #8751f5);
+  color: white;
+}
+
+.modal-btn.secondary {
+  border: 2px solid var(--border);
+  color: var(--titleM);
+}
+
+.modal-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(135, 81, 245, 0.2);
+}
+
+.close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--titleM);
+  cursor: pointer;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.close-btn:hover {
+  background: var(--border);
+}
+
+@media (max-width: 768px) {
+  .modal-content {
+    flex-direction: column;
+    height: 90vh;
+    overflow: hidden;
+  }
+  
+  .modal-left {
+    flex: none;
+    height: 40%;
+    padding: 1rem;
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+  
+  .modal-right {
+    flex: 1;
+    padding: 1rem;
+    overflow-y: auto;
+  }
+
+  .project-images {
+    flex-direction: row;
+    width: max-content;
+    height: 100%;
+    gap: 1rem;
+  }
+
+  .project-images img {
+    height: 100%;
+    width: auto;
+    max-width: none;
+  }
+
+  .modal-left::-webkit-scrollbar {
+    height: 6px;
+  }
+
+  .modal-left::-webkit-scrollbar-track {
+    background: var(--primary);
+    border-radius: 3px;
+  }
+
+  .modal-left::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 3px;
+  }
+
+  .modal-right h2 {
+    font-size: 1.5rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .project-description {
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  .tech-tags {
+    gap: 0.4rem;
+  }
+
+  .tech-tag {
+    font-size: 0.8rem;
+    padding: 0.25rem 0.6rem;
+  }
+
+  .modal-buttons {
+    position: sticky;
+    bottom: 0;
+    background: var(--secondary);
+    padding: 1rem 0;
+    margin-top: 1rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .modal-btn {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .modal-content {
+    width: 95%;
+    height: 95vh;
+  }
+
+  .modal-left {
+    height: 35%;
+  }
+
+  .project-images img {
+    height: 90%;
+  }
+
+  .view-toggle {
+    padding: 0.2rem;
+  }
+
+  .toggle-btn {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.85rem;
+  }
+}
+
+.modal-right {
+  scroll-behavior: smooth;
+}
+
+.modal-buttons::before {
+  content: '';
+  position: absolute;
+  top: -20px;
+  left: 0;
+  right: 0;
+  height: 20px;
+  background: linear-gradient(to top, var(--secondary), transparent);
+  pointer-events: none;
+}
+
+.view-toggle {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  padding: 0.3rem;
+  background: var(--primary);
+  border-radius: 8px;
+  padding: 4px;
+}
+
+.toggle-btn {
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  color: var(--subtitle);
+  flex: 1;
+  text-align: center;
+}
+
+.toggle-btn.active {
+  background: linear-gradient(to right, #5731a2, #8751f5);
+  color: white;
+  box-shadow: 0 2px 8px rgba(135, 81, 245, 0.2);
+}
+
+.description-content {
+  min-height: 200px;
+}
+
+.technical-features, .key-features {
+  margin-top: 1.5rem;
+}
+
+.technical-features h3, .key-features h3 {
+  color: var(--titleM);
+  margin-bottom: 0.8rem;
+}
+
+.technical-features ul, .key-features ul {
+  list-style: none;
+  padding-left: 1rem;
+}
+
+.technical-features li, .key-features li {
+  color: var(--subtitle);
+  margin-bottom: 0.5rem;
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.technical-features li:before, .key-features li:before {
+  content: "•";
+  color: var(--blue);
+  position: absolute;
+  left: 0;
+  font-weight: bold;
+}
+
+.simple-view {
+  font-size: 1.1rem;
+  line-height: 1.6;
+} 
