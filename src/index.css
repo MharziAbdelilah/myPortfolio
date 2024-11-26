@@ -19,16 +19,16 @@ html{
 }
 
 :root{
-  --primary : #000 ;
-  --secondary: rgba(24 ,24 ,27 ,0.5);
-  --border : rgba(63,63,70,0.4);
+  --primary : #1a1a2e ;
+  --secondary: rgba(26 ,26 ,46 ,0.8);
+  --border : rgba(135,81,245,0.2);
   --titleM: rgb(244 244 245);
   --title: linear-gradient(90deg, #fff 0%, #864ff5 50%, #3c2072 100%); /* Gradient for title */
   --nameText:#fff;
-  --subtitle: rgb(161 161 170);
-  --bgHeader: rgb(39,39,42);
+  --subtitle: rgb(189 189 198);
+  --bgHeader: #151523;
   --blue: rgb(93,188,252);
-  --bgicon: #000;
+  --bgicon: #151523;
   --icon-hover: #d4d4d8;
 
   --container-padding: 4.8rem;
@@ -86,7 +86,7 @@ html{
 
 body{
    background-color: var(--primary); 
-  color: var(--title);  
+  color: var(--titleM);  
  
 }
 /* n9der nbdel la taille de version desktop wla ndir shadow l border*/
@@ -98,6 +98,7 @@ body{
   background-color: var(--secondary);
   padding: 0 var(--container-padding);
 }
+
 
 .divder {
   border-bottom: 1px solid var(--border);
@@ -217,4 +218,38 @@ button:disabled{
   .scroll2Top:hover{
     opacity: 1;
   }
+}
+
+/* Improve card backgrounds in dark mode */
+.project-card {
+  background: rgba(26, 26, 46, 0.5) !important; /* Softer dark background */
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(135, 81, 245, 0.2);
+}
+
+/* Improve text readability in dark mode */
+p, li {
+  color: rgb(189 189 198); /* Lighter text color */
+}
+
+/* Add subtle hover effects for dark mode */
+.project-card:hover {
+  background: rgba(26, 26, 46, 0.7) !important;
+  border-color: rgba(135, 81, 245, 0.3);
+}
+
+/* Improve button contrast in dark mode */
+.demo-link {
+  background: linear-gradient(45deg, #5731a2, #8751f5);
+  color: white;
+}
+
+.github-link {
+  background: rgba(135, 81, 245, 0.1);
+  border: 2px solid #8751f5;
+  color: #fff;
+}
+
+.github-link:hover {
+  background: rgba(135, 81, 245, 0.2);
 }

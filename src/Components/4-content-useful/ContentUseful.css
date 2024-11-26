@@ -1,0 +1,279 @@
+.content-useful {
+  padding: 6rem 0 2rem;
+  
+}
+
+.content-useful__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+
+}
+
+.content-useful__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2.5rem;
+  padding: 2rem 0;
+  
+}
+
+.content-card {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 1.5rem;
+  padding: 2.5rem;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+  box-shadow: 
+    0 10px 30px -5px rgba(0, 0, 0, 0.1),
+    0 5px 15px -5px rgba(0, 0, 0, 0.05);
+}
+
+/* Light mode styles */
+:root[data-theme="light"] .content-card {
+  background: rgba(255, 255, 255, 0.7);
+  box-shadow: 
+    0 10px 30px -5px rgba(0, 0, 0, 0.1),
+    0 5px 15px -5px rgba(0, 0, 0, 0.05);
+}
+
+/* Dark mode styles */
+:root[data-theme="dark"] .content-card {
+  background: rgba(29, 29, 29, 0.7);
+  box-shadow: 
+    0 10px 30px -5px rgba(0, 0, 0, 0.2),
+    0 5px 15px -5px rgba(0, 0, 0, 0.1);
+}
+
+.content-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.content-card__icon-wrapper {
+  width: 70px;
+  height: 70px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(
+    135deg,
+    rgba(var(--first-color-rgb), 0.2),
+    rgba(var(--first-color-rgb), 0.1)
+  );
+  margin-bottom: 1rem;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.content-card__icon-wrapper::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+}
+
+.content-card:hover .content-card__icon-wrapper::before {
+  transform: translateX(100%);
+}
+
+.content-card:hover .content-card__icon-wrapper {
+  transform: scale(1.1) rotate(5deg);
+  background: linear-gradient(
+    135deg,
+    rgba(var(--first-color-rgb), 0.3),
+    rgba(var(--first-color-rgb), 0.2)
+  );
+}
+
+.content-card__icon {
+  font-size: 2.5rem;
+  color: var(--card-color);
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+  transition: all 0.3s ease;
+}
+
+.content-card:hover .content-card__icon {
+  transform: scale(1.1);
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+}
+
+.content-card__category {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(var(--first-color-rgb), 0.1);
+  color: var(--first-color);
+  padding: 0.5rem 1rem;
+  border-radius: 2rem;
+  font-size: var(--smaller-font-size);
+  font-weight: var(--font-medium);
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+}
+
+.content-card:hover .content-card__category {
+  background: var(--card-color);
+  color: var(--container-color);
+}
+
+.content-card__title {
+  font-size: var(--h3-font-size);
+  margin-bottom: 1rem;
+  color: var(--title-color);
+  font-weight: 600;
+  line-height: 1.4;
+  transition: color 0.3s ease;
+}
+
+.content-card:hover .content-card__title {
+  color: var(--card-color);
+}
+
+.content-card__description {
+  font-size: var(--small-font-size);
+  margin-bottom: 2rem;
+  color: var(--text-color);
+  line-height: 1.6;
+  opacity: 0.9;
+}
+
+.content-card__button {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.75rem 1.5rem;
+  background: transparent;
+  color: var(--title-color);
+  border: 2px solid var(--card-color);
+  border-radius: 0.75rem;
+  font-weight: var(--font-medium);
+  cursor: pointer;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.content-card__button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--card-color);
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+  z-index: -1;
+}
+
+.content-card__button:hover {
+  color: var(--container-color);
+}
+
+.content-card__button:hover::before {
+  transform: translateX(0);
+}
+
+.content-card__button-icon {
+  font-size: 1.2rem;
+  transition: 0.3s;
+}
+
+.content-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 32px rgba(var(--first-color-rgb), 0.15);
+}
+
+/* Responsive */
+@media screen and (max-width: 992px) {
+  .content-useful__grid {
+    gap: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .content-useful {
+    padding: 4rem 0 2rem;
+  }
+  
+  .content-card {
+    padding: 2rem;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .content-useful__grid {
+    grid-template-columns: 1fr;
+    padding: 1rem;
+  }
+  
+  .content-card__title {
+    font-size: var(--normal-font-size);
+  }
+} 
+
+/* Update these styles for the title and subtitle to match index.css theme */
+.content-useful .section__title {
+  font-size: 3.5rem;
+  background: var(--title); /* Using the gradient from index.css */
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-align: center;
+  margin-bottom: 1rem;
+  font-weight: 600;
+  width: 100%;
+}
+
+.content-useful .section__subtitle {
+  display: block;
+  font-size: 1.25rem;
+  text-align: center;
+  margin-bottom: 4rem;
+  font-weight: 400;
+  width: 100%;
+  color: var(--subtitle); /* Using the subtitle color from index.css */
+}
+
+/* Light mode */
+:root[data-theme="light"] .content-useful .section__title {
+  background: var(--title);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+:root[data-theme="light"] .content-useful .section__subtitle {
+  color: var(--subtitle);
+}
+
+/* Dark mode */
+:root[data-theme="dark"] .content-useful .section__title {
+  background: var(--title);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+:root[data-theme="dark"] .content-useful .section__subtitle {
+  color: var(--subtitle);
+}
+
+/* Remove any previous color overrides */
+.content-useful .section__title,
+.content-useful .section__subtitle {
+  padding-left: 0;
+} 

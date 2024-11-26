@@ -1,11 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import './hero.css';
 import Lottie from 'lottie-react';
-import pcAnimation from '../../animation/Pc.json';
-import { motion } from "framer-motion"
+
+import { motion, AnimatePresence } from "framer-motion"
+import { FaBullseye, FaChartLine, FaLaptopCode, FaMoneyBillWave, FaRocket } from 'react-icons/fa';
 
 function Hero() {
   const [isProfileEnlarged, setIsProfileEnlarged] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const handleProfileClick = () => {
     setIsProfileEnlarged(true);
@@ -22,6 +33,33 @@ function Hero() {
       document.body.classList.remove('blurred');
     };
   }, []);
+
+  const orbitingElements = [
+    {
+      icon: <FaLaptopCode />,
+      text: 'Development',
+      color: '#864ff5', 
+      delay: 0
+    },
+    {
+      icon: <FaChartLine />,
+      text: 'Marketing',
+      color: '#4a9eff',
+      delay: 0.2
+    },
+    {
+      icon: <FaMoneyBillWave />,
+      text: 'Sales', 
+      color: '#ff6b6b',
+      delay: 0.4
+    },
+    {
+      icon: <FaRocket />,
+      text: 'Business',
+      color: '#4acf8c',
+      delay: 0.6
+    }
+  ];
 
   return (
     <>
@@ -83,14 +121,50 @@ function Hero() {
         </div>
 
         <div className='right-section'>
-          <motion.div 
-            className='animation'
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-          >
-            <Lottie animationData={pcAnimation} />
-          </motion.div>
+          {isMobile && (
+            <div className="orbit-wrapper">
+              <motion.div 
+                className="orbit-center"
+                animate={{
+                  scale: [1, 1.1, 1],
+                  boxShadow: [
+                    "0 0 20px rgba(134, 79, 245, 0.2)",
+                    "0 0 40px rgba(134, 79, 245, 0.4)",
+                    "0 0 20px rgba(134, 79, 245, 0.2)"
+                  ]
+                }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+              >
+                <span className="center-icon"><FaBullseye /></span>
+                <span className="center-text">Success</span>
+              </motion.div>
+
+              <div className="orbit-container">
+                {orbitingElements.map((element, index) => (
+                  <motion.div
+                    key={index}
+                    className="orbit-item"
+                    style={{
+                      '--orbit-color': element.color,
+                      '--orbit-delay': `${index * -2}s`
+                    }}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: element.delay }}
+                  >
+                    <div className="orbit-content">
+                      <span className="orbit-icon">{element.icon}</span>
+                      <span className="orbit-text">{element.text}</span>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       </section>
 

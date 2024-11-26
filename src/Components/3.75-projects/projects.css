@@ -1,0 +1,618 @@
+.projects-section {
+  position: relative;
+  padding: 6rem 2rem;
+  min-height: 100vh;
+  overflow: hidden;
+  background: linear-gradient(145deg, rgba(0, 0, 0, 0.05), rgba(135, 81, 245, 0.05));
+}
+
+/* Unique Background Animation */
+.projects-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.gradient-sphere {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.3;
+  background: linear-gradient(45deg, #8751f5, #5731a2);
+  animation: morphSphere 15s infinite alternate;
+}
+
+@keyframes morphSphere {
+  0% {
+    border-radius: 60% 40% 30% 70%/60% 30% 70% 40%;
+  }
+  50% {
+    border-radius: 30% 60% 70% 40%/50% 60% 30% 60%;
+  }
+  100% {
+    border-radius: 40% 60% 30% 70%/40% 60% 70% 30%;
+  }
+}
+
+.sphere-1 {
+  width: 500px;
+  height: 500px;
+  top: -250px;
+  left: -200px;
+  animation-delay: 0s;
+}
+
+.sphere-2 {
+  width: 400px;
+  height: 400px;
+  bottom: -200px;
+  right: -150px;
+  animation-delay: -7s;
+}
+
+.sphere-3 {
+  width: 300px;
+  height: 300px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation-delay: -14s;
+}
+
+/* Header Styles */
+.projects-header {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.projects-header .title {
+  font-size: 3rem;
+  background: var(--title);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 1rem;
+}
+
+.projects-header .subtitle {
+  color: var(--subtitle);
+  font-size: 1.2rem;
+}
+
+/* Carousel Styles */
+.projects-carousel {
+  position: relative;
+  z-index: 2;
+  padding: 2rem 10%;
+  margin: 0 -10%;
+}
+
+.projects-swiper-container .swiper {
+  width: 100%;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+.projects-swiper-container .swiper-slide {
+  width: 450px;
+  height: auto;
+  transition: all 0.3s ease;
+  opacity: 0.5;
+  transform: scale(0.85);
+}
+
+.projects-swiper-container .swiper-slide-active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Project Card Styles */
+.project-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(135, 81, 245, 0.2);
+  border-radius: 24px;
+  overflow: hidden;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-image-container {
+  position: relative;
+  width: 100%;
+  height: 250px;
+  overflow: hidden;
+}
+
+.project-image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.project-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, 
+    rgba(0, 0, 0, 0.6), 
+    rgba(135, 81, 245, 0.3)
+  );
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.tech-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  padding: 1.5rem;
+  justify-content: center;
+}
+
+.tech-tag {
+  background: rgba(135, 81, 245, 0.3);
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  color: white;
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.project-content {
+  padding: 2rem;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.05),
+    rgba(255, 255, 255, 0.02)
+  );
+}
+
+.project-content h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  background: var(--title);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.project-content p {
+  color: var(--subtitle);
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.project-links {
+  display: flex;
+  gap: 1rem;
+}
+
+.project-links a {
+  flex: 1;
+  padding: 0.8rem 1.2rem;
+  border-radius: 12px;
+  text-align: center;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.demo-link {
+  background: linear-gradient(45deg, #5731a2, #8751f5);
+  color: white;
+  border: none;
+}
+
+.github-link {
+  background: transparent;
+  border: 2px solid #8751f5;
+  color: #8751f5;
+}
+
+/* Navigation Styles */
+.projects-swiper-container .swiper-button-next,
+.projects-swiper-container .swiper-button-prev {
+  background: rgba(135, 81, 245, 0.15);
+  width: 3.5rem !important;
+  height: 3.5rem !important;
+  border-radius: 50%;
+  color: #8751f5 !important;
+  transition: all 0.3s ease;
+}
+
+.projects-swiper-container .swiper-button-next::after,
+.projects-swiper-container .swiper-button-prev::after {
+  font-size: 1.5rem !important;
+  font-weight: bold;
+}
+
+/* Pagination Styles */
+.projects-swiper-container .swiper-pagination-bullet {
+  width: 2rem !important;
+  height: 0.375rem !important;
+  border-radius: 1rem !important;
+  background: rgba(135, 81, 245, 0.3) !important;
+}
+
+.projects-swiper-container .swiper-pagination-bullet-active {
+  background: #8751f5 !important;
+  width: 3rem !important;
+}
+
+/* Active Slide Styles */
+.projects-swiper-container .swiper-slide-active .project-card {
+  box-shadow: rgba(135, 81, 245, 0.15) 0px 48px 100px 0px;
+  transform: translateZ(30px);
+}
+
+.projects-swiper-container .swiper-slide:not(.swiper-slide-active) .project-card {
+  box-shadow: rgba(17, 12, 46, 0.10) 0px 48px 100px 0px;
+}
+
+/* Light Theme */
+.light .project-card {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(135, 81, 245, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.light .project-content {
+  background: linear-gradient(
+    to bottom,
+    rgba(135, 81, 245, 0.05),
+    rgba(135, 81, 245, 0.02)
+  );
+}
+
+.light .github-link {
+  border-color: #5731a2;
+  color: #5731a2;
+}
+
+/* Light theme specific overrides */
+.light .project-content h3,
+.light .projects-header .title {
+  background: var(--title);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .projects-swiper-container .swiper {
+    padding: 2rem 0;
+  }
+  
+  .projects-swiper-container .swiper-slide {
+    width: 400px;
+  }
+}
+
+@media (max-width: 768px) {
+  .projects-section {
+    padding: 4rem 1rem;
+  }
+
+  .projects-carousel {
+    padding: 1rem 0;
+    margin: 0;
+    overflow: visible; /* Allow overflow for 3D effect */
+  }
+
+  .projects-swiper-container .swiper {
+    padding: 3rem 0 !important;
+    overflow: visible; /* Show overflow for background cards */
+  }
+
+  .projects-swiper-container .swiper-slide {
+    width: 280px;
+    height: auto;
+    opacity: 0.4;
+    transform: scale(0.8) translateX(-8%) perspective(1000px) rotateY(10deg);
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    pointer-events: none; /* Disable interaction with background cards */
+  }
+
+  .projects-swiper-container .swiper-slide-active {
+    opacity: 1;
+    transform: scale(1) translateX(0) perspective(1000px) rotateY(0);
+    pointer-events: auto; /* Enable interaction with active card */
+    z-index: 2;
+  }
+
+  .projects-swiper-container .swiper-slide-next {
+    opacity: 0.7;
+    transform: scale(0.85) translateX(5%) perspective(1000px) rotateY(-5deg);
+    z-index: 1;
+  }
+
+  .projects-swiper-container .swiper-slide-prev {
+    opacity: 0.7;
+    transform: scale(0.85) translateX(-5%) perspective(1000px) rotateY(5deg);
+    z-index: 1;
+  }
+
+  /* Enhanced card shadow effects */
+  .project-card {
+    box-shadow: 0 10px 30px -5px rgba(135, 81, 245, 0.2);
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    backdrop-filter: blur(8px);
+  }
+
+  .projects-swiper-container .swiper-slide-active .project-card {
+    box-shadow: 0 20px 40px -10px rgba(135, 81, 245, 0.3);
+    transform: translateY(-5px);
+  }
+
+  /* Improved content visibility */
+  .project-content {
+    padding: 1.8rem 1.5rem;
+  }
+
+  .project-content h3 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+
+  .project-content p {
+    font-size: 0.85rem;
+    line-height: 1.6;
+    margin-bottom: 1.2rem;
+    min-height: 2.8em;
+  }
+
+  /* Enhanced buttons */
+  .project-links {
+    flex-direction: row;
+    gap: 0.8rem;
+  }
+
+  .project-links a {
+    padding: 0.6rem 1rem;
+    font-size: 0.8rem;
+    border-radius: 10px;
+    backdrop-filter: blur(4px);
+    box-shadow: 0 4px 15px -3px rgba(135, 81, 245, 0.2);
+  }
+
+  /* Improved image container */
+  .project-image-container {
+    height: 180px;
+    border-radius: 20px 20px 0 0;
+  }
+
+  /* Enhanced tech stack */
+  .tech-stack {
+    gap: 0.6rem;
+    padding: 1.2rem;
+    min-height: 3rem;
+  }
+
+  .tech-tag {
+    padding: 0.3rem 0.8rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.02em;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Custom animation for active slide */
+  @keyframes floatCard {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+
+  .projects-swiper-container .swiper-slide-active {
+    animation: floatCard 3s ease-in-out infinite;
+  }
+}
+
+/* Extra small devices */
+@media (max-width: 380px) {
+  .projects-swiper-container .swiper-slide {
+    width: 260px;
+  }
+
+  .project-image-container {
+    height: 170px;
+  }
+
+  .project-content {
+    padding: 1.5rem 1.2rem;
+  }
+
+  .project-links a {
+    padding: 0.5rem 0.8rem;
+    font-size: 0.75rem;
+  }
+}
+
+/* Enhance light mode on mobile */
+@media (max-width: 768px) {
+  .light .projects-swiper-container .swiper-slide-active .project-card {
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 20px 40px -10px rgba(135, 81, 245, 0.2);
+  }
+
+  .light .projects-swiper-container .swiper-slide:not(.swiper-slide-active) .project-card {
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 10px 30px -5px rgba(135, 81, 245, 0.15);
+  }
+
+  .light .project-links a.demo-link {
+    box-shadow: 0 4px 15px -3px rgba(135, 81, 245, 0.25);
+  }
+
+  .light .project-links a.github-link {
+    box-shadow: 0 4px 15px -3px rgba(135, 81, 245, 0.1);
+  }
+}
+
+/* Light Theme Styles */
+.light .projects-section {
+  background: linear-gradient(145deg, rgba(135, 81, 245, 0.05), rgba(135, 81, 245, 0.08));
+}
+
+.light .gradient-sphere {
+  background: linear-gradient(45deg, rgba(135, 81, 245, 0.4), rgba(87, 49, 162, 0.4));
+  opacity: 0.2;
+}
+
+.light .project-card {
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(135, 81, 245, 0.2);
+  box-shadow: 0 4px 20px rgba(135, 81, 245, 0.1);
+}
+
+.light .project-content {
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.light .project-content h3 {
+  color: #2d1b69;
+}
+
+.light .project-content p {
+  color: #4a3b89;
+}
+
+.light .project-overlay {
+  background: linear-gradient(to bottom, 
+    rgba(87, 49, 162, 0.85), 
+    rgba(135, 81, 245, 0.8)
+  );
+}
+
+.light .tech-tag {
+  background: rgba(255, 255, 255, 0.95);
+  color: #5731a2;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  transition: all 0.3s ease;
+  backdrop-filter: blur(4px);
+}
+
+.light .tech-tag:hover {
+  background: rgba(135, 81, 245, 0.1);
+  transform: translateY(-2px);
+}
+
+.light .project-links a.demo-link {
+  background: linear-gradient(45deg, #5731a2, #8751f5);
+  color: white;
+}
+
+.light .project-links a.github-link {
+  background: transparent;
+  border: 2px solid #5731a2;
+  color: #2d1b69;
+}
+
+.light .project-links a.github-link:hover {
+  background: rgba(135, 81, 245, 0.1);
+}
+
+/* Navigation in light mode */
+.light .projects-swiper-container .swiper-button-next,
+.light .projects-swiper-container .swiper-button-prev {
+  background: rgba(135, 81, 245, 0.15);
+  color: #5731a2 !important;
+}
+
+.light .projects-swiper-container .swiper-button-next:hover,
+.light .projects-swiper-container .swiper-button-prev:hover {
+  background: rgba(135, 81, 245, 0.25);
+}
+
+.light .projects-swiper-container .swiper-pagination-bullet {
+  background: rgba(87, 49, 162, 0.3) !important;
+}
+
+.light .projects-swiper-container .swiper-pagination-bullet-active {
+  background: #5731a2 !important;
+}
+
+/* Active slide in light mode */
+.light .projects-swiper-container .swiper-slide-active .project-card {
+  box-shadow: rgba(135, 81, 245, 0.15) 0px 48px 100px 0px;
+}
+
+/* Hover effects in light mode */
+.light .project-card:hover {
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: rgba(135, 81, 245, 0.25) 0px 25px 50px -12px;
+  transform: translateY(-5px);
+}
+
+.light .project-image-container:hover img {
+  transform: scale(1.03);
+}
+
+/* Text colors in light mode */
+.light .projects-header .title {
+  color: #2d1b69;
+}
+
+.light .projects-header .subtitle {
+  color: #4a3b89;
+}
+
+/* Update the tech tags styles for light mode */
+.light .project-overlay {
+  background: linear-gradient(to bottom, 
+    rgba(87, 49, 162, 0.85), 
+    rgba(135, 81, 245, 0.8)
+  );
+}
+
+.light .tech-tag {
+  background: rgba(255, 255, 255, 0.95);
+  color: #5731a2;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  transition: all 0.3s ease;
+  backdrop-filter: blur(4px);
+}
+
+/* New styles for tech tags when hovering over the image in light mode */
+.light .project-image-container:hover .tech-tag {
+  background: rgba(255, 255, 255, 1);
+  color: white;
+  border-color: rgba(255, 255, 255, 0.4);
+  background: rgba(135, 81, 245, 0.9);
+  box-shadow: 0 2px 8px rgba(135, 81, 245, 0.2);
+  transform: translateY(-2px);
+}
+
+/* Improve visibility of tech stack container */
+.light .project-image-container:hover .tech-stack {
+  z-index: 2;
+  backdrop-filter: blur(0);
+}
+
+/* Improve the coverflow effect container */
+.mySwiper {
+  padding: 50px 0;
+  overflow: visible;
+}
+
+/* Adjust container padding for better visibility */
+.projects-carousel {
+  padding: 2rem 10%;
+  margin: 0 -10%;
+}
+
+/* Optional: Add smooth transition for slide changes */
+.projects-swiper-container .swiper-slide-transform {
+  transition: transform 0.5s ease;
+} 
