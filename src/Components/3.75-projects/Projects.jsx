@@ -1,232 +1,175 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useLanguage } from '../../context/LanguageContext';
 import './projects.css';
-import { motion, useScroll, useTransform } from 'framer-motion';
 import { projectsData } from './projectsData';
-import { Tilt } from 'react-tilt';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { EffectCoverflow, Pagination, Navigation, Autoplay } from 'swiper/modules';
-import ProjectModal from './ProjectModal/ProjectModal';
+import { FiExternalLink, FiGithub } from 'react-icons/fi';
+import { 
+  SiReact, 
+  SiJavascript, 
+  SiHtml5, 
+  SiTailwindcss, 
+  SiNextdotjs,
+  SiFirebase
+} from 'react-icons/si';
+import { BsCodeSlash } from 'react-icons/bs';
 
-// Import Swiper styles
-import 'swiper/css';
-import 'swiper/css/effect-coverflow';
-import 'swiper/css/pagination';
-import 'swiper/css/navigation';
+const projectIcons = {
+  react: SiReact,
+  javascript: SiJavascript,
+  html: SiHtml5,
+  tailwind: SiTailwindcss,
+  nextjs: SiNextdotjs,
+  firebase: SiFirebase,
+  default: BsCodeSlash
+};
 
-function Projects() {
-  const sectionRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"]
-  });
+const Projects = () => {
+  const { currentLang } = useLanguage();
+  const [activeProject, setActiveProject] = useState(0);
+  const [expandedDescriptions, setExpandedDescriptions] = useState({});
+  const [showTechnical, setShowTechnical] = useState(false);
 
-  const y = useTransform(scrollYProgress, [0, 1], [100, -100]);
-  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.9, 1], [0, 1, 1, 0]);
-  const [selectedProject, setSelectedProject] = useState(null);
-  const [scrollPosition, setScrollPosition] = useState(0);
+  const handleProjectClick = (index) => {
+    setActiveProject(index);
+  };
 
-  // Add useEffect to handle body scroll
-  useEffect(() => {
-    if (selectedProject) {
-      // Store current scroll position when opening modal
-      setScrollPosition(window.scrollY);
-      // Disable scroll on body when modal is open
-      document.body.style.overflow = 'hidden';
-      document.body.style.position = 'fixed';
-      document.body.style.width = '100%';
-      document.body.style.top = `-${window.scrollY}px`;
-    } else {
-      // Re-enable scroll and restore position when modal is closed
-      document.body.style.position = '';
-      document.body.style.top = '';
-      document.body.style.overflow = '';
-      document.body.style.width = '';
-      
-      // Restore to the previous scroll position
-      window.scrollTo({
-        top: scrollPosition,
-        behavior: "instant" // Use "instant" to prevent smooth scrolling
-      });
-    }
+  const toggleDescription = (index) => {
+    setExpandedDescriptions(prev => ({
+      ...prev,
+      [index]: !prev[index]
+    }));
+  };
 
-    // Cleanup function
-    return () => {
-      document.body.style.overflow = '';
-      document.body.style.position = '';
-      document.body.style.top = '';
-      document.body.style.width = '';
-    };
-  }, [selectedProject, scrollPosition]);
+  const toggleDescriptionType = () => {
+    setShowTechnical(prev => !prev);
+  };
+
+  const getIconComponent = (iconName) => {
+    const IconComponent = projectIcons[iconName?.toLowerCase()] || projectIcons.default;
+    return <IconComponent size="100%" />;
+  };
 
   return (
-    <section className="projects-section" ref={sectionRef}>
-      <div className="projects-background">
-        <div className="gradient-sphere sphere-1"></div>
-        <div className="gradient-sphere sphere-2"></div>
-        <div className="gradient-sphere sphere-3"></div>
-      </div>
+    <section className="projects-section" id="projects">
+      <div className="projects-container">
+        <h2 className="section-title">
+          {currentLang === 'en' ? 'Timeline of Work' : 'مسار العمل'}
+        </h2>
 
-      <motion.div 
-        className="projects-header"
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-      >
-        <h2 className="title">Featured Projects</h2>
-        <p className="subtitle">Explore my latest works and creative endeavors</p>
-      </motion.div>
-
-      <div className="projects-swiper-container">
-        <Swiper
-          effect={'coverflow'}
-          grabCursor={true}
-          centeredSlides={true}
-          slidesPerView={'auto'}
-          spaceBetween={20}
-          loop={true}
-          loopFillGroupWithBlank={true}
-          coverflowEffect={{
-            rotate: 25,
-            stretch: 0,
-            depth: 250,
-            modifier: 1,
-            slideShadows: true,
-          }}
-          breakpoints={{
-            // when window width is >= 320px
-            320: {
-              slidesPerView: 1,
-              spaceBetween: 10
-            },
-            // when window width is >= 480px
-            480: {
-              slidesPerView: 1.5,
-              spaceBetween: 20
-            },
-            // when window width is >= 768px
-            768: {
-              slidesPerView: 2,
-              spaceBetween: 30
-            },
-            // when window width is >= 1024px
-            1024: {
-              slidesPerView: 2.5,
-              spaceBetween: 30
-            }
-          }}
-          pagination={{
-            clickable: true,
-            dynamicBullets: true,
-          }}
-          navigation={true}
-          modules={[EffectCoverflow, Pagination, Navigation, Autoplay]}
-          autoplay={{
-            delay: 3000,
-            disableOnInteraction: false,
-            pauseOnMouseEnter: true,
-          }}
-          className="projects-swiper"
-        >
-          {projectsData.map((project, index) => (
-            <SwiperSlide key={project.id}>
-              <Tilt
-                options={{
-                  max: 15,
-                  scale: 1.02,
-                  speed: 1500,
-                  glare: true,
-                  "max-glare": 0.3,
-                  perspective: 1500,
-                }}
-              >
+        <div className="project-frame">
+          <div className="timeline">
+            <div className="timeline-icons">
+              {projectsData[currentLang].map((project, index) => (
                 <motion.div
-                  className="project-card"
-                  initial={{ opacity: 0, y: 50 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ 
-                    duration: 0.5, 
-                    delay: index * 0.1,
-                    type: "spring",
-                    stiffness: 100
-                  }}
-                  whileHover={{ scale: 1.02 }}
-                  onClick={() => setSelectedProject(project)}
+                  key={project.id}
+                  className={`timeline-icon ${activeProject === index ? 'active' : ''}`}
+                  onClick={() => handleProjectClick(index)}
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
                 >
-                  <div className="project-image-container">
-                    <motion.img 
-                      src={project.image} 
-                      alt={project.title}
-                      whileHover={{ scale: 1.03 }}
-                      transition={{ 
-                        duration: 0.6,
-                        ease: "easeOut"
-                      }}
-                    />
-                    <motion.div 
-                      className="project-overlay"
-                      initial={{ opacity: 0 }}
-                      whileHover={{ opacity: 1 }}
-                      transition={{ duration: 0.4 }}
-                    >
-                      <div className="tech-stack">
-                        {project.technologies.map((tech, idx) => (
-                          <motion.span 
-                            key={idx} 
-                            className="tech-tag"
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ delay: idx * 0.1 }}
-                          >
-                            {tech}
-                          </motion.span>
-                        ))}
-                      </div>
-                    </motion.div>
-                  </div>
-
-                  <div className="project-content">
-                    <h3>{project.title}</h3>
-                    <p>{project.description}</p>
-                    
-                    <div className="project-links">
-                      <motion.a 
-                        href={project.liveDemo} 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="demo-link"
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                      >
-                        Live Demo
-                        <span className="icon-external-link"></span>
-                      </motion.a>
-                      <motion.a 
-                        href={project.github} 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="github-link"
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                      >
-                        GitHub
-                        <span className="icon-github"></span>
-                      </motion.a>
-                    </div>
-                  </div>
+                  {getIconComponent(project.technology)}
                 </motion.div>
-              </Tilt>
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      </div>
+              ))}
+            </div>
+          </div>
 
-      <ProjectModal 
-        project={selectedProject}
-        isOpen={!!selectedProject}
-        onClose={() => setSelectedProject(null)}
-      />
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeProject}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.3 }}
+              className="project-content"
+            >
+              <div className="project-image-container">
+                <img 
+                  src={projectsData[currentLang][activeProject].image}
+                  alt={projectsData[currentLang][activeProject].title}
+                  className="project-image"
+                />
+              </div>
+
+              <div className="project-details">
+                <div className="project-header">
+                  <h3 className="project-title">
+                    {projectsData[currentLang][activeProject].title}
+                  </h3>
+                  <div className="project-date">
+                    {projectsData[currentLang][activeProject].date || '2024'}
+                  </div>
+                </div>
+                
+                <div className="description-toggle">
+                  <button 
+                    className={`toggle-btn ${!showTechnical ? 'active' : ''}`}
+                    onClick={() => setShowTechnical(false)}
+                  >
+                    {currentLang === 'en' ? 'Overview' : 'نظرة عامة'}
+                  </button>
+                  <button 
+                    className={`toggle-btn ${showTechnical ? 'active' : ''}`}
+                    onClick={() => setShowTechnical(true)}
+                  >
+                    {currentLang === 'en' ? 'Technical Details' : 'تفاصيل تقنية'}
+                  </button>
+                </div>
+
+                <p className={`project-description ${expandedDescriptions[activeProject] ? 'expanded' : ''}`}>
+                  {showTechnical 
+                    ? (projectsData[currentLang][activeProject].technicalDescription || projectsData[currentLang][activeProject].description)
+                    : (projectsData[currentLang][activeProject].description)}
+                </p>
+                
+                <button 
+                  onClick={() => toggleDescription(activeProject)}
+                  className="read-more-btn"
+                >
+                  {expandedDescriptions[activeProject] 
+                    ? (currentLang === 'en' ? 'Read Less' : 'عرض أقل') 
+                    : (currentLang === 'en' ? 'Read More' : 'اقرأ المزيد')}
+                </button>
+                
+                <div className="project-footer">
+                  <div className="project-tech">
+                    {projectsData[currentLang][activeProject].technologies.slice(0, 3).map((tech, index) => (
+                      <span key={index} className="tech-tag">
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                  
+                  <div className="project-links">
+                    {projectsData[currentLang][activeProject].liveDemo && (
+                      <a
+                        href={projectsData[currentLang][activeProject].liveDemo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="project-link"
+                      >
+                        <FiExternalLink />
+                      </a>
+                    )}
+                    {projectsData[currentLang][activeProject].github && (
+                      <a
+                        href={projectsData[currentLang][activeProject].github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="project-link"
+                      >
+                        <FiGithub />
+                      </a>
+                    )}
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </AnimatePresence>
+        </div>
+      </div>
     </section>
   );
-}
+};
 
-export default Projects; 
+export default Projects;

@@ -1,86 +1,181 @@
-export const projectsData = [
-  {
-    id: 1,
-    title: "E-Commerce Platform",
-    description: "A full-featured e-commerce platform with real-time inventory management and secure payment processing.",
-    nonTechnicalDescription: "An online shopping platform that makes it easy for businesses to sell their products and for customers to shop securely. Features include real-time stock updates, secure payments, and an intuitive shopping experience.",
-    technicalDescription: "Built with React for the frontend and Node.js for the backend, this platform implements real-time updates using WebSocket connections. The payment system is integrated with Stripe API, and inventory management uses MongoDB with change streams for real-time updates.",
-    keyFeatures: [
-      "Secure payment processing",
-      "Real-time inventory tracking",
-      "User-friendly shopping interface",
-      "Order management system"
-    ],
-    images: [
-      "https://images.unsplash.com/photo-1557821552-17105176677c?w=800&h=600&fit=crop",
-      "https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=800&h=600&fit=crop",
-      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop"
-    ],
-    technologies: ["React", "Node.js", "MongoDB", "Stripe"],
-    liveDemo: "https://project1-demo.com",
-    github: "https://github.com/yourusername/project1"
-  },
-  {
-    id: 2,
-    title: "AI Chat Application",
-    description: "Real-time chat application powered by AI for smart responses and language translation.",
-    image: "https://images.unsplash.com/photo-1579403124614-197f69d8187b?w=800&h=600&fit=crop",
-    technologies: ["React", "Socket.io", "OpenAI API", "Firebase"],
-    liveDemo: "https://project2-demo.com",
-    github: "https://github.com/yourusername/project2"
-  },
-  {
-    id: 3,
-    title: "Portfolio Dashboard",
-    description: "Interactive dashboard for tracking investments and portfolio performance with real-time data.",
-    image: "https://picsum.photos/800/600?random=3",
-    technologies: ["React", "D3.js", "Redux", "API Integration"],
-    liveDemo: "https://project3-demo.com",
-    github: "https://github.com/yourusername/project3"
-  },
-  {
-    id: 4,
-    title: "Smart Home IoT Platform",
-    description: "Comprehensive IoT platform for managing smart home devices with real-time monitoring.",
-    image: "https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?w=800&h=600&fit=crop",
-    technologies: ["React", "IoT", "WebSocket", "Node.js"],
-    liveDemo: "https://project4-demo.com",
-    github: "https://github.com/yourusername/project4"
-  },
-  {
-    id: 5,
-    title: "Social Media Analytics",
-    description: "Comprehensive social media analytics platform with AI-powered insights and trend analysis.",
-    image: "https://picsum.photos/800/600?random=5",
-    technologies: ["React", "Python", "TensorFlow", "AWS"],
-    liveDemo: "https://project5-demo.com",
-    github: "https://github.com/yourusername/project5"
-  },
-  {
-    id: 6,
-    title: "Fitness Tracking App",
-    description: "Modern fitness tracking application with personalized workout plans and progress analytics.",
-    image: "https://images.unsplash.com/photo-1461773518188-b3e86f98242f?w=800&h=600&fit=crop",
-    technologies: ["React Native", "Firebase", "Node.js", "MongoDB"],
-    liveDemo: "https://project6-demo.com",
-    github: "https://github.com/yourusername/project6"
-  },
-  {
-    id: 7,
-    title: "Weather Dashboard",
-    description: "Real-time weather monitoring with interactive maps and forecast predictions.",
-    image: "https://picsum.photos/800/600?random=7",
-    technologies: ["React", "Weather API", "Maps API", "Chart.js"],
-    liveDemo: "https://project7-demo.com",
-    github: "https://github.com/yourusername/project7"
-  },
-  {
-    id: 8,
-    title: "Task Management System",
-    description: "Collaborative task management platform with real-time updates and team analytics.",
-    image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&h=600&fit=crop",
-    technologies: ["React", "Redux", "Node.js", "PostgreSQL"],
-    liveDemo: "https://project8-demo.com",
-    github: "https://github.com/yourusername/project8"
-  }
-]; 
+export const projectsData = {
+  en: [
+    {
+      id: 1,
+      title: "React Portfolio",
+      description: "A modern and elegant portfolio website showcasing my work and skills. Features smooth animations and a responsive design that works beautifully on all devices.",
+      technicalDescription: "Built with React and Framer Motion for animations. Implements context-based theme switching, dynamic routing, and responsive design using CSS Grid and Flexbox. Features include lazy loading for images, SEO optimization, and a custom light/dark theme system.",
+      technology: "react",
+      date: "2024",
+      location: "Web App",
+      github: "https://github.com/yourusername/portfolio",
+      liveDemo: "https://portfolio.example.com",
+      icon: "https://cdn-icons-png.flaticon.com/512/919/919825.png",
+      category: "web",
+      technologies: ["React", "JavaScript", "CSS"],
+      image: "https://images.unsplash.com/photo-1557821552-17105176677c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1332&q=80"
+    },
+    {
+      id: 2,
+      title: "E-commerce Platform",
+      description: "Full-stack e-commerce solution with Next.js, featuring dynamic routing and server-side rendering",
+      technology: "nextjs",
+      date: "2023",
+      location: "Web Platform",
+      github: "https://github.com/yourusername/ecommerce",
+      liveDemo: "https://ecommerce.example.com",
+      icon: "https://cdn-icons-png.flaticon.com/512/5968/5968358.png",
+      category: "web",
+      technologies: ["Next.js", "React", "Node.js"],
+      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1315&q=80"
+    },
+    {
+      id: 3,
+      title: "Task Management App",
+      description: "Real-time task management application built with Firebase and React",
+      technology: "firebase",
+      date: "2023",
+      location: "Web App",
+      github: "https://github.com/yourusername/taskmanager",
+      liveDemo: "https://tasks.example.com",
+      icon: "https://cdn-icons-png.flaticon.com/512/5968/5968306.png",
+      category: "web",
+      technologies: ["Firebase", "React", "JavaScript"],
+      image: "https://images.unsplash.com/photo-1547954575-855750c57bd3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80"
+    },
+    {
+      id: 4,
+      title: "Weather Dashboard",
+      description: "Interactive weather dashboard using JavaScript and Weather API",
+      technology: "javascript",
+      date: "2023",
+      location: "Web App",
+      github: "https://github.com/yourusername/weather",
+      liveDemo: "https://weather.example.com",
+      icon: "https://cdn-icons-png.flaticon.com/512/919/919826.png",
+      category: "web",
+      technologies: ["JavaScript", "HTML", "CSS"],
+      image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1472&q=80"
+    },
+    {
+      id: 5,
+      title: "Blog Platform",
+      description: "Modern blog platform with Tailwind CSS and Next.js",
+      technology: "tailwind",
+      date: "2023",
+      location: "Web Platform",
+      github: "https://github.com/yourusername/blog",
+      liveDemo: "https://blog.example.com",
+      icon: "https://cdn-icons-png.flaticon.com/512/5968/5968312.png",
+      category: "web",
+      technologies: ["Tailwind CSS", "Next.js", "React"],
+      image: "https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1474&q=80"
+    },
+    {
+      id: 6,
+      title: "Landing Page",
+      description: "Responsive landing page with modern HTML5 and CSS3",
+      technology: "html",
+      date: "2023",
+      location: "Website",
+      github: "https://github.com/yourusername/landing",
+      liveDemo: "https://landing.example.com",
+      icon: "https://cdn-icons-png.flaticon.com/512/919/919824.png",
+      category: "web",
+      technologies: ["HTML", "CSS", "JavaScript"],
+      image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80"
+    }
+  ],
+  ar: [
+    {
+      id: 1,
+      title: "موقع شخصي تفاعلي",
+      description: "موقع شخصي حديث مبني باستخدام React، يتميز بالحركات السلسة والتصميم المتجاوب",
+      technology: "react",
+      date: "2024",
+      location: "تطبيق ويب",
+      github: "https://github.com/yourusername/portfolio",
+      liveDemo: "https://portfolio.example.com",
+      icon: "https://cdn-icons-png.flaticon.com/512/919/919825.png",
+      category: "web",
+      technologies: ["React", "JavaScript", "CSS"],
+      image: "https://images.unsplash.com/photo-1557821552-17105176677c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1332&q=80"
+    },
+    {
+      id: 2,
+      title: "منصة تجارة إلكترونية",
+      description: "حل متكامل للتجارة الإلكترونية باستخدام Next.js، مع توجيه ديناميكي وعرض من جانب الخادم",
+      technology: "nextjs",
+      date: "2023",
+      location: "منصة ويب",
+      github: "https://github.com/yourusername/ecommerce",
+      liveDemo: "https://ecommerce.example.com",
+      icon: "https://cdn-icons-png.flaticon.com/512/5968/5968358.png",
+      category: "web",
+      technologies: ["Next.js", "React", "Node.js"],
+      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1315&q=80"
+    },
+    {
+      id: 3,
+      title: "تطبيق إدارة المهام",
+      description: "تطبيق إدارة مهام في الوقت الفعلي مبني باستخدام Firebase و React",
+      technology: "firebase",
+      date: "2023",
+      location: "تطبيق ويب",
+      github: "https://github.com/yourusername/taskmanager",
+      liveDemo: "https://tasks.example.com",
+      icon: "https://cdn-icons-png.flaticon.com/512/5968/5968306.png",
+      category: "web",
+      technologies: ["Firebase", "React", "JavaScript"],
+      image: "https://images.unsplash.com/photo-1547954575-855750c57bd3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80"
+    },
+    {
+      id: 4,
+      title: "لوحة معلومات الطقس",
+      description: "لوحة معلومات تفاعلية للطقس باستخدام JavaScript و API الطقس",
+      technology: "javascript",
+      date: "2023",
+      location: "تطبيق ويب",
+      github: "https://github.com/yourusername/weather",
+      liveDemo: "https://weather.example.com",
+      icon: "https://cdn-icons-png.flaticon.com/512/919/919826.png",
+      category: "web",
+      technologies: ["JavaScript", "HTML", "CSS"],
+      image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1472&q=80"
+    },
+    {
+      id: 5,
+      title: "منصة مدونة",
+      description: "منصة مدونة حديثة مع Tailwind CSS و Next.js",
+      technology: "tailwind",
+      date: "2023",
+      location: "منصة ويب",
+      github: "https://github.com/yourusername/blog",
+      liveDemo: "https://blog.example.com",
+      icon: "https://cdn-icons-png.flaticon.com/512/5968/5968312.png",
+      category: "web",
+      technologies: ["Tailwind CSS", "Next.js", "React"],
+      image: "https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1474&q=80"
+    },{
+      id: 1,
+      title: "React Portfolio",
+      description: "A modern and elegant portfolio website showcasing my work and skills. Features smooth animations and a responsive design that works beautifully on all devices.",
+      technicalDescription: "Built with React and Framer Motion for animations. Implements context-based theme switching, dynamic routing, and responsive design using CSS Grid and Flexbox. Features include lazy loading for images, SEO optimization, and a custom light/dark theme system.",
+      // ... other properties
+    },
+    {
+      id: 6,
+      title: "صفحة هبوط",
+      description: "صفحة هبوط متجاوبة مع HTML5 و CSS3 الحديثة",
+      technology: "html",
+      date: "2023",
+      location: "موقع ويب",
+      github: "https://github.com/yourusername/landing",
+      liveDemo: "https://landing.example.com",
+      icon: "https://cdn-icons-png.flaticon.com/512/919/919824.png",
+      category: "web",
+      technologies: ["HTML", "CSS", "JavaScript"],
+      image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80"
+    }
+  ]
+};

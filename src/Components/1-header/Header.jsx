@@ -1,12 +1,15 @@
 import "./header.css";
 import React, { useEffect, useState } from "react";
 import ChatBot from "../ChatBot/ChatBot";
+import { useLanguage } from '../../context/LanguageContext';
+import { headerTranslations } from './translations';
 
 function Header() {
   const [showModal, setShowModel] = useState(false);
   const [theme, setTheme] = useState(
     localStorage.getItem("currentMode") ?? "dark"
   );
+  const { currentLang, setCurrentLang } = useLanguage();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 700);
 
@@ -54,6 +57,15 @@ function Header() {
     </button>
   );
 
+  const LangToggleButton = () => (
+    <button
+      onClick={() => setCurrentLang(currentLang === 'en' ? 'ar' : 'en')}
+      className="lang-toggle-btn"
+    >
+      {currentLang === 'en' ? 'عربي' : 'English'}
+    </button>
+  );
+
   const MenuButton = () => (
     <button
       onClick={() => setShowModel(true)}
@@ -63,20 +75,23 @@ function Header() {
 
   return (
     <>
-      <header className="flex">
+      <header className={`flex ${currentLang === 'ar' ? 'rtl' : ''}`}>
         {isMobile && !isScrolled && <MenuButton />}
         <div />
         <nav>
           <ul className="flex">
-            <li><a href="">About</a></li>
-            <li><a href="">Articles</a></li>
-            <li><a href="">Projects</a></li>
-            <li><a href="">Speaking</a></li>
-            <li><a href="">Contact</a></li>
+            {headerTranslations[currentLang].menuItems.map((item, index) => (
+              <li key={index}>
+                <a href={item.href}>{item.text}</a>
+              </li>
+            ))}
           </ul>
         </nav>
 
-        {!isScrolled && <ThemeToggleButton />}
+        <div className="header-buttons flex">
+          <LangToggleButton />
+          {!isScrolled && <ThemeToggleButton />}
+        </div>
 
         {showModal && (
           <div className="fixed">
@@ -87,20 +102,21 @@ function Header() {
                   onClick={() => setShowModel(false)}
                 />
               </li>
-              <li><a href="">About</a></li>
-              <li><a href="">Articles</a></li>
-              <li><a href="">Projects</a></li>
-              <li><a href="">Speaking</a></li>
-              <li><a href="">Uses</a></li>
+              {headerTranslations[currentLang].menuItems.map((item, index) => (
+                <li key={index}>
+                  <a href={item.href}>{item.text}</a>
+                </li>
+              ))}
             </ul>
           </div>
         )}
       </header>
       
       {isScrolled && (
-        <div className="theme-toggle-fixed">
+        <div className={`theme-toggle-fixed ${currentLang === 'ar' ? 'rtl' : ''}`}>
           <MenuButton />
           <ThemeToggleButton />
+          <LangToggleButton />
         </div>
       )}
 

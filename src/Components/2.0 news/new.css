@@ -390,3 +390,70 @@
     display: block; /* Allow margin auto to work */
   }
 }
+
+/* إضافة دعم RTL */
+.news-section.rtl {
+  direction: rtl;
+}
+
+.news-section.rtl .news-container {
+  text-align: center;
+}
+
+.news-section.rtl .news-title {
+  font-family: 'Cairo', sans-serif;
+}
+
+.news-section.rtl .news-description {
+  font-family: 'Cairo', sans-serif;
+  line-height: 1.8;
+}
+
+.news-section.rtl .subscribe-input {
+  text-align: right;
+  font-family: 'Cairo', sans-serif;
+}
+
+.news-section.rtl .subscribe-button {
+  font-family: 'Cairo', sans-serif;
+  flex-direction: row-reverse;
+}
+
+.news-section.rtl .subscribe-button i {
+  transform: scaleX(-1);
+}
+
+/* تحسينات للموبايل في النسخة العربية */
+@media screen and (max-width: 768px) {
+  .news-section.rtl .news-title {
+    font-size: 1.8rem;
+  }
+
+  .news-section.rtl .news-description {
+    font-size: 1rem;
+    padding: 0 1rem;
+  }
+
+  .news-section.rtl .subscribe-input,
+  .news-section.rtl .subscribe-button {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* تحسين أحجام الخطوط للنسخة العربية */
+.news-section.rtl .news-title {
+  font-size: 2.3rem;
+  font-weight: 700;
+}
+
+.news-section.rtl .news-description {
+  font-size: 1.1rem;
+  max-width: 700px;
+  margin: 1rem auto 2rem;
+}
+
+.news-section.rtl .subscribe-button {
+  font-size: 1rem;
+  font-weight: 600;
+}

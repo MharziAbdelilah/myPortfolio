@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import './new.css';
+import { useLanguage } from '../../context/LanguageContext';
+import { newsTranslations } from './translations';
 
 const News = () => {
   const [email, setEmail] = useState('');
+  const { currentLang } = useLanguage();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -11,16 +14,16 @@ const News = () => {
   };
 
   return (
-    <section className="news-section">
+    <section className={`news-section ${currentLang === 'ar' ? 'rtl' : ''}`}>
       <div className="news-container">
         <div className="news-icon">
           <i className="icon-newspaper"></i>
         </div>
         <h2 className="news-title">
-          Stay Updated
+          {newsTranslations[currentLang].title}
         </h2>
         <p className="news-description">
-          Subscribe to our newsletter for the latest updates and exclusive content.
+          {newsTranslations[currentLang].description}
         </p>
         <form className="subscription-form" onSubmit={handleSubmit}>
           <div className="input-group">
@@ -28,12 +31,13 @@ const News = () => {
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="Enter your email"
+              placeholder={newsTranslations[currentLang].inputPlaceholder}
               required
               className="subscribe-input"
             />
             <button type="submit" className="subscribe-button">
-              Subscribe <i className="icon-arrow-right"></i>
+              {newsTranslations[currentLang].buttonText} 
+              <i className={`icon-arrow-${currentLang === 'ar' ? 'left' : 'right'}`}></i>
             </button>
           </div>
         </form>

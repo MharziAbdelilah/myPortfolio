@@ -1,98 +1,108 @@
-export const servicesData = [
-  {
-    id: 1,
-    icon: "💻",
-    title: "Web Development",
-    description: "Creating responsive and dynamic web applications with modern technologies",
-    features: [
-      "Custom Website Development",
-      "React.js Applications",
-      "Performance Optimization",
-      "SEO-friendly Structure"
-    ]
-  },
-  {
-    id: 2,
-    icon: "🎨",
-    title: "UI/UX Design",
-    description: "Crafting beautiful and intuitive user interfaces for exceptional user experience",
-    features: [
-      "Responsive Design",
-      "User Interface Design",
-      "Interactive Prototypes",
-      "Design Systems"
-    ]
-  },
-  {
-    id: 3,
-    icon: "⚡",
-    title: "Frontend Development",
-    description: "Building fast, scalable, and maintainable frontend solutions",
-    features: [
-      "Modern JavaScript",
-      "Component Architecture",
-      "State Management",
-      "API Integration"
-    ]
-  },
-  {
-    id: 4,
-    icon: "🛠️",
-    title: "Technical Consultation",
-    description: "Expert guidance for your web development projects and technical decisions",
-    features: [
-      "Architecture Planning",
-      "Technology Selection",
-      "Code Review",
-      "Best Practices"
-    ]
-  },
-  {
-    id: 5,
-    icon: "📱",
-    title: "Mobile-First Development",
-    description: "Creating seamless experiences across all devices and screen sizes",
-    features: [
-      "Responsive Layouts",
-      "Progressive Web Apps",
-      "Cross-browser Compatibility",
-      "Mobile Optimization"
-    ]
-  },
-  {
-    id: 6,
-    icon: "🚀",
-    title: "Performance Optimization",
-    description: "Enhancing website speed and performance for better user experience",
-    features: [
-      "Load Time Optimization",
-      "Code Splitting",
-      "Resource Optimization",
-      "Caching Strategies"
-    ]
-  },
-  {
-    id: 7,
-    icon: "🔒",
-    title: "Web Security",
-    description: "Implementing robust security measures to protect your web applications",
-    features: [
-      "Security Audits",
-      "Authentication Systems",
-      "Data Protection",
-      "Security Best Practices"
-    ]
-  },
-  {
-    id: 8,
-    icon: "🔄",
-    title: "API Development",
-    description: "Building robust and scalable APIs for your web applications",
-    features: [
-      "RESTful APIs",
-      "API Documentation",
-      "Integration Services",
-      "Performance Monitoring"
-    ]
-  }
-]; 
+import { FaCode, FaDesktop, FaMobileAlt, FaDatabase } from 'react-icons/fa';
+import { BiCodeAlt } from 'react-icons/bi';
+import { MdOutlineDesignServices } from 'react-icons/md';
+import { AiOutlineApi } from 'react-icons/ai';
+import { SiWebpack } from 'react-icons/si';
+
+export const servicesData = {
+  en: [
+    {
+      id: 1,
+      icon: <BiCodeAlt />,
+      title: "Web Development",
+      description: "Creating modern and responsive websites with cutting-edge technologies",
+      features: [
+        "Custom Website Development",
+        "Responsive Design",
+        "Performance Optimization",
+        "SEO-Friendly Structure"
+      ]
+    },
+    {
+      id: 2,
+      icon: <MdOutlineDesignServices />,
+      title: "UI/UX Design",
+      description: "Designing intuitive and engaging user experiences",
+      features: [
+        "User Interface Design",
+        "User Experience Design",
+        "Wireframing & Prototyping",
+        "Design Systems"
+      ]
+    },
+    {
+      id: 3,
+      icon: <FaMobileAlt />,
+      title: "Mobile Development",
+      description: "Building cross-platform mobile applications",
+      features: [
+        "React Native Development",
+        "iOS & Android Apps",
+        "App Optimization",
+        "Mobile UI Design"
+      ]
+    },
+    {
+      id: 4,
+      icon: <AiOutlineApi />,
+      title: "API Development",
+      description: "Creating robust and scalable APIs",
+      features: [
+        "RESTful API Design",
+        "API Integration",
+        "Authentication & Security",
+        "Documentation"
+      ]
+    }
+  ],
+  ar: [
+    {
+      id: 1,
+      icon: <BiCodeAlt />,
+      title: "تطوير المواقع",
+      description: "إنشاء مواقع حديثة ومتجاوبة باستخدام أحدث التقنيات",
+      features: [
+        "تطوير مواقع مخصصة",
+        "تصميم متجاوب",
+        "تحسين الأداء",
+        "هيكلة صديقة لمحركات البحث"
+      ]
+    },
+    {
+      id: 2,
+      icon: <MdOutlineDesignServices />,
+      title: "تصميم واجهات المستخدم",
+      description: "تصميم تجارب مستخدم سهلة وجذابة",
+      features: [
+        "تصميم واجهات المستخدم",
+        "تصميم تجربة المستخدم",
+        "تصميم النماذج الأولية",
+        "أنظمة التصميم"
+      ]
+    },
+    {
+      id: 3,
+      icon: <FaMobileAlt />,
+      title: "تطوير تطبيقات الجوال",
+      description: "بناء تطبيقات جوال متعددة المنصات",
+      features: [
+        "تطوير بـ React Native",
+        "تطبيقات iOS وأندرويد",
+        "تحسين أداء التطبيقات",
+        "تصميم واجهات الجوال"
+      ]
+    },
+    {
+      id: 4,
+      icon: <AiOutlineApi />,
+      title: "تطوير واجهات برمجة",
+      description: "إنشاء واجهات برمجة قوية وقابلة للتطوير",
+      features: [
+        "تصميم واجهات RESTful",
+        "دمج واجهات البرمجة",
+        "المصادقة والأمان",
+        "التوثيق"
+      ]
+    }
+  ]
+}; 

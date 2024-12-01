@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import './services.css';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { servicesData } from './servicesData';
@@ -8,9 +8,19 @@ import 'swiper/css';
 import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
+import { translations } from './translations';
+import { useLanguage } from '../../context/LanguageContext';
 
 function Services() {
   const sectionRef = useRef(null);
+  const { currentLang } = useLanguage();
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setIsLoading(false), 1000);
+    return () => clearTimeout(timer);
+  }, []);
+
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start end", "end start"]
@@ -30,29 +40,25 @@ function Services() {
   };
 
   return (
-    <section className="services-section" ref={sectionRef}>
-      {/* Animated Background */}
-      <div className="animated-background">
-        <div className="gradient-blob blob-1"></div>
-        <div className="gradient-blob blob-2"></div>
-        <div className="gradient-blob blob-3"></div>
-        <div className="gradient-blob blob-4"></div>
-      </div>
-
+    <section className="services-section" ref={sectionRef} aria-label="Services">
+      <div className="animated-background" aria-hidden="true" />
+      
       <motion.div 
         className="services-header"
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
       >
-        <motion.h2 
-          className="title"
-          whileHover={{ scale: 1.05 }}
-          transition={{ type: "spring", stiffness: 300 }}
-        >
-          My Services
-        </motion.h2>
-        <p className="sub-title">Specialized solutions to empower your digital presence</p>
+        <div className="header-content">
+          <motion.h2 
+            className="title"
+            whileHover={{ scale: 1.05 }}
+            transition={{ type: "spring", stiffness: 300 }}
+          >
+            {translations[currentLang].title}
+          </motion.h2>
+          <p className="sub-title">{translations[currentLang].subtitle}</p>
+        </div>
       </motion.div>
 
       <div className="services-swiper-container">
@@ -61,38 +67,38 @@ function Services() {
           grabCursor={true}
           centeredSlides={true}
           slidesPerView={'auto'}
-          spaceBetween={20}
+          spaceBetween={30}
           loop={true}
           loopFillGroupWithBlank={true}
           coverflowEffect={{
-            rotate: 25,
+            rotate: 20,
             stretch: 0,
-            depth: 250,
+            depth: 200,
             modifier: 1,
-            slideShadows: true,
+            slideShadows: false,
           }}
           breakpoints={{
             320: {
               slidesPerView: 1,
-              spaceBetween: 10
+              spaceBetween: 20
             },
             480: {
               slidesPerView: 1.5,
-              spaceBetween: 20
+              spaceBetween: 30
             },
             768: {
               slidesPerView: 2,
-              spaceBetween: 30
+              spaceBetween: 40
             },
             1024: {
-              slidesPerView: 2.5,
-              spaceBetween: 30
+              slidesPerView: 3,
+              spaceBetween: 40
             }
           }}
           modules={[EffectCoverflow, Pagination, Autoplay, Navigation]}
           className="services-swiper"
           autoplay={{
-            delay: 3500,
+            delay: 4000,
             disableOnInteraction: false,
             pauseOnMouseEnter: true,
           }}
@@ -102,10 +108,10 @@ function Services() {
           }}
           navigation
         >
-          {servicesData.map((service, index) => (
+          {servicesData[currentLang].map((service, index) => (
             <SwiperSlide key={service.id}>
               <motion.div
-                className="service-card"
+                className={`service-card ${isLoading ? 'loading' : ''}`}
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ 
@@ -118,12 +124,16 @@ function Services() {
                   scale: 1.02,
                   transition: { duration: 0.3 }
                 }}
+                tabIndex={0}
+                role="article"
+                aria-label={service.title}
               >
                 <div className="service-content">
                   <motion.div 
                     className="service-icon-wrapper"
                     whileHover={{ scale: 1.2, rotate: 360 }}
                     transition={{ duration: 0.6 }}
+                    aria-hidden="true"
                   >
                     <div className="service-icon">{service.icon}</div>
                     <div className="icon-glow"></div>
@@ -139,18 +149,22 @@ function Services() {
                   
                   <p className="service-description">{service.description}</p>
                   
-                  <ul className="service-features">
+                  <ul 
+                    className={`service-features ${currentLang === 'ar' ? 'rtl-features' : ''}`}
+                    role="list"
+                  >
                     {service.features.map((feature, idx) => (
                       <motion.li 
                         key={idx}
-                        initial={{ opacity: 0, x: -20 }}
+                        initial={{ opacity: 0, x: currentLang === 'ar' ? 20 : -20 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         whileHover={{ 
-                          x: 10, 
+                          x: currentLang === 'ar' ? -10 : 10,
                           backgroundColor: 'rgba(135, 81, 245, 0.15)',
                           scale: 1.02
                         }}
                         transition={{ delay: 0.2 + (idx * 0.1) }}
+                        tabIndex={0}
                       >
                         <span className="icon-verified feature-icon"></span>
                         {feature}
@@ -167,4 +181,4 @@ function Services() {
   );
 }
 
-export default Services; 
+export default Services;

@@ -276,4 +276,50 @@
 .content-useful .section__title,
 .content-useful .section__subtitle {
   padding-left: 0;
+}
+
+/* إضافة دعم RTL */
+.content-useful.rtl {
+  direction: rtl;
+}
+
+.content-useful.rtl .section__title,
+.content-useful.rtl .section__subtitle {
+  font-family: 'Cairo', sans-serif;
+}
+
+.content-useful.rtl .content-card {
+  text-align: right;
+}
+
+.content-useful.rtl .content-card__title {
+  font-family: 'Cairo', sans-serif;
+  font-size: 1.4rem;
+}
+
+.content-useful.rtl .content-card__description {
+  font-family: 'Cairo', sans-serif;
+  line-height: 1.8;
+}
+
+.content-useful.rtl .content-card__button {
+  font-family: 'Cairo', sans-serif;
+  flex-direction: row-reverse;
+}
+
+.content-useful.rtl .content-card__button-icon {
+  transform: scaleX(-1);
+  margin-right: 0;
+  margin-left: 0.5rem;
+}
+
+/* تحسينات للموبايل */
+@media screen and (max-width: 576px) {
+  .content-useful.rtl .content-card__title {
+    font-size: 1.2rem;
+  }
+  
+  .content-useful.rtl .content-card__description {
+    font-size: 0.9rem;
+  }
 } 

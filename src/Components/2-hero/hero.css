@@ -8,12 +8,11 @@ table of content
 section.hero {
   position: relative;
   overflow: hidden;
-  margin-top: 2rem;
   display: flex;
   flex-direction: row;
   max-width: 100%;
-  margin: 3.1rem auto;
-  padding: 0 1rem;
+  margin: var(--space-xl) auto;
+  padding: 0 var(--space-sm);
   min-height: 60vh;
   isolation: isolate;
 }
@@ -25,23 +24,23 @@ section.hero {
 section.hero .left-section .border {
   flex: 1;
   max-width: 1000px;
-  padding-right: 2rem;
+  padding-right: var(--space-lg);
 
 }
 
 section.hero .parent-avatar.flex {
   position: relative;
   align-items: center;
-  gap: 1rem;
-  margin-bottom: 1rem;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-sm);
   width: fit-content;
 }
 
 section.hero .avatar {
   width: 150px;
   height: 150px;
-  border-radius: 50%;
-  border: 2px solid var(--blue);
+  border-radius: var(--radius-full);
+  border: 2px solid var(--color-primary);
   padding: 3px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   cursor: pointer;
@@ -590,7 +589,8 @@ section.hero .right-section {
 
 .skill-icon {
   font-size: 2rem;
-  background: linear-gradient(135deg, 
+  background: linear-gradient(
+    135deg,
     rgba(var(--first-color-rgb), 0.1),
     rgba(var(--first-color-rgb), 0.05)
   );
@@ -994,5 +994,101 @@ section.hero .right-section {
 @media (min-width: 381px) and (max-width: 480px) {
   .orbit-wrapper {
     transform: translateX(-12%); /* Adjust for medium phones */
+  }
+}
+
+/* تحديث تنسيقات RTL للنصوص العربية */
+.hero.rtl {
+  direction: rtl;
+}
+
+.hero.rtl .left-section {
+  direction: rtl;
+  text-align: right;
+}
+
+.hero.rtl .text-container {
+  text-align: right;
+  direction: rtl;
+  align-items: flex-end;
+}
+
+.hero.rtl .name-text {
+  font-family: 'Cairo', sans-serif;
+  font-size: 2.5rem;
+  line-height: 1.4;
+  width: 100%;
+  text-align: right;
+}
+
+.hero.rtl .title {
+  font-family: 'Cairo', sans-serif;
+  font-size: 3.2rem;
+  line-height: 1.4;
+  margin: 1rem 0;
+  width: 100%;
+  text-align: right;
+}
+
+/* تحديث تنسيقات sub-title للنسخة العربية */
+.hero.rtl .sub-title {
+  font-family: 'Cairo', sans-serif;
+  line-height: 1.8;
+  font-size: 1.2rem;
+  text-align: right;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  max-width: 100%;
+  direction: rtl;
+}
+
+/* تحسين المحاذاة للشاشات الكبيرة */
+@media (min-width: 769px) {
+  .hero.rtl .sub-title {
+    padding-left: 10%;
+  }
+}
+
+/* الإعدادات للشاشات الصغيرة تبقى كما هي */
+@media (max-width: 768px) {
+  .hero.rtl .sub-title {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    max-width: 100%;
+    padding: 0;
+  }
+}
+
+/* تحسين محاذاة الأيقونات في النسخة العربية */
+.hero.rtl .allicons.flex {
+  justify-content: flex-end;
+  width: 100%;
+  direction: ltr;
+}
+
+/* تحسينات للموبايل */
+@media (max-width: 768px) {
+  .hero.rtl .text-container {
+    align-items: flex-end;
+    text-align: right;
+  }
+  
+  .hero.rtl .name-text {
+    font-size: 2rem;
+  }
+
+  .hero.rtl .title {
+    font-size: 2.5rem;
+  }
+
+  .hero.rtl .sub-title {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    max-width: 100%;
+  }
+
+  .hero.rtl .parent-avatar.flex {
+    align-self: center;
   }
 }

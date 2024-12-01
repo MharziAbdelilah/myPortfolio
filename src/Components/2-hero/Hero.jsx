@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import './hero.css';
-import Lottie from 'lottie-react';
-
-import { motion, AnimatePresence } from "framer-motion"
+import { motion, AnimatePresence } from "framer-motion";
 import { FaBullseye, FaChartLine, FaLaptopCode, FaMoneyBillWave, FaRocket } from 'react-icons/fa';
+import { useLanguage } from '../../context/LanguageContext';
+import { heroTranslations } from './translations';
 
 function Hero() {
+  const { currentLang } = useLanguage();
   const [isProfileEnlarged, setIsProfileEnlarged] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
@@ -37,25 +38,25 @@ function Hero() {
   const orbitingElements = [
     {
       icon: <FaLaptopCode />,
-      text: 'Development',
-      color: '#864ff5', 
+      text: heroTranslations[currentLang].orbitElements[0].text,
+      color: '#864ff5',
       delay: 0
     },
     {
       icon: <FaChartLine />,
-      text: 'Marketing',
+      text: heroTranslations[currentLang].orbitElements[1].text,
       color: '#4a9eff',
       delay: 0.2
     },
     {
       icon: <FaMoneyBillWave />,
-      text: 'Sales', 
+      text: heroTranslations[currentLang].orbitElements[2].text,
       color: '#ff6b6b',
       delay: 0.4
     },
     {
       icon: <FaRocket />,
-      text: 'Business',
+      text: heroTranslations[currentLang].orbitElements[3].text,
       color: '#4acf8c',
       delay: 0.6
     }
@@ -63,7 +64,7 @@ function Hero() {
 
   return (
     <>
-      <section className='hero flex'>
+      <section className={`hero flex ${currentLang === 'ar' ? 'rtl' : ''}`}>
         <div className='left-section'>
           <div className="parent-avatar flex">
             <motion.img
@@ -85,7 +86,7 @@ function Hero() {
               transition={{ duration: 0.5 }}
               className='name-text'
             >
-              MHARZI Abdelilah
+              {heroTranslations[currentLang].name}
             </motion.span>
 
             <motion.h1 
@@ -94,7 +95,7 @@ function Hero() {
               transition={{ duration: 0.5, delay: 0.2 }}
               className='title'
             >
-              I'm a Software Engineer
+              {heroTranslations[currentLang].title}
             </motion.h1>
 
             <motion.p 
@@ -103,8 +104,7 @@ function Hero() {
               transition={{ duration: 0.5, delay: 0.4 }}
               className='sub-title'
             >
-              Passionate about creating elegant solutions through code. 
-              Specialized in building modern web applications with cutting-edge technologies.
+              {heroTranslations[currentLang].subtitle}
             </motion.p>
 
             <motion.div 
@@ -140,7 +140,7 @@ function Hero() {
                 }}
               >
                 <span className="center-icon"><FaBullseye /></span>
-                <span className="center-text">Success</span>
+                <span className="center-text">{heroTranslations[currentLang].centerText}</span>
               </motion.div>
 
               <div className="orbit-container">

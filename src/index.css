@@ -19,19 +19,57 @@ html{
 }
 
 :root{
+  /* Legacy Variables - Keep for compatibility */
   --primary : #1a1a2e ;
   --secondary: rgba(26 ,26 ,46 ,0.8);
   --border : rgba(135,81,245,0.2);
   --titleM: rgb(244 244 245);
-  --title: linear-gradient(90deg, #fff 0%, #864ff5 50%, #3c2072 100%); /* Gradient for title */
+  --title: linear-gradient(90deg, #fff 0%, #864ff5 50%, #3c2072 100%);
   --nameText:#fff;
   --subtitle: rgb(189 189 198);
   --bgHeader: #151523;
-  --blue: rgb(93,188,252);
+  --blue: #9464f6;
   --bgicon: #151523;
   --icon-hover: #d4d4d8;
-
   --container-padding: 4.8rem;
+
+  /* Design System Tokens */
+  /* Colors */
+  --color-primary: #864ff5;
+  --color-primary-light: #9464f6;
+  --color-primary-dark: #3c2072;
+  --color-background: var(--primary);
+  --color-surface: var(--secondary);
+  --color-border: var(--border);
+  
+  /* Typography */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.25rem;
+  --text-xl: 1.5rem;
+  --text-2xl: 2rem;
+  --text-3xl: 2.5rem;
+  
+  /* Font Weights */
+  --font-normal: 400;
+  --font-medium: 500;
+  --font-semibold: 600;
+  --font-bold: 700;
+  
+  /* Spacing */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+  --space-2xl: 4rem;
+  
+  /* Border Radius */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 1rem;
+  --radius-full: 9999px;
 }
 
 .light{
@@ -91,8 +129,8 @@ body{
 }
 /* n9der nbdel la taille de version desktop wla ndir shadow l border*/
 .container{
-  border:  2px solid var(--border) ;
-  width: 90%;
+  border:  0.1px  var(--border) ;
+  width: 95%;
   margin-left: auto;
   margin-right: auto;
   background-color: var(--secondary);
@@ -121,7 +159,7 @@ a{
   align-items: center;
 }
 
-/*just for testing  */
+/*just for tiesting  */
 .border{
   border: 2px solid red;
 }

@@ -2,8 +2,12 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import './ContentUseful.css';
 import { contentData } from './contentData';
+import { contentTranslations } from './translations';
+import { useLanguage } from '../../context/LanguageContext';
 
 const ContentUseful = () => {
+  const { currentLang } = useLanguage();
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -26,13 +30,13 @@ const ContentUseful = () => {
   };
 
   return (
-    <section className="content-useful" id="content-useful">
+    <section className={`content-useful ${currentLang === 'ar' ? 'rtl' : ''}`} id="content-useful">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
-        className="content-useful__container" /* Using only the component-specific container class without the global container class to avoid unwanted borders and maintain clean UI */
+        className="content-useful__container"
       >
         <motion.h2 
           className="section__title"
@@ -40,7 +44,7 @@ const ContentUseful = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          Useful Content
+          {contentTranslations[currentLang].title}
         </motion.h2>
         <motion.span 
           className="section__subtitle"
@@ -48,7 +52,7 @@ const ContentUseful = () => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
         >
-          Knowledge Hub
+          {contentTranslations[currentLang].subtitle}
         </motion.span>
 
         <motion.div 
@@ -58,7 +62,7 @@ const ContentUseful = () => {
           whileInView="visible"
           viewport={{ once: true }}
         >
-          {contentData.map((content) => (
+          {contentData[currentLang].map((content) => (
             <motion.div
               key={content.id}
               className="content-card"
@@ -89,8 +93,8 @@ const ContentUseful = () => {
                   console.log(`Learn more about ${content.title}`);
                 }}
               >
-                Learn More
-                <i className="bx bx-right-arrow-alt content-card__button-icon"></i>
+                {contentTranslations[currentLang].buttonText}
+                <i className={`bx bx-${currentLang === 'ar' ? 'left' : 'right'}-arrow-alt content-card__button-icon`}></i>
               </motion.button>
             </motion.div>
           ))}

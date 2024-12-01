@@ -1,64 +1,69 @@
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Header from "./Components/1-header/Header";
 import Hero from "./Components/2-hero/Hero";
 import News from "./Components/2.0 news/new";
-// import Main from "./Components/3-main/Main";
 import Contact from "./Components/4-contact/Contact";
 import Footer from "./Components/5-footer/Footer";
 import Services from "./Components/3.5-services/Services";
-import { css } from '@emotion/react';
-import { LanguageProvider } from './contexts/LanguageContext';
 import Projects from "./Components/3.75-projects/Projects";
 import ContentUseful from './Components/4-content-useful/ContentUseful';
-
-
-
-const override = css`
-  display: block;
-  margin: 0 auto;
-  border-color: red;
-`;
+import { LanguageProvider } from './context/LanguageContext';
+import SayAboutMe from "./Components/6-say-about-me/SayAboutMe";
+import TestimonialForm from "./Components/6-say-about-me/TestimonialForm";
+import HelpYou from "./Components/3-helpyou/HelpYou";
 
 function App() {
-    const [scrollUpBtn , setScrollUpBtn] = useState(true);
+  const [scrollUpBtn, setScrollUpBtn] = useState(true);
 
-    useEffect(() => {
-      const handleScroll = () => {
-          if (window.scrollY > 300) {
-              setScrollUpBtn(true);
-          } else {
-              setScrollUpBtn(false);
-          }
-      };
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 300) {
+        setScrollUpBtn(true);
+      } else {
+        setScrollUpBtn(false);
+      }
+    };
 
-      window.addEventListener("scroll", handleScroll);
-
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
-    <LanguageProvider>
-      <div id="up" className="container">
-          <>
-              <Header />
-              <Hero />
-              <div className="divder" />
-              <News />
-              {/* <div className="divder" />
-              <Main /> */}
-              <div className="divder" />
-              <Services />
-              <div className="divder" />
-              <Projects />
-              <div className="divder" />
-              <ContentUseful />
-              <div className="divder" />
-              <Contact />
-              <div className="divder" />
-              <Footer />
-            
-          </>
-      </div>
-    </LanguageProvider>
+    <Router>
+      <LanguageProvider>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <>
+                <div id="up" className="container">
+                  <Header />
+                  <Hero />
+                  <div className="divder" />
+                  <HelpYou />
+                  <div className="divder" />
+                  <News />
+                </div>
+                <Services />             
+                  <Projects />
+                  <div id="up" className="container">
+                  <div className="divder" />
+                  <ContentUseful />
+                </div>
+                <SayAboutMe />
+                <div id="up" className="container">
+                  <Contact />
+                  </div>
+                  <Footer />
+                
+              </>
+            }
+          />
+          <Route path="/sayaboutme" element={<TestimonialForm />} />
+        </Routes>
+      </LanguageProvider>
+    </Router>
   );
 }
 

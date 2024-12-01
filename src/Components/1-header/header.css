@@ -159,7 +159,7 @@ header .fixed ul.modal li:last-child {
 .theme-toggle-fixed {
   position: fixed;
   bottom: 1rem;
-  left: 1rem;
+  left: 1rem !important;
   z-index: 10;
   display: flex;
   flex-direction: column;
@@ -167,13 +167,14 @@ header .fixed ul.modal li:last-child {
 }
 
 .theme-toggle-fixed button.mode,
-.theme-toggle-fixed .menu-button {
-  background-color: var(--bgHeader);
-  height: 2.4rem;
-  width: 2.4rem;
-  border-radius: 50%;
+.theme-toggle-fixed .menu-button,
+.theme-toggle-fixed .lang-toggle-btn {
+  display: flex;
+  align-items: center;
   justify-content: center;
-  text-align: center;
+  height: 2.4rem;
+  background-color: var(--bgHeader);
+  border-radius: 50%;
   color: var(--subtitle);
   border: 1px solid rgba(244, 165, 96, 0.249);
   transition: all 0.3s ease;
@@ -184,4 +185,103 @@ header .fixed ul.modal li:last-child {
   color: var(--title);
   border: 1px solid rgba(244, 165, 96);
   transition: 0.2s;
+}
+
+/* إضافة تنسيقات جديدة */
+.header-buttons {
+  gap: 1rem;
+}
+
+.lang-toggle-btn {
+  background: linear-gradient(135deg, #8751f5, #4f87ea);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 55px;
+  cursor: pointer;
+  font-size: 0.88rem;
+  font-weight: 500;
+  box-shadow: 0 4px 15px rgba(135, 81, 245, 0.2);
+  transition: all 0.3s ease;
+}
+
+.lang-toggle-btn:hover {
+  box-shadow: 0 6px 20px rgba(135, 81, 245, 0.3);
+  transform: translateY(-2px);
+}
+
+/* تعديل التنسيقات الموجودة */
+.theme-toggle-fixed {
+  position: fixed;
+  bottom: 1rem;
+  left: 1rem !important;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.theme-toggle-fixed .lang-toggle-btn {
+  border-radius: 50%;
+  width: 2.4rem;
+  padding: 0;
+  font-size: 0.75rem;
+}
+
+/* تحديث التنسيقات للموبايل */
+@media (max-width: 700px) {
+  .header-buttons {
+    gap: 0.5rem;
+  }
+
+  .lang-toggle-btn {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+  }
+}
+
+/* إضافة دعم RTL */
+header.rtl {
+  direction: rtl;
+}
+
+header.rtl nav {
+  font-family: 'Cairo', sans-serif;
+}
+
+header.rtl ul.flex {
+  gap: 16px;
+}
+
+header.rtl ul li a {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+/* تعديل Modal للنسخة العربية */
+header.rtl .fixed ul.modal {
+  direction: rtl;
+}
+
+header.rtl .fixed ul.modal li:first-child {
+  text-align: left;
+}
+
+/* تعديل الأزرار الثابتة للنسخة العربية */
+.theme-toggle-fixed.rtl {
+  left: 1rem !important;
+  right: auto;
+  direction: ltr;
+}
+
+/* تحسينات للموبايل في النسخة العربية */
+@media (max-width: 700px) {
+  header.rtl .menu {
+    margin-right: 0;
+    margin-left: 1rem;
+  }
+  
+  header.rtl .fixed ul.modal li {
+    text-align: right;
+  }
 }
