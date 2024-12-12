@@ -53,9 +53,13 @@ function App() {
                   <div id="up" className="container">
                     <div className="divder" />
                     <ContentUseful />
-                    <Contact />
+                    </div>
                     <SayAboutMe />
-                  </div>
+                    <div className="container">
+                    <Contact />
+                    </div>
+                   
+                  
                 </>
               }
             />
