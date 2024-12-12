@@ -1,16 +1,23 @@
 .testimonials-section {
-  width: 100%;
+  width: 100vw;
   margin: 2rem 0;
   padding: 0;
   overflow: hidden;
   position: relative;
   background: var(--body-color);
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
 }
 
 .testimonials-header {
   text-align: center;
   margin-bottom: 2rem;
   padding: 0 1rem;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .testimonials-header .title {
@@ -29,6 +36,9 @@
   -ms-overflow-style: none;
   animation: scroll 60s linear infinite;
   width: calc(280px * 16 + 1.5rem * 15);
+  max-width: none;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .testimonials-container::-webkit-scrollbar {
