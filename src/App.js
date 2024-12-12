@@ -13,6 +13,7 @@ import SayAboutMe from "./Components/6-say-about-me/SayAboutMe";
 import TestimonialForm from "./Components/6-say-about-me/TestimonialForm";
 import HelpYou from "./Components/3-helpyou/HelpYou";
 import About from "./Components/about/About";
+import Articles from "./Components/Articles/Articles";
 
 function App() {
   const [scrollUpBtn, setScrollUpBtn] = useState(true);
@@ -33,43 +34,37 @@ function App() {
   return (
     <Router>
       <LanguageProvider>
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <>
-                <div id="up" className="container">
-                  <Header />
-                  <Hero />
-                  <div className="divder" />
-                  <HelpYou />
-                  <div className="divder" />
-                  <News />
-                </div>
-                <Services />             
-                <Projects />
-                <div id="up" className="container">
-                  <div className="divder" />
-                  <ContentUseful />
-                  <Contact />
-                  <SayAboutMe />
-                </div>
-                <Footer />
-              </>
-            }
-          />
-          <Route
-            path="/about"
-            element={
-              <>
-                <Header />
-                <About />
-                <Footer />
-              </>
-            }
-          />
-          <Route path="/sayaboutme" element={<TestimonialForm />} />
-        </Routes>
+        <div className="App">
+          <Header />
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <>
+                  <div id="up" className="container">
+                    <Hero />
+                    <div className="divder" />
+                    <HelpYou />
+                    <div className="divder" />
+                    <News />
+                  </div>
+                  <Services />             
+                  <Projects />
+                  <div id="up" className="container">
+                    <div className="divder" />
+                    <ContentUseful />
+                    <Contact />
+                    <SayAboutMe />
+                  </div>
+                </>
+              }
+            />
+            <Route path="/about" element={<About />} />
+            <Route path="/articles" element={<Articles />} />
+            <Route path="/sayaboutme" element={<TestimonialForm />} />
+          </Routes>
+          <Footer />
+        </div>
       </LanguageProvider>
     </Router>
   );

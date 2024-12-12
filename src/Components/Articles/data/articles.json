@@ -1,0 +1,38 @@
+{
+  "articles": [
+    {
+      "id": 1,
+      "date": {
+        "en": "September 5, 2022",
+        "ar": "٥ سبتمبر ٢٠٢٢"
+      },
+      "title": {
+        "en": "Crafting a design system for a multiplanetary future",
+        "ar": "تصميم نظام تصميم لمستقبل متعدد الكواكب"
+      },
+      "description": {
+        "en": "Most companies try to stay ahead of the curve when it comes to visual design, but for Planetaria we needed to create a brand that would still inspire us 100 years from now when humanity has spread across our entire solar system.",
+        "ar": "تحاول معظم الشركات البقاء في المقدمة عندما يتعلق الأمر بالتصميم المرئي، ولكن بالنسبة لـ Planetaria، احتجنا إلى إنشاء علامة تجارية ستلهمنا بعد 100 عام من الآن عندما ينتشر البشر في نظامنا الشمسي بأكمله."
+      },
+      "category": "Design",
+      "readTime": "5 min"
+    },
+    {
+      "id": 2,
+      "date": {
+        "en": "September 2, 2022",
+        "ar": "٢ سبتمبر ٢٠٢٢"
+      },
+      "title": {
+        "en": "Introducing Animaginary: High performance web animations",
+        "ar": "تقديم Animaginary: رسوم متحركة ويب عالية الأداء"
+      },
+      "description": {
+        "en": "When you're building a website for a company as ambitious as Planetaria, you need to make an impression. I wanted people to visit our website and see animations that looked more realistic than reality itself.",
+        "ar": "عندما تقوم ببناء موقع ويب لشركة طموحة مثل Planetaria، تحتاج إلى ترك انطباع. أردت أن يزور الناس موقعنا ويروا رسومًا متحركة تبدو أكثر واقعية من الواقع نفسه."
+      },
+      "category": "Development",
+      "readTime": "7 min"
+    }
+  ]
+}
