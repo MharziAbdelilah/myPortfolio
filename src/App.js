@@ -12,6 +12,7 @@ import { LanguageProvider } from './context/LanguageContext';
 import SayAboutMe from "./Components/6-say-about-me/SayAboutMe";
 import TestimonialForm from "./Components/6-say-about-me/TestimonialForm";
 import HelpYou from "./Components/3-helpyou/HelpYou";
+import About from "./Components/about/About";
 
 function App() {
   const [scrollUpBtn, setScrollUpBtn] = useState(true);
@@ -46,17 +47,24 @@ function App() {
                   <News />
                 </div>
                 <Services />             
-                  <Projects />
-                  <div id="up" className="container">
+                <Projects />
+                <div id="up" className="container">
                   <div className="divder" />
                   <ContentUseful />
-                </div>
-                <SayAboutMe />
-                <div id="up" className="container">
                   <Contact />
-                  </div>
-                  <Footer />
-                
+                  <SayAboutMe />
+                </div>
+                <Footer />
+              </>
+            }
+          />
+          <Route
+            path="/about"
+            element={
+              <>
+                <Header />
+                <About />
+                <Footer />
               </>
             }
           />

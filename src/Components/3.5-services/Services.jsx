@@ -54,10 +54,11 @@ function Services() {
             className="title"
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 300 }}
+            lang={currentLang}
           >
             {translations[currentLang].title}
           </motion.h2>
-          <p className="sub-title">{translations[currentLang].subtitle}</p>
+          <p className="sub-title" lang={currentLang}>{translations[currentLang].subtitle}</p>
         </div>
       </motion.div>
 
@@ -143,11 +144,12 @@ function Services() {
                   <motion.h3 
                     className="service-title"
                     whileHover={{ scale: 1.05, color: '#8751f5' }}
+                    lang={currentLang}
                   >
                     {service.title}
                   </motion.h3>
                   
-                  <p className="service-description">{service.description}</p>
+                  <p className="service-description" lang={currentLang}>{service.description}</p>
                   
                   <ul 
                     className={`service-features ${currentLang === 'ar' ? 'rtl-features' : ''}`}
@@ -165,6 +167,7 @@ function Services() {
                         }}
                         transition={{ delay: 0.2 + (idx * 0.1) }}
                         tabIndex={0}
+                        lang={currentLang}
                       >
                         <span className="icon-verified feature-icon"></span>
                         {feature}

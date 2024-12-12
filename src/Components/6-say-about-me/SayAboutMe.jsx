@@ -242,7 +242,7 @@ const SayAboutMe = () => {
   return (
     <section className="testimonials-section">
       <div className="testimonials-header">
-        <h2 className="title">
+        <h2 className="section-title">
           {currentLang === 'en' ? 'What People Say About Me' : 'ماذا يقول الناس عني'}
         </h2>
       </div>

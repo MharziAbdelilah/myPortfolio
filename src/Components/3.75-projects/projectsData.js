@@ -156,12 +156,6 @@ export const projectsData = {
       category: "web",
       technologies: ["Tailwind CSS", "Next.js", "React"],
       image: "https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1474&q=80"
-    },{
-      id: 1,
-      title: "React Portfolio",
-      description: "A modern and elegant portfolio website showcasing my work and skills. Features smooth animations and a responsive design that works beautifully on all devices.",
-      technicalDescription: "Built with React and Framer Motion for animations. Implements context-based theme switching, dynamic routing, and responsive design using CSS Grid and Flexbox. Features include lazy loading for images, SEO optimization, and a custom light/dark theme system.",
-      // ... other properties
     },
     {
       id: 6,

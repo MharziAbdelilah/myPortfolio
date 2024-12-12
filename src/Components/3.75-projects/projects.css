@@ -52,6 +52,12 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 1rem;
+  text-align: center;
+}
+
+/* Remove any conflicting title styles */
+.projects-container .section-title {
+  margin-bottom: 3rem;
 }
 
 .project-frame {
@@ -82,13 +88,13 @@
 /* Timeline icons container */
 .timeline-icons {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
   position: relative;
   margin: 0 auto;
   max-width: 800px;
-  padding: 0 20px;
-  gap: 10px;
+  width: 100%;
+  padding: 0 40px;
 }
 
 /* Connecting line */
@@ -96,8 +102,8 @@
   content: '';
   position: absolute;
   top: 50%;
-  left: 20px;
-  right: 20px;
+  left: 40px;
+  right: 40px;
   height: 2px;
   background-color: var(--border);
   transform: translateY(-50%);
@@ -390,6 +396,52 @@ body[data-theme='dark'] .tech-tag:hover {
   filter: brightness(0.4);
 }
 
+/* RTL Support for Arabic */
+[lang="ar"] .project-content {
+  direction: rtl;
+}
+
+[lang="ar"] .project-details {
+  text-align: right;
+}
+
+[lang="ar"] .project-image-container {
+  order: 2;
+}
+
+[lang="ar"] .project-details {
+  order: 1;
+}
+
+[lang="ar"] .project-content {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 2rem;
+}
+
+[lang="ar"] .project-technologies {
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 0.5rem;
+}
+
+[lang="ar"] .project-footer {
+  flex-direction: row-reverse;
+}
+
+[lang="ar"] .project-links {
+  flex-direction: row-reverse;
+}
+
+/* Ensure proper spacing for RTL */
+[lang="ar"] .project-header,
+[lang="ar"] .project-info,
+[lang="ar"] .project-location {
+  margin-left: 0;
+  margin-right: 0;
+}
+
 /* Mobile Optimizations */
 @media (max-width: 768px) {
   .project-content {
@@ -466,17 +518,14 @@ body[data-theme='dark'] .tech-tag:hover {
   }
 
   .timeline-icons {
-    padding: 0 10px;
-    gap: 8px;
-    overflow-x: auto;
-    justify-content: flex-start;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
+    padding: 0 20px;
+    gap: 0;
+    justify-content: space-between;
   }
 
-  .timeline-icons::-webkit-scrollbar {
-    display: none;
+  .timeline-icons::before {
+    left: 20px;
+    right: 20px;
   }
 
   .timeline-icon {

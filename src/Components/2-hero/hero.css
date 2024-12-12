@@ -56,7 +56,7 @@ section.hero .icon-verified {
   position: absolute;
   bottom: 10px;
   right: -10px;
-  color: var(--blue);
+  color: #3281cd;
   font-size: 1.4rem;
   background-color: var(--bgicon);
   border-radius: 50%;
@@ -72,7 +72,7 @@ section.hero .text-container {
 }
 
 section.hero .name-text {
-  font-size: 2.8rem;
+  font-size: var(--font-size-h2);
   color: var(--nameText);
   font-weight: 700;
   letter-spacing: 1px;
@@ -83,7 +83,7 @@ section.hero .name-text {
 }
 
 section.hero h1.title {
-  font-size: 3.5rem;
+  font-size: var(--font-size-h1);
   line-height: 1.2;
   margin: 0.5rem 0;
   color: var(--title);
@@ -200,37 +200,156 @@ section.hero .allicons .icon:hover {
 /* Show right section only on mobile */
 @media (max-width: 768px) {
   .right-section {
-    display: flex;
+    display: block;
+    position: relative;
     width: 100%;
-    justify-content: center;
-    align-items: center;
+    height: 300px;
     margin-top: 2rem;
+    overflow: hidden;
   }
 
-  .code-animation-container {
+  .animation {
     width: 100%;
-    max-width: 400px;
-    height: 300px; /* Adjusted for better mobile view */
-    margin: 0 auto;
+    height: 100%;
+    transform: none;
+    position: relative;
+    perspective: 1000px;
   }
 
-  /* Adjust floating elements for mobile */
-  .floating-emoji {
-    font-size: 1.5rem; /* Smaller size on mobile */
+  .orbiting-element {
+    position: absolute;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
   }
 
-  .code-container {
-    padding: 1rem;
-    font-size: 0.9rem; /* Smaller font on mobile */
+  .orbiting-element:hover {
+    transform: scale(1.1) translateZ(20px);
+    z-index: 2;
   }
 
-  .binary-bit {
+  .element-content {
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    padding: 1.2rem;
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .element-content::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.05),
+      rgba(255, 255, 255, 0.02)
+    );
+    border-radius: inherit;
+    z-index: -1;
+  }
+
+  .element-content:hover {
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-5px);
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.2);
+  }
+
+  .element-content:hover::before {
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.1),
+      rgba(255, 255, 255, 0.05)
+    );
+  }
+
+  .element-content svg {
+    font-size: 1.8rem;
+    flex-shrink: 0;
+    color: var(--blue);
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+    transition: all 0.3s ease;
+  }
+
+  .element-content:hover svg {
+    transform: scale(1.1) rotate(5deg);
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+  }
+
+  .element-content span {
     font-size: 1rem;
+    font-weight: 600;
+    color: var(--title);
+    white-space: nowrap;
+    letter-spacing: 0.3px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
   }
 
-  .glow-circle {
-    width: 200px;
-    height: 200px;
+  .element-content:hover span {
+    color: var(--blue);
+    transform: translateX(3px);
+  }
+
+  /* Add responsive adjustments */
+  @media (max-width: 480px) {
+    .element-content {
+      padding: 1rem;
+    }
+
+    .element-content svg {
+      font-size: 1.5rem;
+    }
+
+    .element-content span {
+      font-size: 0.9rem;
+    }
+  }
+
+  .element-content svg {
+    font-size: 1.5rem;
+  }
+
+  .element-content span {
+    font-size: 0.9rem;
+  }
+}
+
+/* Add subtle parallax effect */
+.right-section::before {
+  content: '';
+  position: absolute;
+  inset: -5px;
+  background: none;
+  pointer-events: none;
+}
+
+.right-section {
+  background: transparent;
+}
+
+/* Add responsive adjustments */
+@media (max-width: 480px) {
+  .right-section {
+    height: 250px;
+  }
+
+  .element-content {
+    padding: 0.8rem;
+  }
+
+  .element-content svg {
+    font-size: 1.2rem;
+  }
+
+  .element-content span {
+    font-size: 0.8rem;
   }
 }
 

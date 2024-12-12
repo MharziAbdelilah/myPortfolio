@@ -36,7 +36,7 @@ const News = () => {
               className="subscribe-input"
             />
             <button type="submit" className="subscribe-button">
-              {newsTranslations[currentLang].buttonText} 
+              {newsTranslations[currentLang].buttonText}
               <i className={`icon-arrow-${currentLang === 'ar' ? 'left' : 'right'}`}></i>
             </button>
           </div>

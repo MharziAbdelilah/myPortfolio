@@ -59,7 +59,7 @@ export const servicesData = {
     {
       id: 1,
       icon: <BiCodeAlt />,
-      title: "تطوير المواقع",
+      title: "حلول ويب مخصصة ",
       description: "إنشاء مواقع حديثة ومتجاوبة باستخدام أحدث التقنيات",
       features: [
         "تطوير مواقع مخصصة",

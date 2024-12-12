@@ -53,7 +53,7 @@ const Projects = () => {
   return (
     <section className="projects-section" id="projects">
       <div className="projects-container">
-        <h2 className="section-title">
+        <h2 className="section-title" lang={currentLang}>
           {currentLang === 'en' ? 'Timeline of Work' : 'مسار العمل'}
         </h2>
 
@@ -93,10 +93,10 @@ const Projects = () => {
 
               <div className="project-details">
                 <div className="project-header">
-                  <h3 className="project-title">
+                  <h3 className="project-title" lang={currentLang}>
                     {projectsData[currentLang][activeProject].title}
                   </h3>
-                  <div className="project-date">
+                  <div className="project-date" lang={currentLang}>
                     {projectsData[currentLang][activeProject].date || '2024'}
                   </div>
                 </div>
@@ -116,7 +116,7 @@ const Projects = () => {
                   </button>
                 </div>
 
-                <p className={`project-description ${expandedDescriptions[activeProject] ? 'expanded' : ''}`}>
+                <p className={`project-description ${expandedDescriptions[activeProject] ? 'expanded' : ''}`} lang={currentLang}>
                   {showTechnical 
                     ? (projectsData[currentLang][activeProject].technicalDescription || projectsData[currentLang][activeProject].description)
                     : (projectsData[currentLang][activeProject].description)}
@@ -134,7 +134,7 @@ const Projects = () => {
                 <div className="project-footer">
                   <div className="project-tech">
                     {projectsData[currentLang][activeProject].technologies.slice(0, 3).map((tech, index) => (
-                      <span key={index} className="tech-tag">
+                      <span key={index} className="tech-tag" lang={currentLang}>
                         {tech}
                       </span>
                     ))}

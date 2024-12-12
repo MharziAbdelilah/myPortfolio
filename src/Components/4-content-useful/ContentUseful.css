@@ -1,21 +1,19 @@
 .content-useful {
-  padding: 6rem 0 2rem;
-  
+  padding: 4rem 0;
 }
 
 .content-useful__container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 1rem;
-
+  padding: 0 2rem;
 }
 
 .content-useful__grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
   padding: 2rem 0;
-  
 }
 
 .content-card {
@@ -206,7 +204,7 @@
 
 @media screen and (max-width: 768px) {
   .content-useful {
-    padding: 4rem 0 2rem;
+    padding: 4rem 0;
   }
   
   .content-card {

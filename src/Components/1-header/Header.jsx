@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import ChatBot from "../ChatBot/ChatBot";
 import { useLanguage } from '../../context/LanguageContext';
 import { headerTranslations } from './translations';
+import { Link, useLocation } from 'react-router-dom';
 
 function Header() {
   const [showModal, setShowModel] = useState(false);
@@ -12,6 +13,7 @@ function Header() {
   const { currentLang, setCurrentLang } = useLanguage();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 700);
+  const [showLinks, setShowLinks] = useState(false);
 
   useEffect(() => {
     if (theme === "light") {
@@ -48,6 +50,7 @@ function Header() {
         setTheme(localStorage.getItem("currentMode"));
       }}
       className="mode flex"
+      aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
     >
       {theme === "dark" ? (
         <span className="icon-moon-o"></span>
@@ -61,6 +64,7 @@ function Header() {
     <button
       onClick={() => setCurrentLang(currentLang === 'en' ? 'ar' : 'en')}
       className="lang-toggle-btn"
+      aria-label={`Switch to ${currentLang === 'en' ? 'Arabic' : 'English'} language`}
     >
       {currentLang === 'en' ? 'عربي' : 'English'}
     </button>
@@ -70,6 +74,7 @@ function Header() {
     <button
       onClick={() => setShowModel(true)}
       className="menu-button icon-menu flex"
+      aria-label="Open navigation menu"
     />
   );
 
@@ -82,7 +87,7 @@ function Header() {
           <ul className="flex">
             {headerTranslations[currentLang].menuItems.map((item, index) => (
               <li key={index}>
-                <a href={item.href}>{item.text}</a>
+                <Link to={item.href}>{item.text}</Link>
               </li>
             ))}
           </ul>
@@ -104,7 +109,7 @@ function Header() {
               </li>
               {headerTranslations[currentLang].menuItems.map((item, index) => (
                 <li key={index}>
-                  <a href={item.href}>{item.text}</a>
+                  <Link to={item.href}>{item.text}</Link>
                 </li>
               ))}
             </ul>

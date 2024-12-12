@@ -1,7 +1,7 @@
 export const contactTranslations = {
   en: {
-    title: "Contact Information",
-    subtitle: "Feel free to reach out through any of these channels",
+    title: "Whenever, wherever. We're meant to work together.",
+    subtitle: "I have an inbox zero rule so I’ll see your message for sure and, I’ll reply with at least one smiley. I promise. ",
     contactInfo: {
       email: {
         title: "Email",
@@ -33,8 +33,8 @@ export const contactTranslations = {
     }
   },
   ar: {
-    title: "معلومات التواصل",
-    subtitle: "يمكنك التواصل معي عبر أي من هذه القنوات",
+    title: "كلما وأينما. من المفترض أن نعمل معًا.",
+    subtitle: "لدي قاعدة صفر للبريد الوارد، لذا سأرى رسالتك بالتأكيد وسأرد عليها بابتسامة واحدة على الأقل. أعدك.",
     contactInfo: {
       email: {
         title: "البريد الإلكتروني",

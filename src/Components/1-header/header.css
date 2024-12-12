@@ -21,6 +21,14 @@ header.flex nav {
   padding: 0.77rem 1.6rem;
   border-radius: 55px;
   box-shadow: 1px 1px 40px #3532324a;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+header.flex nav:hover {
+  box-shadow: 1px 1px 40px #35323266;
+  transform: translateY(-1px);
 }
 
 header ul.flex {
@@ -65,8 +73,18 @@ header button.mode {
   text-align: center;
   color: var(--subtitle);
   border: 1px solid rgba(244, 165, 96, 0.249);
-  transition: 0.2s;
+  transition: all 0.3s ease;
   box-shadow: 1px 1px 40px rgb(35, 35, 36, 0.165);
+}
+
+header button.mode:hover {
+  color: var(--title);
+  border-color: rgba(244, 165, 96);
+  transform: rotate(15deg) translateY(-1px);
+}
+
+header button.mode:active {
+  transform: translateY(1px);
 }
 
 header .icon-menu:hover,
@@ -193,21 +211,24 @@ header .fixed ul.modal li:last-child {
 }
 
 .lang-toggle-btn {
-  background: linear-gradient(135deg, #8751f5, #4f87ea);
-  color: white;
-  border: none;
+  background-color: var(--bgHeader);
   padding: 0.5rem 1rem;
-  border-radius: 55px;
-  cursor: pointer;
-  font-size: 0.88rem;
-  font-weight: 500;
-  box-shadow: 0 4px 15px rgba(135, 81, 245, 0.2);
+  border-radius: 20px;
+  color: var(--subtitle);
+  font-size: 0.9rem;
   transition: all 0.3s ease;
+  border: 1px solid rgba(244, 165, 96, 0.249);
+  box-shadow: 1px 1px 40px rgb(35, 35, 36, 0.165);
 }
 
 .lang-toggle-btn:hover {
-  box-shadow: 0 6px 20px rgba(135, 81, 245, 0.3);
-  transform: translateY(-2px);
+  color: var(--title);
+  border-color: rgba(244, 165, 96);
+  transform: translateY(-1px);
+}
+
+.lang-toggle-btn:active {
+  transform: translateY(1px);
 }
 
 /* تعديل التنسيقات الموجودة */

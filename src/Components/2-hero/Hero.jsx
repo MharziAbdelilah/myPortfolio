@@ -85,6 +85,7 @@ function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
               className='name-text'
+              lang={currentLang}
             >
               {heroTranslations[currentLang].name}
             </motion.span>
@@ -94,6 +95,7 @@ function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
               className='title'
+              lang={currentLang}
             >
               {heroTranslations[currentLang].title}
             </motion.h1>
@@ -103,6 +105,7 @@ function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.4 }}
               className='sub-title'
+              lang={currentLang}
             >
               {heroTranslations[currentLang].subtitle}
             </motion.p>
@@ -140,7 +143,7 @@ function Hero() {
                 }}
               >
                 <span className="center-icon"><FaBullseye /></span>
-                <span className="center-text">{heroTranslations[currentLang].centerText}</span>
+                <span className="center-text" lang={currentLang}>{heroTranslations[currentLang].centerText}</span>
               </motion.div>
 
               <div className="orbit-container">
@@ -148,6 +151,7 @@ function Hero() {
                   <motion.div
                     key={index}
                     className="orbit-item"
+                    lang={currentLang}
                     style={{
                       '--orbit-color': element.color,
                       '--orbit-delay': `${index * -2}s`
@@ -158,7 +162,7 @@ function Hero() {
                   >
                     <div className="orbit-content">
                       <span className="orbit-icon">{element.icon}</span>
-                      <span className="orbit-text">{element.text}</span>
+                      <span className="orbit-text" lang={currentLang}>{element.text}</span>
                     </div>
                   </motion.div>
                 ))}

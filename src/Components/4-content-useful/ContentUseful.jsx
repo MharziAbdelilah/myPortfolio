@@ -30,7 +30,7 @@ const ContentUseful = () => {
   };
 
   return (
-    <section className={`content-useful ${currentLang === 'ar' ? 'rtl' : ''}`} id="content-useful">
+    <section  className={`content-useful ${currentLang === 'ar' ? 'rtl' : ''}`} id="content-useful">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}

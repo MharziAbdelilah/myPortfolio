@@ -1,77 +1,60 @@
-import { BiCodeAlt } from 'react-icons/bi';
-import { BsDatabaseFill } from 'react-icons/bs';
-import { AiOutlineCloudServer } from 'react-icons/ai';
-import { MdOutlineDesignServices } from 'react-icons/md';
+import { FaRocket } from 'react-icons/fa';
+import { SiMicrosoftazure } from 'react-icons/si';
+import { AiOutlineRobot } from 'react-icons/ai';
 
 export const contentData = {
   en: [
     {
       id: 1,
-      title: 'Frontend Development',
-      description: 'Master modern frontend development with React, Next.js, and cutting-edge UI/UX practices. Learn responsive design, state management, and performance optimization.',
-      Icon: BiCodeAlt,
+      title: 'Startup Development',
+      description: 'Expert guidance in startup development, from ideation to market launch. Learn lean methodology, MVP development, and scaling strategies.',
+      Icon: FaRocket,
       link: '#',
-      category: 'Development',
-      color: '#4A90E2'
-    },
-    {
-      id: 2,
-      title: 'Backend Architecture',
-      description: 'Deep dive into backend development with Node.js, Express, and database design. Learn API development, authentication, and scalable architectures.',
-      Icon: BsDatabaseFill,
-      category: 'Architecture',
-      color: '#50C878'
-    },
-    {
-      id: 3,
-      title: 'DevOps Practices',
-      description: 'Learn modern DevOps practices including CI/CD, Docker, Kubernetes, and cloud deployment. Master automation and infrastructure as code.',
-      Icon: AiOutlineCloudServer,
-      category: 'Infrastructure',
+      category: 'Startup',
       color: '#FF6B6B'
     },
     {
-      id: 4,
-      title: 'UI/UX Design',
-      description: 'Create stunning user interfaces with modern design principles. Master Figma, design systems, and user experience best practices.',
-      Icon: MdOutlineDesignServices,
-      category: 'Design',
-      color: '#9B59B6'
+      id: 2,
+      title: 'SaaS Solutions',
+      description: 'Specialized in building scalable SaaS products. Focus on subscription models, user engagement, and cloud-based solutions.',
+      Icon: SiMicrosoftazure,
+      category: 'Digital Products',
+      color: '#4A90E2'
+    },
+    {
+      id: 3,
+      title: 'AI & Automation',
+      description: 'Implement cutting-edge AI solutions and automation workflows. Leverage machine learning, chatbots, and process automation.',
+      Icon: AiOutlineRobot,
+      category: 'Technology',
+      color: '#50C878'
     }
   ],
   ar: [
     {
       id: 1,
-      title: 'تطوير الواجهة الأمامية',
-      description: 'اتقن تطوير الواجهة الأمامية الحديثة مع React و Next.js وأفضل ممارسات UI/UX. تعلم التصميم المتجاوب، وإدارة الحالة، وتحسين الأداء.',
-      Icon: BiCodeAlt,
+      title: 'تطوير الشركات الناشئة',
+      description: 'توجيه خبير في تطوير الشركات الناشئة، من الفكرة إلى إطلاق السوق. تعلم المنهجية المرنة وتطوير MVP واستراتيجيات التوسع.',
+      Icon: FaRocket,
       link: '#',
-      category: 'تطوير',
-      color: '#4A90E2'
-    },
-    {
-      id: 2,
-      title: 'هندسة الخلفية',
-      description: 'تعمق في تطوير الخلفية مع Node.js و Express وتصميم قواعد البيانات. تعلم تطوير API والمصادقة والهندسة القابلة للتطوير.',
-      Icon: BsDatabaseFill,
-      category: 'هندسة',
-      color: '#50C878'
-    },
-    {
-      id: 3,
-      title: 'ممارسات DevOps',
-      description: 'تعلم ممارسات DevOps الحديثة بما في ذلك CI/CD و Docker و Kubernetes والنشر السحابي. أتقن الأتمتة والبنية التحتية كرمز.',
-      Icon: AiOutlineCloudServer,
-      category: 'بنية تحتية',
+      category: 'شركات ناشئة',
       color: '#FF6B6B'
     },
     {
-      id: 4,
-      title: 'تصميم UI/UX',
-      description: 'قم بإنشاء واجهات مستخدم مذهلة باستخدام مبادئ التصميم الحديثة. أتقن Figma وأنظمة التصميم وأفضل ممارسات تجربة المستخدم.',
-      Icon: MdOutlineDesignServices,
-      category: 'تصميم',
-      color: '#9B59B6'
+      id: 2,
+      title: 'حلول SaaS',
+      description: 'متخصصون في بناء منتجات SaaS قابلة للتطوير. التركيز على نماذج الاشتراك، ومشاركة المستخدم، والحلول السحابية.',
+      Icon: SiMicrosoftazure,
+      category: 'منتجات رقمية',
+      color: '#4A90E2'
+    },
+    {
+      id: 3,
+      title: 'الذكاء الاصطناعي والأتمتة',
+      description: 'تنفيذ حلول الذكاء الاصطناعي المتطورة وسير عمل الأتمتة. الاستفادة من التعلم الآلي والروبوتات الدردشة وأتمتة العمليات.',
+      Icon: AiOutlineRobot,
+      category: 'تكنولوجيا',
+      color: '#50C878'
     }
   ]
-}; 
+};
