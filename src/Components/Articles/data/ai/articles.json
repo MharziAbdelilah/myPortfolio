@@ -1,0 +1,29 @@
+{
+  "articles": [
+    {
+      "id": "ai-future",
+      "title": {
+        "en": "AI & Automation: The Future of Work",
+        "ar": "الذكاء الاصطناعي والأتمتة: مستقبل العمل"
+      },
+      "category": "ai",
+      "date": {
+        "en": "Dec 13, 2024",
+        "ar": "13 ديسمبر 2024"
+      },
+      "description": {
+        "en": "Exploring how AI and automation are transforming industries",
+        "ar": "استكشاف كيف يغير الذكاء الاصطناعي والأتمتة الصناعات"
+      },
+      "content": [
+        {
+          "type": "text",
+          "content": {
+            "en": "Artificial Intelligence and automation are revolutionizing how we work...",
+            "ar": "يغير الذكاء الاصطناعي والأتمتة طريقة عملنا بشكل جذري..."
+          }
+        }
+      ]
+    }
+  ]
+}

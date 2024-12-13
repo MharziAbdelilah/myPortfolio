@@ -193,6 +193,10 @@
   background: var(--card-bg);
 }
 
+.project-details .project-description{
+  text-align: start;
+}
+
 .project-header {
   display: flex;
   justify-content: space-between;

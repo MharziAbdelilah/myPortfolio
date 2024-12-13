@@ -1,0 +1,29 @@
+{
+  "articles": [
+    {
+      "id": "saas-guide",
+      "title": {
+        "en": "Building a Successful SaaS Product",
+        "ar": "بناء منتج SaaS ناجح"
+      },
+      "category": "saas",
+      "date": {
+        "en": "Dec 13, 2024",
+        "ar": "13 ديسمبر 2024"
+      },
+      "description": {
+        "en": "Essential steps and strategies for creating a successful SaaS product",
+        "ar": "الخطوات والاستراتيجيات الأساسية لإنشاء منتج SaaS ناجح"
+      },
+      "content": [
+        {
+          "type": "text",
+          "content": {
+            "en": "Software as a Service (SaaS) has become the dominant model...",
+            "ar": "أصبحت البرمجيات كخدمة (SaaS) النموذج السائد..."
+          }
+        }
+      ]
+    }
+  ]
+}

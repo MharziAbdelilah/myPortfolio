@@ -1,38 +1,248 @@
 {
   "articles": [
     {
-      "id": 1,
-      "date": {
-        "en": "September 5, 2022",
-        "ar": "٥ سبتمبر ٢٠٢٢"
-      },
+      "id": "1",
       "title": {
-        "en": "Crafting a design system for a multiplanetary future",
-        "ar": "تصميم نظام تصميم لمستقبل متعدد الكواكب"
+        "en": "Getting Started with React",
+        "ar": "البدء مع React"
       },
+      "category": "react",
       "description": {
-        "en": "Most companies try to stay ahead of the curve when it comes to visual design, but for Planetaria we needed to create a brand that would still inspire us 100 years from now when humanity has spread across our entire solar system.",
-        "ar": "تحاول معظم الشركات البقاء في المقدمة عندما يتعلق الأمر بالتصميم المرئي، ولكن بالنسبة لـ Planetaria، احتجنا إلى إنشاء علامة تجارية ستلهمنا بعد 100 عام من الآن عندما ينتشر البشر في نظامنا الشمسي بأكمله."
+        "en": "A comprehensive guide to start your journey with React",
+        "ar": "دليل شامل لبدء رحلتك مع React"
       },
-      "category": "Design",
-      "readTime": "5 min"
+      "date": "2024-01-15",
+      "readTime": 10,
+      "tags": ["React", "JavaScript", "Web Development"],
+      "image": "/articles/react-intro.jpg",
+      "content": {
+        "en": [
+          {
+            "type": "text",
+            "content": {
+              "en": "React is a popular JavaScript library for building user interfaces. Let's explore how to get started with React development.",
+              "ar": "React هي مكتبة JavaScript شهيرة لبناء واجهات المستخدم. دعنا نستكشف كيفية البدء في تطوير React."
+            }
+          },
+          {
+            "type": "subheading",
+            "content": {
+              "en": "Setting Up Your Development Environment",
+              "ar": "إعداد بيئة التطوير الخاصة بك"
+            }
+          },
+          {
+            "type": "text",
+            "content": {
+              "en": "First, make sure you have Node.js installed on your computer. Then, you can create a new React project using Create React App.",
+              "ar": "أولاً، تأكد من تثبيت Node.js على جهاز الكمبيوتر الخاص بك. ثم يمكنك إنشاء مشروع React جديد باستخدام Create React App."
+            }
+          },
+          {
+            "type": "code",
+            "language": "bash",
+            "content": "npx create-react-app my-app\ncd my-app\nnpm start"
+          },
+          {
+            "type": "text",
+            "content": {
+              "en": "This will create a new React project and start the development server.",
+              "ar": "سيؤدي هذا إلى إنشاء مشروع React جديد وبدء خادم التطوير."
+            }
+          },
+          {
+            "type": "subheading",
+            "content": {
+              "en": "Creating Your First Component",
+              "ar": "إنشاء المكون الأول الخاص بك"
+            }
+          },
+          {
+            "type": "code",
+            "language": "jsx",
+            "content": "import React from 'react';\n\nfunction Welcome() {\n  return (\n    <div>\n      <h1>Welcome to React!</h1>\n      <p>Let's build something amazing.</p>\n    </div>\n  );\n}\n\nexport default Welcome;"
+          },
+          {
+            "type": "list",
+            "style": "numbered",
+            "items": {
+              "en": [
+                "Create a new file called Welcome.js",
+                "Import React",
+                "Create your component",
+                "Export the component"
+              ],
+              "ar": [
+                "قم بإنشاء ملف جديد باسم Welcome.js",
+                "استيراد React",
+                "إنشاء المكون الخاص بك",
+                "تصدير المكون"
+              ]
+            }
+          },
+          {
+            "type": "link",
+            "url": "https://react.dev",
+            "text": {
+              "en": "Learn more about React in the official documentation",
+              "ar": "تعلم المزيد عن React في الوثائق الرسمية"
+            }
+          }
+        ],
+        "ar": [
+          {
+            "type": "text",
+            "content": {
+              "en": "React is a popular JavaScript library for building user interfaces. Let's explore how to get started with React development.",
+              "ar": "React هي مكتبة JavaScript شهيرة لبناء واجهات المستخدم. دعنا نستكشف كيفية البدء في تطوير React."
+            }
+          }
+        ]
+      }
     },
     {
-      "id": 2,
-      "date": {
-        "en": "September 2, 2022",
-        "ar": "٢ سبتمبر ٢٠٢٢"
-      },
+      "id": "2",
       "title": {
-        "en": "Introducing Animaginary: High performance web animations",
-        "ar": "تقديم Animaginary: رسوم متحركة ويب عالية الأداء"
+        "en": "Optimizing React Applications for Better Performance",
+        "ar": "تحسين أداء تطبيقات React"
       },
+      "category": "performance",
       "description": {
-        "en": "When you're building a website for a company as ambitious as Planetaria, you need to make an impression. I wanted people to visit our website and see animations that looked more realistic than reality itself.",
-        "ar": "عندما تقوم ببناء موقع ويب لشركة طموحة مثل Planetaria، تحتاج إلى ترك انطباع. أردت أن يزور الناس موقعنا ويروا رسومًا متحركة تبدو أكثر واقعية من الواقع نفسه."
+        "en": "A comprehensive guide to improving React application performance through code splitting, lazy loading, and proper state management",
+        "ar": "دليل شامل لتحسين أداء تطبيقات React من خلال تقسيم الكود والتحميل الكسول وإدارة الحالة بشكل صحيح"
       },
-      "category": "Development",
-      "readTime": "7 min"
+      "date": "2024-01-10",
+      "readTime": 15,
+      "tags": ["React", "Performance", "JavaScript", "Optimization"],
+      "image": "/articles/react-performance.jpg",
+      "content": {
+        "en": [
+          {
+            "type": "text",
+            "content": {
+              "en": "Performance optimization is crucial for creating smooth and responsive React applications. In this comprehensive guide, we'll explore various techniques to enhance your React app's performance.",
+              "ar": "تحسين الأداء أمر بالغ الأهمية لإنشاء تطبيقات React سلسة وسريعة الاستجابة. في هذا الدليل الشامل، سنستكشف تقنيات مختلفة لتحسين أداء تطبيق React الخاص بك."
+            }
+          },
+          {
+            "type": "subheading",
+            "content": {
+              "en": "1. Code Splitting with React.lazy()",
+              "ar": "١. تقسيم الكود باستخدام React.lazy()"
+            }
+          },
+          {
+            "type": "text",
+            "content": {
+              "en": "Code splitting is one of the most effective ways to improve initial load time. React.lazy() allows you to render a dynamic import as a regular component.",
+              "ar": "تقسيم الكود هو أحد أكثر الطرق فعالية لتحسين وقت التحميل الأولي. يتيح لك React.lazy() عرض الاستيراد الديناميكي كمكون عادي."
+            }
+          },
+          {
+            "type": "code",
+            "language": "jsx",
+            "content": "// Instead of regular import\nimport HeavyComponent from './HeavyComponent';\n\n// Use lazy loading\nconst HeavyComponent = React.lazy(() => import('./HeavyComponent'));\n\nfunction App() {\n  return (\n    <Suspense fallback={<Loading />}>\n      <HeavyComponent />\n    </Suspense>\n  );\n}"
+          },
+          {
+            "type": "image",
+            "url": "https://picsum.photos/800/400",
+            "caption": {
+              "en": "Code splitting visualization in React",
+              "ar": "تصور لتقسيم الكود في React"
+            }
+          },
+          {
+            "type": "subheading",
+            "content": {
+              "en": "2. Proper Use of useMemo and useCallback",
+              "ar": "٢. الاستخدام الصحيح لـ useMemo و useCallback"
+            }
+          },
+          {
+            "type": "text",
+            "content": {
+              "en": "Memoization can significantly improve performance by preventing unnecessary re-renders. However, it's important to use these hooks judiciously.",
+              "ar": "يمكن أن تحسن التخزين المؤقت الأداء بشكل كبير من خلال منع إعادة العرض غير الضرورية. ومع ذلك، من المهم استخدام هذه الخطافات بحكمة."
+            }
+          },
+          {
+            "type": "code",
+            "language": "jsx",
+            "content": "function TodoList({ todos, filter }) {\n  const filteredTodos = useMemo(() => {\n    return todos.filter(todo => {\n      return todo.type === filter;\n    });\n  }, [todos, filter]);\n\n  const handleDelete = useCallback((id) => {\n    setTodos(todos => todos.filter(t => t.id !== id));\n  }, []);\n\n  return (\n    <ul>\n      {filteredTodos.map(todo => (\n        <TodoItem\n          key={todo.id}\n          todo={todo}\n          onDelete={handleDelete}\n        />\n      ))}\n    </ul>\n  );\n}"
+          },
+          {
+            "type": "subheading",
+            "content": {
+              "en": "3. State Management Optimization",
+              "ar": "٣. تحسين إدارة الحالة"
+            }
+          },
+          {
+            "type": "text",
+            "content": {
+              "en": "Efficient state management is crucial for React performance. Consider using state management libraries like Redux Toolkit or Zustand for complex applications.",
+              "ar": "تعد الإدارة الفعالة للحالة أمرًا بالغ الأهمية لأداء React. فكر في استخدام مكتبات إدارة الحالة مثل Redux Toolkit أو Zustand للتطبيقات المعقدة."
+            }
+          },
+          {
+            "type": "list",
+            "style": "bulleted",
+            "items": {
+              "en": [
+                "Use local state for UI-specific data",
+                "Implement Redux for global application state",
+                "Consider using Context API for medium-sized apps",
+                "Avoid prop drilling through component composition"
+              ],
+              "ar": [
+                "استخدم الحالة المحلية للبيانات الخاصة بواجهة المستخدم",
+                "قم بتنفيذ Redux لحالة التطبيق العامة",
+                "فكر في استخدام Context API للتطبيقات متوسطة الحجم",
+                "تجنب prop drilling من خلال تكوين المكونات"
+              ]
+            }
+          },
+          {
+            "type": "image",
+            "url": "https://picsum.photos/800/400",
+            "caption": {
+              "en": "React state management visualization",
+              "ar": "تصور لإدارة الحالة في React"
+            }
+          },
+          {
+            "type": "subheading",
+            "content": {
+              "en": "4. Virtual DOM and React Fiber",
+              "ar": "٤. DOM الافتراضي و React Fiber"
+            }
+          },
+          {
+            "type": "text",
+            "content": {
+              "en": "Understanding how React's Virtual DOM and Fiber architecture work can help you write more performant code. The key is to minimize unnecessary updates and optimize rendering cycles.",
+              "ar": "فهم كيفية عمل DOM الافتراضي وبنية Fiber في React يمكن أن يساعدك في كتابة كود أكثر كفاءة. المفتاح هو تقليل التحديثات غير الضرورية وتحسين دورات العرض."
+            }
+          },
+          {
+            "type": "link",
+            "url": "https://react.dev/learn/render-and-commit",
+            "text": {
+              "en": "Learn more about React rendering process",
+              "ar": "تعرف على المزيد حول عملية العرض في React"
+            }
+          }
+        ],
+        "ar": [
+          {
+            "type": "text",
+            "content": {
+              "en": "Performance optimization is crucial for creating smooth and responsive React applications. In this comprehensive guide, we'll explore various techniques to enhance your React app's performance.",
+              "ar": "تحسين الأداء أمر بالغ الأهمية لإنشاء تطبيقات React سلسة وسريعة الاستجابة. في هذا الدليل الشامل، سنستكشف تقنيات مختلفة لتحسين أداء تطبيق React الخاص بك."
+            }
+          }
+        ]
+      }
     }
   ]
 }

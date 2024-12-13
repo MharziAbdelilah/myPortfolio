@@ -1,0 +1,198 @@
+{
+  "articles": [
+    {
+      "id": "startup-guide",
+      "title": {
+        "en": "From Idea to Startup: A Complete Guide",
+        "ar": "من الفكرة إلى الشركة الناشئة: دليل شامل"
+      },
+      "category": "startup",
+      "date": {
+        "en": "Dec 13, 2024",
+        "ar": "13 ديسمبر 2024"
+      },
+      "description": {
+        "en": "Learn how to transform your innovative idea into a successful startup with our comprehensive guide covering everything from ideation to funding.",
+        "ar": "تعلم كيفية تحويل فكرتك المبتكرة إلى شركة ناشئة ناجحة مع دليلنا الشامل الذي يغطي كل شيء من الفكرة إلى التمويل"
+      },
+      "content": [
+        {
+          "type": "text",
+          "content": {
+            "en": "Starting a new business venture can be both exciting and challenging. This comprehensive guide will walk you through the essential steps to transform your innovative idea into a successful startup.",
+            "ar": "يمكن أن يكون بدء مشروع تجاري جديد مثيراً وصعباً في نفس الوقت. سيرشدك هذا الدليل الشامل عبر الخطوات الأساسية لتحويل فكرتك المبتكرة إلى شركة ناشئة ناجحة."
+          }
+        },
+        {
+          "type": "image",
+          "url": "https://images.unsplash.com/photo-1559136555-9303baea8ebd?auto=format&fit=crop&w=800&h=400",
+          "caption": {
+            "en": "Startup team brainstorming session",
+            "ar": "جلسة عصف ذهني لفريق الشركة الناشئة"
+          }
+        },
+        {
+          "type": "subtitle",
+          "content": {
+            "en": "1. Validate Your Idea",
+            "ar": "1. التحقق من صحة فكرتك"
+          }
+        },
+        {
+          "type": "text",
+          "content": {
+            "en": "Before diving deep into development, it's crucial to validate your business idea. Here's how:",
+            "ar": "قبل الغوص في التطوير، من الضروري التحقق من صحة فكرة عملك. إليك كيفية القيام بذلك:"
+          }
+        },
+        {
+          "type": "list",
+          "items": [
+            {
+              "en": "Conduct market research to identify your target audience",
+              "ar": "إجراء بحث سوقي لتحديد جمهورك المستهدف"
+            },
+            {
+              "en": "Analyze your competitors and identify your unique value proposition",
+              "ar": "تحليل منافسيك وتحديد قيمتك الفريدة"
+            },
+            {
+              "en": "Create a minimum viable product (MVP) to test your concept",
+              "ar": "إنشاء منتج أولي مصغر لاختبار مفهومك"
+            },
+            {
+              "en": "Gather feedback from potential customers",
+              "ar": "جمع التعليقات من العملاء المحتملين"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "url": "https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=800&h=400",
+          "caption": {
+            "en": "Market research and analysis",
+            "ar": "البحث وتحليل السوق"
+          }
+        }
+      ]
+    },
+    {
+      "id": "startup-funding",
+      "title": {
+        "en": "The Ultimate Guide to Startup Funding",
+        "ar": "الدليل الشامل لتمويل الشركات الناشئة"
+      },
+      "description": {
+        "en": "Securing funding is one of the most crucial aspects of building a successful startup. This guide explores different funding options and strategies to help you make informed decisions about financing your venture.",
+        "ar": "يعد تأمين التمويل أحد أهم جوانب بناء شركة ناشئة ناجحة. يستكشف هذا الدليل خيارات واستراتيجيات التمويل المختلفة لمساعدتك في اتخاذ قرارات مستنيرة بشأن تمويل مشروعك."
+      },
+      "date": {
+        "en": "Dec 12, 2024",
+        "ar": "١٢ ديسمبر ٢٠٢٤"
+      },
+      "category": "startup",
+      "content": [
+        {
+          "type": "text",
+          "content": {
+            "en": "Starting a new business venture is an exciting journey, but one of the most challenging aspects is securing adequate funding. Understanding the various funding options available and choosing the right one for your startup is crucial for its success.",
+            "ar": "بدء مشروع تجاري جديد هو رحلة مثيرة، ولكن أحد أكثر الجوانب تحديًا هو تأمين التمويل الكافي. فهم خيارات التمويل المختلفة المتاحة واختيار الخيار المناسب لشركتك الناشئة أمر بالغ الأهمية لنجاحها."
+          }
+        },
+        {
+          "type": "image",
+          "url": "https://images.unsplash.com/photo-1559526324-4b87b5e36e44?q=80&w=1000&auto=format&fit=crop",
+          "caption": {
+            "en": "Investment and funding strategies",
+            "ar": "استراتيجيات الاستثمار والتمويل"
+          }
+        },
+        {
+          "type": "subtitle",
+          "content": {
+            "en": "Types of Startup Funding",
+            "ar": "أنواع تمويل الشركات الناشئة"
+          }
+        },
+        {
+          "type": "list",
+          "items": [
+            {
+              "en": "Bootstrapping: Using personal savings and revenue to fund growth",
+              "ar": "التمويل الذاتي: استخدام المدخرات الشخصية والإيرادات لتمويل النمو"
+            },
+            {
+              "en": "Angel Investors: High-net-worth individuals who invest their personal funds",
+              "ar": "المستثمرون الملائكة: أفراد ذوو ثروة عالية يستثمرون أموالهم الخاصة"
+            },
+            {
+              "en": "Venture Capital: Professional firms that invest in high-growth startups",
+              "ar": "رأس المال الاستثماري: شركات محترفة تستثمر في الشركات الناشئة عالية النمو"
+            },
+            {
+              "en": "Crowdfunding: Raising small amounts from many people",
+              "ar": "التمويل الجماعي: جمع مبالغ صغيرة من العديد من الأشخاص"
+            }
+          ]
+        },
+        {
+          "type": "subtitle",
+          "content": {
+            "en": "Choosing the Right Funding Option",
+            "ar": "اختيار خيار التمويل المناسب"
+          }
+        },
+        {
+          "type": "text",
+          "content": {
+            "en": "When choosing a funding option, consider factors such as how much control you want to maintain over your company, how quickly you need the funds, and what stage your startup is in. Each funding type comes with its own advantages and trade-offs that need to be carefully evaluated.",
+            "ar": "عند اختيار خيار التمويل، ضع في اعتبارك عوامل مثل مقدار السيطرة التي تريد الحفاظ عليها على شركتك، ومدى سرعة حاجتك للأموال، وفي أي مرحلة تكون شركتك الناشئة. يأتي كل نوع من التمويل مع مزاياه وتنازلاته الخاصة التي تحتاج إلى تقييم بعناية."
+          }
+        },
+        {
+          "type": "subtitle",
+          "content": {
+            "en": "Preparing for Fundraising",
+            "ar": "الاستعداد لجمع التمويل"
+          }
+        },
+        {
+          "type": "list",
+          "items": [
+            {
+              "en": "Develop a solid business plan with clear financial projections",
+              "ar": "تطوير خطة عمل قوية مع توقعات مالية واضحة"
+            },
+            {
+              "en": "Create a compelling pitch deck that tells your story",
+              "ar": "إنشاء عرض تقديمي مقنع يروي قصتك"
+            },
+            {
+              "en": "Build a strong founding team with complementary skills",
+              "ar": "بناء فريق مؤسس قوي بمهارات متكاملة"
+            },
+            {
+              "en": "Have a clear understanding of your market and competition",
+              "ar": "فهم واضح للسوق والمنافسة"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "content": {
+            "en": "Remember that fundraising is not just about getting money; it's about finding the right partners who believe in your vision and can help your startup grow. Take time to research potential investors and ensure their goals align with yours.",
+            "ar": "تذكر أن جمع التمويل لا يتعلق فقط بالحصول على المال؛ بل يتعلق بإيجاد الشركاء المناسبين الذين يؤمنون برؤيتك ويمكنهم مساعدة شركتك الناشئة على النمو. خذ وقتك في البحث عن المستثمرين المحتملين وتأكد من أن أهدافهم تتوافق مع أهدافك."
+          }
+        },
+        {
+          "type": "image",
+          "url": "https://images.unsplash.com/photo-1553729459-efe14ef6055d?q=80&w=1000&auto=format&fit=crop",
+          "caption": {
+            "en": "Strategic planning and financial growth",
+            "ar": "التخطيط الاستراتيجي والنمو المالي"
+          }
+        }
+      ]
+    }
+  ]
+}

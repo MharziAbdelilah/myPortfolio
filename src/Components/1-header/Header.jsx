@@ -109,7 +109,9 @@ function Header() {
               </li>
               {headerTranslations[currentLang].menuItems.map((item, index) => (
                 <li key={index}>
-                  <Link to={item.href}>{item.text}</Link>
+                  <Link to={item.href} onClick={() => setShowModel(false)}>
+                    {item.text}
+                  </Link>
                 </li>
               ))}
             </ul>

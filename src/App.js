@@ -7,13 +7,14 @@ import Contact from "./Components/4-contact/Contact";
 import Footer from "./Components/5-footer/Footer";
 import Services from "./Components/3.5-services/Services";
 import Projects from "./Components/3.75-projects/Projects";
-import ContentUseful from './Components/4-content-useful/ContentUseful';
+import ContentUseful from "./Components/4-content-useful/ContentUseful";
 import { LanguageProvider } from './context/LanguageContext';
 import SayAboutMe from "./Components/6-say-about-me/SayAboutMe";
 import TestimonialForm from "./Components/6-say-about-me/TestimonialForm";
 import HelpYou from "./Components/3-helpyou/HelpYou";
 import About from "./Components/about/About";
 import Articles from "./Components/Articles/Articles";
+import ArticlePage from "./Components/Articles/pages/ArticlePage";
 
 function App() {
   const [scrollUpBtn, setScrollUpBtn] = useState(true);
@@ -59,12 +60,13 @@ function App() {
                     <Contact />
                     </div>
                    
+
                   
-                </>
-              }
+                </>}
             />
             <Route path="/about" element={<About />} />
             <Route path="/articles" element={<Articles />} />
+            <Route path="/articles/:id" element={<ArticlePage />} />
             <Route path="/sayaboutme" element={<TestimonialForm />} />
           </Routes>
           <Footer />

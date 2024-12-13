@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 import './ContentUseful.css';
 import { contentData } from './contentData';
 import { contentTranslations } from './translations';
@@ -7,6 +8,7 @@ import { useLanguage } from '../../context/LanguageContext';
 
 const ContentUseful = () => {
   const { currentLang } = useLanguage();
+  const navigate = useNavigate();
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -29,8 +31,26 @@ const ContentUseful = () => {
     }
   };
 
+  const getCategoryLink = (id) => {
+    switch(id) {
+      case 1:
+        return '/articles?category=startup';
+      case 2:
+        return '/articles?category=saas';
+      case 3:
+        return '/articles?category=ai';
+      default:
+        return '/articles';
+    }
+  };
+
+  const handleNavigation = (id) => {
+    navigate(getCategoryLink(id));
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
-    <section  className={`content-useful ${currentLang === 'ar' ? 'rtl' : ''}`} id="content-useful">
+    <section className={`content-useful ${currentLang === 'ar' ? 'rtl' : ''}`} id="content-useful">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -77,7 +97,7 @@ const ContentUseful = () => {
             >
               <div className="content-card__header">
                 <div className="content-card__icon-wrapper">
-                  <content.Icon className="content-card__icon" />
+                  {React.createElement(content.icon, { className: "content-card__icon" })}
                 </div>
                 <span className="content-card__category">{content.category}</span>
               </div>
@@ -89,9 +109,7 @@ const ContentUseful = () => {
                 className="content-card__button"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                onClick={() => {
-                  console.log(`Learn more about ${content.title}`);
-                }}
+                onClick={() => handleNavigation(content.id)}
               >
                 {contentTranslations[currentLang].buttonText}
                 <i className={`bx bx-${currentLang === 'ar' ? 'left' : 'right'}-arrow-alt content-card__button-icon`}></i>
@@ -104,4 +122,4 @@ const ContentUseful = () => {
   );
 };
 
-export default ContentUseful; 
+export default ContentUseful;
