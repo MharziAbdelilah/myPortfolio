@@ -5,7 +5,7 @@ import Hero from "./Components/2-hero/Hero";
 import News from "./Components/2.0 news/new";
 import Contact from "./Components/4-contact/Contact";
 import Footer from "./Components/5-footer/Footer";
-import Services from "./Components/3.5-services/Services";
+// import Services from "./Components/3.5-services/Services";
 import Projects from "./Components/3.75-projects/Projects";
 import ContentUseful from "./Components/4-content-useful/ContentUseful";
 import { LanguageProvider } from './context/LanguageContext';
@@ -49,7 +49,7 @@ function App() {
                     <div className="divder" />
                     <News />
                   </div>
-                  <Services />             
+                  {/* <Services />              */}
                   <Projects />
                   <div id="up" className="container">
                     <div className="divder" />

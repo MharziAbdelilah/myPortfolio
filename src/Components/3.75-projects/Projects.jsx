@@ -3,16 +3,33 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useLanguage } from '../../context/LanguageContext';
 import './projects.css';
 import { projectsData } from './projectsData';
-import { FiExternalLink, FiGithub } from 'react-icons/fi';
+import { 
+  FiExternalLink, 
+  FiGithub, 
+  FiFolder, 
+  FiCode, 
+  FiPackage 
+} from 'react-icons/fi';
 import { 
   SiReact, 
   SiJavascript, 
   SiHtml5, 
   SiTailwindcss, 
   SiNextdotjs,
-  SiFirebase
+  SiFirebase,
+  SiWebpack,
+  SiVite,
+  SiTypescript,
+  SiPython,
+  SiNodedotjs,
+  SiVuedotjs
 } from 'react-icons/si';
-import { BsCodeSlash } from 'react-icons/bs';
+import { 
+  BsCodeSlash, 
+  BsGlobe, 
+  BsBox 
+} from 'react-icons/bs';
+import { GoProject } from 'react-icons/go';
 
 const projectIcons = {
   react: SiReact,
@@ -21,6 +38,16 @@ const projectIcons = {
   tailwind: SiTailwindcss,
   nextjs: SiNextdotjs,
   firebase: SiFirebase,
+  webpack: SiWebpack,
+  vite: SiVite,
+  typescript: SiTypescript,
+  python: SiPython,
+  nodejs: SiNodedotjs,
+  vue: SiVuedotjs,
+  web: BsGlobe,
+  project: GoProject,
+  package: FiPackage,
+  code: FiCode,
   default: BsCodeSlash
 };
 
@@ -54,7 +81,7 @@ const Projects = () => {
     <section className="projects-section" id="projects">
       <div className="projects-container">
         <h2 className="section-title" lang={currentLang}>
-          {currentLang === 'en' ? 'Timeline of Work' : 'مسار العمل'}
+          {currentLang === 'en' ? 'Work & Projects' : 'عمل ومشاريع'}
         </h2>
 
         <div className="project-frame">

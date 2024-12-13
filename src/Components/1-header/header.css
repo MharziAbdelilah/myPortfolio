@@ -306,3 +306,8 @@ header.rtl .fixed ul.modal li:first-child {
     text-align: right;
   }
 }
+
+/* Add smooth scrolling behavior to html */
+html {
+  scroll-behavior: smooth;
+}

@@ -10,7 +10,7 @@ export const projectsData = {
       location: "Web App",
       github: "https://github.com/yourusername/portfolio",
       liveDemo: "https://portfolio.example.com",
-      icon: "https://cdn-icons-png.flaticon.com/512/919/919825.png",
+      icon: "react",
       category: "web",
       technologies: ["React", "JavaScript", "CSS"],
       image: "https://images.unsplash.com/photo-1557821552-17105176677c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1332&q=80"
@@ -24,7 +24,7 @@ export const projectsData = {
       location: "Web Platform",
       github: "https://github.com/yourusername/ecommerce",
       liveDemo: "https://ecommerce.example.com",
-      icon: "https://cdn-icons-png.flaticon.com/512/5968/5968358.png",
+      icon: "nextjs",
       category: "web",
       technologies: ["Next.js", "React", "Node.js"],
       image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1315&q=80"
@@ -38,7 +38,7 @@ export const projectsData = {
       location: "Web App",
       github: "https://github.com/yourusername/taskmanager",
       liveDemo: "https://tasks.example.com",
-      icon: "https://cdn-icons-png.flaticon.com/512/5968/5968306.png",
+      icon: "firebase",
       category: "web",
       technologies: ["Firebase", "React", "JavaScript"],
       image: "https://images.unsplash.com/photo-1547954575-855750c57bd3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80"
@@ -52,7 +52,7 @@ export const projectsData = {
       location: "Web App",
       github: "https://github.com/yourusername/weather",
       liveDemo: "https://weather.example.com",
-      icon: "https://cdn-icons-png.flaticon.com/512/919/919826.png",
+      icon: "javascript",
       category: "web",
       technologies: ["JavaScript", "HTML", "CSS"],
       image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1472&q=80"
@@ -66,7 +66,7 @@ export const projectsData = {
       location: "Web Platform",
       github: "https://github.com/yourusername/blog",
       liveDemo: "https://blog.example.com",
-      icon: "https://cdn-icons-png.flaticon.com/512/5968/5968312.png",
+      icon: "tailwind",
       category: "web",
       technologies: ["Tailwind CSS", "Next.js", "React"],
       image: "https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1474&q=80"
@@ -80,7 +80,7 @@ export const projectsData = {
       location: "Website",
       github: "https://github.com/yourusername/landing",
       liveDemo: "https://landing.example.com",
-      icon: "https://cdn-icons-png.flaticon.com/512/919/919824.png",
+      icon: "html",
       category: "web",
       technologies: ["HTML", "CSS", "JavaScript"],
       image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80"
@@ -96,7 +96,7 @@ export const projectsData = {
       location: "تطبيق ويب",
       github: "https://github.com/yourusername/portfolio",
       liveDemo: "https://portfolio.example.com",
-      icon: "https://cdn-icons-png.flaticon.com/512/919/919825.png",
+      icon: "react",
       category: "web",
       technologies: ["React", "JavaScript", "CSS"],
       image: "https://images.unsplash.com/photo-1557821552-17105176677c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1332&q=80"
@@ -110,7 +110,7 @@ export const projectsData = {
       location: "منصة ويب",
       github: "https://github.com/yourusername/ecommerce",
       liveDemo: "https://ecommerce.example.com",
-      icon: "https://cdn-icons-png.flaticon.com/512/5968/5968358.png",
+      icon: "nextjs",
       category: "web",
       technologies: ["Next.js", "React", "Node.js"],
       image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1315&q=80"
@@ -124,7 +124,7 @@ export const projectsData = {
       location: "تطبيق ويب",
       github: "https://github.com/yourusername/taskmanager",
       liveDemo: "https://tasks.example.com",
-      icon: "https://cdn-icons-png.flaticon.com/512/5968/5968306.png",
+      icon: "firebase",
       category: "web",
       technologies: ["Firebase", "React", "JavaScript"],
       image: "https://images.unsplash.com/photo-1547954575-855750c57bd3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80"
@@ -138,7 +138,7 @@ export const projectsData = {
       location: "تطبيق ويب",
       github: "https://github.com/yourusername/weather",
       liveDemo: "https://weather.example.com",
-      icon: "https://cdn-icons-png.flaticon.com/512/919/919826.png",
+      icon: "javascript",
       category: "web",
       technologies: ["JavaScript", "HTML", "CSS"],
       image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1472&q=80"
@@ -152,7 +152,7 @@ export const projectsData = {
       location: "منصة ويب",
       github: "https://github.com/yourusername/blog",
       liveDemo: "https://blog.example.com",
-      icon: "https://cdn-icons-png.flaticon.com/512/5968/5968312.png",
+      icon: "tailwind",
       category: "web",
       technologies: ["Tailwind CSS", "Next.js", "React"],
       image: "https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1474&q=80"
@@ -166,7 +166,7 @@ export const projectsData = {
       location: "موقع ويب",
       github: "https://github.com/yourusername/landing",
       liveDemo: "https://landing.example.com",
-      icon: "https://cdn-icons-png.flaticon.com/512/919/919824.png",
+      icon: "html",
       category: "web",
       technologies: ["HTML", "CSS", "JavaScript"],
       image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80"

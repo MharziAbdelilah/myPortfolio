@@ -1,7 +1,7 @@
 export const translations = {
   en: {
-    title: "Services That Make a Difference",
-    subtitle: "From concept to completion, I offer comprehensive solutions that blend technical expertise with creative innovation. Each service is designed to not just meet expectations, but to create lasting impact and value."
+    title: "Specialized solutions ",
+    subtitle: "Tell your story and connect with your audience in meaningful ways."
   },
   ar: {
    title: "حلول متخصصة",

@@ -40,7 +40,7 @@ function Services() {
   };
 
   return (
-    <section className="services-section" ref={sectionRef} aria-label="Services">
+    <section className="services-section" ref={sectionRef} id="services" aria-label="Services">
       <div className="animated-background" aria-hidden="true" />
       
       <motion.div 

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './hero.css';
 import { motion, AnimatePresence } from "framer-motion";
 import { FaBullseye, FaChartLine, FaLaptopCode, FaMoneyBillWave, FaRocket } from 'react-icons/fa';
+import { FaXTwitter } from 'react-icons/fa6';
 import { useLanguage } from '../../context/LanguageContext';
 import { heroTranslations } from './translations';
 
@@ -116,9 +117,17 @@ function Hero() {
               transition={{ duration: 0.5, delay: 0.6 }}
               className="allicons flex"
             >
-              <div className="icon icon-linkedin-square" title="LinkedIn"></div>
-              <div className="icon icon-instagram" title="Instagram"></div>
-              <div className="icon icon-github" title="GitHub"></div>
+              <a href="https://www.linkedin.com/in/abdelilah-mharzi/" target="_blank" rel="noopener noreferrer">
+                <div className="icon icon-linkedin-square" title="LinkedIn"></div>
+              </a>
+              <a href="https://www.instagram.com/abdelillah.mh3" target="_blank" rel="noopener noreferrer">
+                <div className="icon icon-instagram" title="Instagram"></div>
+              </a>
+              <a href="https://x.com/MhAbdel0" target="_blank" rel="noopener noreferrer">
+                <div className="icon icon-x">
+                  <FaXTwitter title="X" />
+                </div>
+              </a>
             </motion.div>
           </div>
         </div>

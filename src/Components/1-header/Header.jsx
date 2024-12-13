@@ -78,6 +78,17 @@ function Header() {
     />
   );
 
+  const handleNavClick = (e, href) => {
+    if (href.startsWith('#')) {
+      e.preventDefault();
+      const element = document.getElementById(href.substring(1));
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+      setShowModel(false); // Close modal if open
+    }
+  };
+
   return (
     <>
       <header className={`flex ${currentLang === 'ar' ? 'rtl' : ''}`}>
@@ -87,7 +98,12 @@ function Header() {
           <ul className="flex">
             {headerTranslations[currentLang].menuItems.map((item, index) => (
               <li key={index}>
-                <Link to={item.href}>{item.text}</Link>
+                <Link 
+                  to={item.href}
+                  onClick={(e) => handleNavClick(e, item.href)}
+                >
+                  {item.text}
+                </Link>
               </li>
             ))}
           </ul>

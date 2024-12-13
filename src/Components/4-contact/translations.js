@@ -29,7 +29,7 @@ export const contactTranslations = {
       github: "https://github.com/MharziAbdelilah",
       linkedin: "https://www.linkedin.com/in/abdelilah-mharzi/",
       twitter: "https://x.com/MhAbdel0",
-      instagram: "https://www.instagram.com/abdelillah.mh/"
+      instagram: "https://www.instagram.com/abdelillah.mh3/"
     }
   },
   ar: {

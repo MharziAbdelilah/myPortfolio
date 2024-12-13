@@ -38,7 +38,7 @@ function Contact() {
   );
 
   return (
-    <section className={`contact-section ${currentLang === 'ar' ? 'rtl' : ''}`}>
+    <section className={`contact-section ${currentLang === 'ar' ? 'rtl' : ''}`} id="contact">
       <div className="contact-background">
         <div className="contact-blob blob-1"></div>
         <div className="contact-blob blob-2"></div>

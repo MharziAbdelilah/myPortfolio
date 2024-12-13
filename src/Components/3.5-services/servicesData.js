@@ -9,13 +9,13 @@ export const servicesData = {
     {
       id: 1,
       icon: <BiCodeAlt />,
-      title: "Web Development",
-      description: "Creating modern and responsive websites with cutting-edge technologies",
+      title: "Custom Web Solutions",
+      description: "Your vision deserves a unique digital presence.",
       features: [
-        "Custom Website Development",
-        "Responsive Design",
-        "Performance Optimization",
-        "SEO-Friendly Structure"
+        "Interactive User Interfaces",
+        "Responsive Design Systems",
+        "Custom Web Applications",
+        "Progressive Web Apps (PWA)"
       ]
     },
     {
@@ -60,7 +60,7 @@ export const servicesData = {
       id: 1,
       icon: <BiCodeAlt />,
       title: "حلول ويب مخصصة ",
-      description: "إنشاء مواقع حديثة ومتجاوبة باستخدام أحدث التقنيات",
+      description: "رؤيتك تستحق حضورًا رقميًا فريدًا.",
       features: [
         "تطوير مواقع مخصصة",
         "تصميم متجاوب",

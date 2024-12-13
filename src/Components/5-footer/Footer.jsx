@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 import './footer.css'
 
 function Footer() {
+  const navigate = useNavigate();
   const currentYear = new Date().getFullYear();
   const [quoteIndex, setQuoteIndex] = useState(0);
   const { t, i18n } = useTranslation();
@@ -14,7 +16,7 @@ function Footer() {
       about: "About",
       newsletter: "Stay updated with my latest tech articles",
       emailPlaceholder: "Enter your email",
-      madeWith: "Made with love by Abdelilah Mharzi ©",
+      madeWith: "Made with love by Abdelilah Mharzi ",
       quotes: [
         "Every line of code is crafted with passion, every project is built with dedication",
         "Turning coffee into code, and dreams into digital reality",
@@ -29,27 +31,27 @@ function Footer() {
       ]
     },
     ar: {
-      library: "مكتبتي",
-      about: "حول",
-      newsletter: "ابق على اطلاع بأحدث مقالاتي التقنية",
-      emailPlaceholder: "أدخل بريدك الإلكتروني",
-      madeWith: "صنع بكل حب بواسطة عبدالاله محرزي ©",
+      library: " ",
+      about: " ",
+      newsletter: " ",
+      emailPlaceholder: " ",
+      madeWith: " ",
       quotes: [
-        "كل سطر برمجي يصنع بشغف، وكل مشروع يبنى بتفانٍ",
-        "نحول القهوة إلى كود، والأحلام إلى واقع رقمي",
-        "نصنع حلول الغد بكود اليوم",
-        "حيث يلتقي الإبداع بالوظائف في كل مشروع",
-        "نبني تجارب رقمية بحب ودقة",
-        "نبرمج بالقلب، ونطور بهدف",
-        "نحول الأفكار إلى حلول أنيقة",
-        "كل خطأ تم إصلاحه درس مستفاد، وكل ميزة أضيفت حلم تحقق",
-        "شغوف بالكود النظيف والتصميم الجميل",
-        "نكتب كوداً يصنع الفرق"
+        " ",
+        " ",
+        " ",
+        " ",
+        " ",
+        " ",
+        " ",
+        " ",
+        " ",
+        " "
       ]
     }
   };
 
-  const currentContent = content[language] || content['en'];
+  const currentContent = content[language] || content['en']
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -66,11 +68,11 @@ function Footer() {
       <div className='main-footer__content'>
         <div className='main-footer__wrapper'>
           <div className='main-footer__buttons'>
-            <button className='main-footer__btn'>
+            <button className='main-footer__btn' onClick={() => navigate('/library')}>
               <i className="fas fa-book"></i>
               {currentContent.library}
             </button>
-            <button className='main-footer__btn'>
+            <button className='main-footer__btn' onClick={() => navigate('/about')}>
               <i className="fas fa-user"></i>
               {currentContent.about}
             </button>
