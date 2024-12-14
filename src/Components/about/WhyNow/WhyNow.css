@@ -1,0 +1,95 @@
+.whynow-container {
+  min-height: 40vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.whynow-content {
+  display: flex;
+  gap: 4rem;
+  align-items: center;
+  width: 100%;
+}
+
+.whynow-content.rtl {
+  flex-direction: row-reverse;
+  text-align: right;
+}
+
+.text-content {
+  flex: 1;
+  width: 50%;
+  max-width: 50%;
+}
+
+.image-section {
+  flex: 1;
+  width: 50%;
+  max-width: 50%;
+  position: relative;
+  margin-top: 0.5rem;
+  padding: 2rem;
+  transform: rotate(-4deg);
+}
+
+.image-section img {
+  width: 100%;
+  height: auto;
+  border-radius: 1.5rem;
+  object-fit: cover;
+  background-color: var(--card-bg);
+  max-height: 640px;
+  aspect-ratio: 1.15;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25),
+              0 8px 24px -12px rgba(0, 0, 0, 0.15),
+              0 0 0 1px rgba(0, 0, 0, 0.05);
+}
+
+.whynow-title {
+  font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 56px;
+  margin-bottom: 2rem;
+  color: var(--title);
+}
+
+.whynow-description {
+  font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 28px;
+  color: var(--text);
+}
+
+.whynow-description p {
+  margin-bottom: 1.5rem;
+  color: var(--text);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .whynow-content {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .whynow-content.rtl {
+    flex-direction: column;
+  }
+
+  .text-content,
+  .image-section {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .whynow-title {
+    font-size: 36px;
+    line-height: 44px;
+  }
+}

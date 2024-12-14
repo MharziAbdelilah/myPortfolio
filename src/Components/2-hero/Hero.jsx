@@ -36,30 +36,61 @@ function Hero() {
     };
   }, []);
 
+  const [hoveredIndex, setHoveredIndex] = useState(null);
+  const [rotation, setRotation] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setRotation(prev => (prev + 0.5) % 360); 
+    }, 30);
+    return () => clearInterval(interval);
+  }, []);
+
+  const calculatePosition = (angle, index) => {
+    const baseRadius = isMobile ? 110 : 150; 
+    const radius = hoveredIndex === index ? baseRadius * 1.1 : baseRadius; 
+    const radian = ((angle + rotation) * Math.PI) / 180;
+    return {
+      x: Math.cos(radian) * radius,
+      y: Math.sin(radian) * radius
+    };
+  };
+
   const orbitingElements = [
+    {
+      icon: <FaBullseye />,
+      text: "Success",
+      color: '#ffd700',
+      isCenter: true,
+      scale: 1.2
+    },
     {
       icon: <FaLaptopCode />,
       text: heroTranslations[currentLang].orbitElements[0].text,
       color: '#864ff5',
-      delay: 0
+      angle: 0,
+      scale: 1
     },
     {
       icon: <FaChartLine />,
       text: heroTranslations[currentLang].orbitElements[1].text,
       color: '#4a9eff',
-      delay: 0.2
+      angle: 90,
+      scale: 1
     },
     {
       icon: <FaMoneyBillWave />,
       text: heroTranslations[currentLang].orbitElements[2].text,
       color: '#ff6b6b',
-      delay: 0.4
+      angle: 180,
+      scale: 1
     },
     {
       icon: <FaRocket />,
       text: heroTranslations[currentLang].orbitElements[3].text,
       color: '#4acf8c',
-      delay: 0.6
+      angle: 270,
+      scale: 1
     }
   ];
 
@@ -134,48 +165,61 @@ function Hero() {
 
         <div className='right-section'>
           {isMobile && (
-            <div className="orbit-wrapper">
-              <motion.div 
-                className="orbit-center"
-                animate={{
-                  scale: [1, 1.1, 1],
-                  boxShadow: [
-                    "0 0 20px rgba(134, 79, 245, 0.2)",
-                    "0 0 40px rgba(134, 79, 245, 0.4)",
-                    "0 0 20px rgba(134, 79, 245, 0.2)"
-                  ]
-                }}
-                transition={{
-                  duration: 3,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-              >
-                <span className="center-icon"><FaBullseye /></span>
-                <span className="center-text" lang={currentLang}>{heroTranslations[currentLang].centerText}</span>
-              </motion.div>
+            <div className="orbit-container">
+              {orbitingElements.map((element, index) => {
+                if (element.isCenter) {
+                  return (
+                    <motion.div
+                      key="center"
+                      className="orbit-element center-element"
+                      style={{
+                        backgroundColor: element.color,
+                      }}
+                      initial={{ scale: 0 }}
+                      animate={{ 
+                        scale: element.scale,
+                        rotate: rotation * -1 
+                      }}
+                      transition={{ 
+                        scale: { duration: 0.5 },
+                        rotate: { duration: 0.1, ease: "linear" }
+                      }}
+                    >
+                      {element.icon}
+                      <span>{element.text}</span>
+                    </motion.div>
+                  );
+                }
 
-              <div className="orbit-container">
-                {orbitingElements.map((element, index) => (
+                const position = calculatePosition(element.angle, index);
+                return (
                   <motion.div
                     key={index}
-                    className="orbit-item"
-                    lang={currentLang}
+                    className="orbit-element"
                     style={{
-                      '--orbit-color': element.color,
-                      '--orbit-delay': `${index * -2}s`
+                      backgroundColor: element.color,
                     }}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: element.delay }}
+                    animate={{
+                      x: position.x,
+                      y: position.y,
+                      scale: hoveredIndex === index ? 1.15 : 1,
+                      rotate: rotation * -1 
+                    }}
+                    transition={{
+                      duration: 0.3,
+                      ease: "linear"
+                    }}
+                    onHoverStart={() => setHoveredIndex(index)}
+                    onHoverEnd={() => setHoveredIndex(null)}
+                    whileHover={{ 
+                      zIndex: 20,
+                    }}
                   >
-                    <div className="orbit-content">
-                      <span className="orbit-icon">{element.icon}</span>
-                      <span className="orbit-text" lang={currentLang}>{element.text}</span>
-                    </div>
+                    {element.icon}
+                    <span>{element.text}</span>
                   </motion.div>
-                ))}
-              </div>
+                );
+              })}
             </div>
           )}
         </div>

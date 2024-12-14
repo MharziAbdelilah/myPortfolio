@@ -886,233 +886,160 @@ section.hero .right-section {
 
 .orbit-container {
   position: relative;
-  width: 300px;
-  height: 300px;
-  margin: 2rem auto;
-}
-
-.central-hub {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 70px;
-  height: 70px;
-  background: rgba(134, 79, 245, 0.15);
-  border-radius: 50%;
+  width: 380px;
+  height: 380px;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  backdrop-filter: blur(8px);
-  border: 2px solid rgba(134, 79, 245, 0.3);
-  z-index: 2;
+  align-items: center;
+  margin: 2rem auto;
+  perspective: 1000px;
 }
 
 .orbit-element {
   position: absolute;
-  top: 50%;
-  left: 50%;
-}
-
-.element-content {
-  position: absolute;
-  background: rgba(134, 79, 245, 0.1);
-  padding: 0.8rem;
-  border-radius: 12px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.4rem;
-  backdrop-filter: blur(8px);
-  border: 1px solid;
-  white-space: nowrap;
-  transition: all 0.3s ease;
-  box-shadow: 0 0 15px rgba(134, 79, 245, 0.1);
-  width: 90px;
-}
-
-.orbit-lines {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-}
-
-.orbit-line {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 90px;
-  height: 1px;
-  transform-origin: 0 0;
-}
-
-/* Mobile optimization */
-@media (max-width: 380px) {
-  .orbit-container {
-    width: 260px;
-    height: 260px;
-    transform: scale(0.9);
-  }
-}
-
-/* Add these new styles for the orbit animation */
-
-.orbit-wrapper {
-  position: relative;
-  width: 300px;
-  height: 300px;
-  margin: 2rem auto;
-  transform: translateX(-10%); /* Move animation left */
-}
-
-.orbit-center {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 80px;
-  height: 80px;
-  background: rgba(134, 79, 245, 0.15);
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  backdrop-filter: blur(8px);
-  border: 2px solid rgba(134, 79, 245, 0.3);
-  z-index: 2;
-}
-
-.center-icon {
-  font-size: 2rem;
-  margin-bottom: 0.2rem;
-}
-
-.center-text {
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: var(--titleM);
-}
-
-.orbit-container {
-  position: absolute;
-  inset: 0;
-  animation: rotate 50s linear infinite;
-}
-
-.orbit-item {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 90px;
-  height: 90px;
-  margin: -45px;
-}
-
-/* Position each orbiting element */
-.orbit-item:nth-child(1) { transform: rotate(0deg) translateX(120px) rotate(0deg); }
-.orbit-item:nth-child(2) { transform: rotate(90deg) translateX(120px) rotate(-90deg); }
-.orbit-item:nth-child(3) { transform: rotate(180deg) translateX(120px) rotate(-180deg); }
-.orbit-item:nth-child(4) { transform: rotate(270deg) translateX(120px) rotate(-270deg); }
-
-.orbit-content {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: rgba(134, 79, 245, 0.1);
-  padding: 0.8rem;
-  border-radius: 12px;
-  display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 0.4rem;
-  backdrop-filter: blur(8px);
-  border: 1px solid var(--orbit-color);
-  white-space: nowrap;
+  color: white;
+  cursor: pointer;
   transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(5px);
+  border: 2px solid rgba(255, 255, 255, 0.1);
 }
 
-.orbit-icon {
+.orbit-element:hover {
+  transform: scale(1.1) translateZ(20px) !important;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.orbit-element svg {
   font-size: 1.5rem;
+  margin-bottom: 0.25rem;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+  transition: transform 0.3s ease;
 }
 
-.orbit-text {
+.orbit-element:hover svg {
+  transform: scale(1.2);
+}
+
+.orbit-element span {
+  font-size: 0.7rem;
+  text-align: center;
+  font-weight: 600;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  opacity: 0.9;
+  transition: opacity 0.3s ease;
+}
+
+.orbit-element:hover span {
+  opacity: 1;
+}
+
+.center-element {
+  width: 70px;
+  height: 70px;
+  z-index: 10;
+  background: linear-gradient(135deg, var(--color-primary), #ffd700) !important;
+  animation: pulse 2s infinite, rotate 10s linear infinite;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.center-element svg {
+  font-size: 1.6rem;
+  margin-bottom: 0.4rem;
+}
+
+.center-element span {
   font-size: 0.8rem;
-  color: var(--titleM);
-  font-weight: 500;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 20px rgba(255, 215, 0, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 215, 0, 0);
+  }
 }
 
 @keyframes rotate {
   from {
-    transform: rotate(0deg);
+    background-position: 0% 0%;
   }
   to {
-    transform: rotate(360deg);
+    background-position: 200% 200%;
   }
 }
 
-/* Counter-rotation to keep content upright */
-.orbit-item {
-  animation: counter-rotate 8s linear infinite;
-  animation-delay: var(--orbit-delay);
-}
-
-@keyframes counter-rotate {
-  from {
-    transform: rotate(0deg) translateX(120px) rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg) translateX(120px) rotate(-360deg);
-  }
-}
-
-/* Hover effects */
-.orbit-content:hover {
-  transform: translate(-50%, -50%) scale(1.1);
-  background: rgba(134, 79, 245, 0.2);
-  box-shadow: 0 0 20px var(--orbit-color);
-}
-
-/* Mobile optimization */
-@media (max-width: 380px) {
-  .orbit-wrapper {
-    width: 260px;
-    height: 260px;
-    transform: translateX(-15%); /* Adjust for smaller screens */
+@media (max-width: 768px) {
+  .orbit-container {
+    width: 320px;
+    height: 320px;
+    margin: 1.5rem auto;
   }
 
-  .orbit-item {
-    width: 80px;
-    height: 80px;
-    margin: -40px;
+  .orbit-element {
+    width: 65px;
+    height: 65px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
   }
 
-  .orbit-content {
-    padding: 0.6rem;
+  .orbit-element svg {
+    font-size: 1.4rem;
   }
 
-  .orbit-icon {
-    font-size: 1.2rem;
-  }
-
-  .orbit-text {
+  .orbit-element span {
     font-size: 0.7rem;
   }
-}
 
-/* For very small screens */
-@media (max-width: 320px) {
-  .orbit-wrapper {
-    transform: translateX(-20%); /* Further adjust for tiny screens */
+  .center-element {
+    width: 75px;
+    height: 75px;
+  }
+
+  .center-element svg {
+    font-size: 1.5rem;
+  }
+
+  .center-element span {
+    font-size: 0.8rem;
+  }
+
+  /* تحسين تأثيرات الحركة للشاشات الصغيرة */
+  .orbit-element:hover {
+    transform: scale(1.15) translateZ(25px) !important;
+  }
+
+  /* تحسين الظلال والتأثيرات البصرية */
+  @keyframes pulse {
+    0% {
+      box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.5);
+    }
+    70% {
+      box-shadow: 0 0 0 25px rgba(255, 215, 0, 0);
+    }
+    100% {
+      box-shadow: 0 0 0 0 rgba(255, 215, 0, 0);
+    }
   }
 }
 
-/* For medium-sized phones */
-@media (min-width: 381px) and (max-width: 480px) {
-  .orbit-wrapper {
-    transform: translateX(-12%); /* Adjust for medium phones */
+/* تحسين العرض للشاشات الصغيرة جداً */
+@media (max-width: 320px) {
+  .orbit-container {
+    width: 300px;
+    height: 300px;
+    transform: scale(0.9);
   }
 }
 

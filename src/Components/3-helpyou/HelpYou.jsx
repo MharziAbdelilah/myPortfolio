@@ -19,7 +19,6 @@ function HelpYou() {
   const Arrow = currentLang === 'ar' ? FaArrowLeft : FaArrowRight;
 
 
-
   const icons = [FaLaptopCode, FaPalette, FaRocket];
 
 
@@ -174,14 +173,17 @@ function HelpYou() {
           >
             {translations.callToAction}
           </motion.p>
-          <motion.button 
-            className="cta-button"
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-          >
-            {currentLang === 'ar' ? ' دع موقعك يروي قصتك' : 'Let your website tell your story'}
-            {currentLang === 'ar' ? <FaArrowLeft className="button-icon" /> : <FaArrowRight className="button-icon" />}
-          </motion.button>
+          <a href="https://wa.me/212601498690" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
+            <motion.button 
+              className="cta-button"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              {currentLang === 'ar' ? ' دع موقعك يروي قصتك' : 'Let your website tell your story'}
+              {currentLang === 'ar' ? <FaArrowLeft className="button-icon" /> : <FaArrowRight className="button-icon" />}
+            </motion.button>
+          </a>
+
         </motion.div>
 
       </motion.div>
