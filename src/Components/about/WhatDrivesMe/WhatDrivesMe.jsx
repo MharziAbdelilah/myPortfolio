@@ -16,34 +16,40 @@ const WhatDrivesMe = () => {
           {currentLang === 'en' ? (
             <>
               <h1 className="whatdrives-title">
-                What Drives Me Forward
+                What Drives Me
               </h1>
               <div className="whatdrives-description">
                 <p>
-                  My passion for technology and innovation has been the driving force behind my journey in software development.
+                  Love of Learning
                 </p>
                 <p>
-                  Every day, I wake up excited about the possibilities that lie ahead and the chance to create something meaningful.
+                  Love of Sharing
                 </p>
                 <p>
-                  I believe in the power of technology to transform lives and make the world a better place.
+                  Love of Growth
+                </p>
+                <p>
+                  Creating Something Valuable
                 </p>
               </div>
             </>
           ) : (
             <>
               <h1 className="whatdrives-title">
-                ما الذي يدفعني للأمام
+                ما الذي يحركني
               </h1>
               <div className="whatdrives-description">
                 <p>
-                  كان شغفي بالتكنولوجيا والابتكار هو القوة الدافعة وراء رحلتي في تطوير البرمجيات.
+                  حب التعلم
                 </p>
                 <p>
-                  في كل يوم، أستيقظ متحمسًا للإمكانيات التي تنتظرنا والفرصة لخلق شيء ذي معنى.
+                  حب المشاركة
                 </p>
                 <p>
-                  أؤمن بقوة التكنولوجيا في تغيير الحياة وجعل العالم مكانًا أفضل.
+                  حب النمو
+                </p>
+                <p>
+                  انتاج شيء ذو قيمة
                 </p>
               </div>
             </>

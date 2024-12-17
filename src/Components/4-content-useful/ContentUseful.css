@@ -18,7 +18,7 @@
 
 .content-card {
   background: rgba(255, 255, 255, 0.05);
-  border-radius: 1.5rem;
+  border-radius: 0.5rem;
   padding: 2.5rem;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
@@ -29,20 +29,31 @@
     0 5px 15px -5px rgba(0, 0, 0, 0.05);
 }
 
-/* Light mode styles */
-:root[data-theme="light"] .content-card {
-  background: rgba(255, 255, 255, 0.7);
-  box-shadow: 
-    0 10px 30px -5px rgba(0, 0, 0, 0.1),
-    0 5px 15px -5px rgba(0, 0, 0, 0.05);
+.content-card.coming-soon {
+  cursor: not-allowed;
 }
 
-/* Dark mode styles */
-:root[data-theme="dark"] .content-card {
-  background: rgba(29, 29, 29, 0.7);
-  box-shadow: 
-    0 10px 30px -5px rgba(0, 0, 0, 0.2),
-    0 5px 15px -5px rgba(0, 0, 0, 0.1);
+.content-card.coming-soon::before {
+  content: attr(data-coming-soon);
+  position: absolute;
+  inset: 0;
+  background: rgba(128, 128, 128, 0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+  z-index: 10;
+  backdrop-filter: blur(0px);
+  opacity: 0;
+  transition: all 0.3s ease-in-out;
+}
+
+.content-card.coming-soon:hover::before {
+  background: rgba(128, 128, 128, 0.75);
+  backdrop-filter: blur(3px);
+  opacity: 1;
 }
 
 .content-card__header {

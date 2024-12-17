@@ -72,7 +72,10 @@ function Footer() {
               <i className="fas fa-book"></i>
               {currentContent.library}
             </button>
-            <button className='main-footer__btn' onClick={() => navigate('/about')}>
+            <button className='main-footer__btn' onClick={() => {
+              window.scrollTo(0, 0);
+              navigate('/about');
+            }}>
               <i className="fas fa-user"></i>
               {currentContent.about}
             </button>

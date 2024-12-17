@@ -206,6 +206,17 @@
   flex-direction: row-reverse;
 }
 
+.google-text {
+  display: inline-block;
+}
+
+.google-text span:nth-child(1) { color: #4285F4; }  /* Blue G */
+.google-text span:nth-child(2) { color: #DB4437; }  /* Red o */
+.google-text span:nth-child(3) { color: #F4B400; }  /* Yellow o */
+.google-text span:nth-child(4) { color: #4285F4; }  /* Blue g */
+.google-text span:nth-child(5) { color: #0F9D58; }  /* Green l */
+.google-text span:nth-child(6) { color: #DB4437; }  /* Red e */
+
 @media (max-width: 768px) {
   .about-container .about-social-links {
     margin-top: 1rem;

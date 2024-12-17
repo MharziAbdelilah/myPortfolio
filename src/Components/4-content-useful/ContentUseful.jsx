@@ -85,7 +85,7 @@ const ContentUseful = () => {
           {contentData[currentLang].map((content) => (
             <motion.div
               key={content.id}
-              className="content-card"
+              className={`content-card ${(content.id === 1 || content.id === 2) ? 'coming-soon' : ''}`}
               variants={cardVariants}
               whileHover={{ 
                 y: -10,
@@ -94,6 +94,14 @@ const ContentUseful = () => {
               style={{
                 '--card-color': content.color
               }}
+              data-coming-soon={currentLang === 'ar' ? 'قريباً' : 'Coming Soon'}
+              onClick={(e) => {
+                if (content.id === 1 || content.id === 2) {
+                  e.preventDefault();
+                  return;
+                }
+                handleNavigation(content.id);
+              }}
             >
               <div className="content-card__header">
                 <div className="content-card__icon-wrapper">
@@ -101,10 +109,10 @@ const ContentUseful = () => {
                 </div>
                 <span className="content-card__category">{content.category}</span>
               </div>
-              
+　　 　 　 　
               <h3 className="content-card__title">{content.title}</h3>
               <p className="content-card__description">{content.description}</p>
-              
+　　 　 　 　
               <motion.button 
                 className="content-card__button"
                 whileHover={{ scale: 1.05 }}

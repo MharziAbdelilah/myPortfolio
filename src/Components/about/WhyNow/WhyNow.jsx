@@ -5,7 +5,7 @@ import { useLanguage } from '../../../context/LanguageContext';
 const WhyNow = () => {
   const { currentLang } = useLanguage();
   const isRTL = currentLang === 'ar';
-  
+
   return (
     <div className="whynow-container">
       <div className={`whynow-content ${isRTL ? 'rtl' : ''}`}>
@@ -13,34 +13,22 @@ const WhyNow = () => {
           {currentLang === 'en' ? (
             <>
               <h1 className="whynow-title">
-                Why Now Is The Perfect Time
+                Why Now?
               </h1>
               <div className="whynow-description">
                 <p>
-                  The tech industry is evolving at an unprecedented pace, creating endless opportunities for innovation and growth.
-                </p>
-                <p>
-                  With the rise of AI, cloud computing, and digital transformation, there has never been a better time to be in software development.
-                </p>
-                <p>
-                  I'm positioned at the intersection of these emerging technologies, ready to contribute to the next wave of digital innovation.
+                  Waiting for perfection is an illusion that delays giving. I used to think that sharing required massive financial success, but the truth is that every step in our journey holds valuable lessons for others. Today, I choose to share and grow together, because the best time to start is now.
                 </p>
               </div>
             </>
           ) : (
             <>
               <h1 className="whynow-title">
-                لماذا الآن هو الوقت المثالي
+                لماذا الآن؟
               </h1>
               <div className="whynow-description">
                 <p>
-                  تتطور صناعة التكنولوجيا بوتيرة غير مسبوقة، مما يخلق فرصًا لا حصر لها للابتكار والنمو.
-                </p>
-                <p>
-                  مع صعود الذكاء الاصطناعي والحوسبة السحابية والتحول الرقمي، لم يكن هناك وقت أفضل للعمل في تطوير البرمجيات.
-                </p>
-                <p>
-                  أنا موجود في نقطة تقاطع هذه التقنيات الناشئة، مستعد للمساهمة في الموجة القادمة من الابتكار الرقمي.
+                  الانتظار حتى الكمال وهم يؤخر العطاء. كنت أعتقد أن المشاركة تحتاج إلى نجاح مالي هائل، لكن الحقيقة أن كل خطوة في رحلتنا تحمل دروساً قيّمة للآخرين. اليوم، أختار المشاركة والنمو معاً، لأن أفضل وقت للبدء هو الآن.
                 </p>
               </div>
             </>

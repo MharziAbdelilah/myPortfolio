@@ -14,6 +14,7 @@ function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 700);
   const [showLinks, setShowLinks] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     if (theme === "light") {
@@ -42,6 +43,20 @@ function Header() {
       window.removeEventListener('resize', handleResize);
     };
   }, []);
+
+  useEffect(() => {
+    const scrollTarget = sessionStorage.getItem('scrollTarget');
+    if (scrollTarget && location.pathname === '/') {
+      // Small delay to ensure the page is loaded
+      setTimeout(() => {
+        const element = document.getElementById(scrollTarget);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+        sessionStorage.removeItem('scrollTarget');
+      }, 100);
+    }
+  }, [location]);
 
   const ThemeToggleButton = () => (
     <button
@@ -81,11 +96,19 @@ function Header() {
   const handleNavClick = (e, href) => {
     if (href.startsWith('#')) {
       e.preventDefault();
-      const element = document.getElementById(href.substring(1));
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
+      
+      // If we're not on the home page, navigate to home page first
+      if (location.pathname !== '/') {
+        // Store the target section in sessionStorage
+        sessionStorage.setItem('scrollTarget', href.substring(1));
+        window.location.href = '/';
+      } else {
+        const element = document.getElementById(href.substring(1));
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
       }
-      setShowModel(false); // Close modal if open
+      setShowModel(false);
     }
   };
 
@@ -125,7 +148,13 @@ function Header() {
               </li>
               {headerTranslations[currentLang].menuItems.map((item, index) => (
                 <li key={index}>
-                  <Link to={item.href} onClick={() => setShowModel(false)}>
+                  <Link 
+                    to={item.href} 
+                    onClick={(e) => {
+                      handleNavClick(e, item.href);
+                      setShowModel(false);
+                    }}
+                  >
                     {item.text}
                   </Link>
                 </li>

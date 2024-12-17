@@ -7,7 +7,7 @@ import WhyNow from './WhyNow/WhyNow';
 const About = () => {
   const { currentLang } = useLanguage();
   const isRTL = currentLang === 'ar';
-  
+
   return (
     <>
       <div className="about-container">
@@ -15,41 +15,50 @@ const About = () => {
           <div className="text-content">
             {currentLang === 'en' ? (
               <>
-                <h1 className="about-title">
-                  I'm Spencer Sharp. I live in New York City, where I design the future.
-                </h1>
+                <h1 className="about-title">Hi, I'm ABDELILAH</h1>
                 <div className="about-description">
                   <p>
-                    I've loved making things for as long as I can remember, and wrote my first program when I was 6 years old, just two weeks after my mom brought home the brand new Macintosh LC 550 that I taught myself to type on.
+                    In my childhood, I dreamed of becoming Morocco's Maldini. But fate had other plans. While I was deep in my dreams of blocking Ronaldo's shots, I woke up to find myself in a white suit with a white belt, shouting "ICHI, NI, SAN" at the top of my lungs. Over ten years of practicing Karate, I collected championships across the East and Morocco, earning a black belt at sixteen.
                   </p>
                   <p>
-                    The only thing I loved more than computers as a kid was space. When I was 8, I climbed the 40-foot oak tree at the back of our yard while wearing my older sister's motorcycle helmet, counted down from three, and jumped — hoping the tree was tall enough that with just a bit of momentum I'd be able to get to orbit.
+                    <strong>Lucky or not?</strong> I didn't have to walk ten kilometers barefoot to school; I grew up with <strong>"Uncle <span className="google-text"><span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span></span>"</strong>. I got instant answers, but my mind was like an energetic monkey jumping between ideas - sometimes an entrepreneur, other times a legend like El Tigre Enmascarado. <strong>The result?</strong> Two extra years of hard learning.
                   </p>
                   <p>
-                    I spent the next few summers indoors working on a rocket design, while I recovered from the multiple surgeries it took to fix my badly broken legs. It took nine iterations, but when I was 15 I sent my dad's Blackberry into orbit and was able to transmit a photo back down to our family computer from space.
+                    Coincidence led me to Computer Engineering. There, I let my mind dive deep into its thoughts. I discovered that my scattered thinking helps me see hidden connections - each new idea adds a dimension that connects it to the main project.
                   </p>
                   <p>
-                    Today, I'm the founder of Planetaria, where we're working on civilian space suits and manned shuttle kits you can assemble at home so that the next generation of kids really can make it to orbit — from the comfort of their own backyards.
+                    <strong>Today! I implement AI | Simplify processes through automation | Transform ideas into innovative products</strong>
+                  </p>
+                  <p>
+                    This is me - 26 years of experiences and lessons that led to these words. I'd be happy to receive your message, and I promise coffee... <strong>but you're paying</strong> 😁
+                  </p>
+                  <p>
+                    <strong>All the love</strong>
                   </p>
                 </div>
               </>
             ) : (
               <>
-                <h1 className="about-title">
-                  أنا سبنسر شارب. أعيش في مدينة نيويورك، حيث أصمم المستقبل.
-                </h1>
+                <h1 className="about-title">مرحبا، أنا عبدالاله</h1>
                 <div className="about-description">
                   <p>
-                    لطالما أحببت صنع الأشياء منذ أن كنت صغيراً، وكتبت أول برنامج لي عندما كنت في السادسة من عمري، بعد أسبوعين فقط من إحضار والدتي جهاز ماكنتوش LC 550 الجديد الذي علمت نفسي الكتابة عليه.
+                    في طفولتي، كنت أحلم بأن أصبح مالديني المغرب. لكن القدر كان له رأي آخر. وأنا منغمس في أحلامي أصد هجمات رونالدو، استيقظت لأجد نفسي أرتدي بدلة بيضاء وحزاماً أبيض، أصرخ "ICHI, NI, SAN" بكل قوتي. خلال عشر سنوات من رياضة الكاراتيه، حصدت بطولات الشرق والمغرب، وحزاماً أسود في سن السادسة عشر.
                   </p>
                   <p>
-                    الشيء الوحيد الذي أحببته أكثر من أجهزة الكمبيوتر عندما كنت طفلاً كان الفضاء. عندما كنت في الثامنة من عمري، تسلقت شجرة البلوط التي يبلغ ارتفاعها 40 قدماً في نهاية ساحتنا الخلفية بينما كنت أرتدي خوذة الدراجة النارية لأختي الكبرى، وعددت تنازلياً من ثلاثة، وقفزت - آملاً أن تكون الشجرة طويلة بما يكفي حتى أتمكن من الوصول إلى المدار بقليل من الزخم.
+                    <strong>محظوظ أم لا؟</strong>
+                    لم أمشِ عشرة كيلومترات للمدرسة حافي القدمين، بل نشأت مع <strong>"عمي <span className="google-text"><span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span></span>"</strong>. أحصل على الإجابات فورية، لكن كان عقلي كقرد نشط يقفز بين الأفكار - تارةً رائد أعمال، وتارةً أسطورة كالنمر المقنع. <strong>النتيجة؟</strong> سنتان إضافيتان من التعلم القاسي.
                   </p>
                   <p>
-                    قضيت الصيف التالي في الداخل أعمل على تصميم صاروخ، بينما كنت أتعافى من العمليات الجراحية المتعددة التي استغرقتها لإصلاح ساقي المكسورة بشدة. استغرق الأمر تسع محاولات، ولكن عندما كنت في الخامسة عشرة من عمري، أرسلت هاتف بلاك بيري الخاص بوالدي إلى المدار وتمكنت من إرسال صورة إلى كمبيوتر عائلتنا من الفضاء.
+                    الصدفة قادتني إلى هندسة المعلوميات. هناك، سمحت لعقلي بأن يغوص في أفكاره. اكتشفت أن التشتت يقودني إلى رؤية روابط خفية - كل فكرة جديدة تضيف بُعداً يربطها بالمشروع الأساسي.
                   </p>
                   <p>
-                    اليوم، أنا مؤسس Planetaria، حيث نعمل على بدلات فضاء مدنية ومجموعات مكوك مأهولة يمكنك تجميعها في المنزل حتى يتمكن الجيل القادم من الأطفال من الوصول إلى المدار - من راحة ساحاتهم الخلفية.
+                    <strong>اليوم! أوظف الذكاء الاصطناعي | أبسط العمليات بالأتمتة | أحول الأفكار إلى منتجات مبتكرة</strong>
+                  </p>
+                  <p>
+                    هذا أنا - 26 سنة من التجارب والدروس لأصل إلى هذه الكلمات. سأكون سعيداً برسالتك، وأعدك بقهوة... <strong>وأنت من يدفع</strong> 😁
+                  </p>
+                  <p>
+                    <strong>كل الحب</strong>
                   </p>
                 </div>
               </>
