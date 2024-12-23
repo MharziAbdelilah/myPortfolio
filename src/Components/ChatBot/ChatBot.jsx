@@ -62,9 +62,14 @@ const ChatBot = () => {
         })
       };
 
-      const response = await fetch('/api/chat', options);
+      const apiUrl = process.env.NODE_ENV === 'production' 
+        ? '/api/chat'  // Production URL (relative to domain)
+        : 'http://localhost:3001/api/chat'; // Development URL
+
+      const response = await fetch(apiUrl, options);
       if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+        const errorData = await response.json();
+        throw new Error(errorData.message || `HTTP error! status: ${response.status}`);
       }
       const data = await response.json();
       
@@ -121,9 +126,14 @@ const ChatBot = () => {
         })
       };
 
-      const response = await fetch('/api/chat', options);
+      const apiUrl = process.env.NODE_ENV === 'production' 
+        ? '/api/chat'  // Production URL (relative to domain)
+        : 'http://localhost:3001/api/chat'; // Development URL
+
+      const response = await fetch(apiUrl, options);
       if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+        const errorData = await response.json();
+        throw new Error(errorData.message || `HTTP error! status: ${response.status}`);
       }
       const data = await response.json();
 
