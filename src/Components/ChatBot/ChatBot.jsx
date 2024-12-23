@@ -62,17 +62,21 @@ const ChatBot = () => {
         })
       };
 
+      // Get the base URL dynamically
+      const baseUrl = window.location.origin;
       const apiUrl = process.env.NODE_ENV === 'production' 
-        ? '/api/chat'  // Production URL (relative to domain)
+        ? `${baseUrl}/api/chat`  // Production URL with dynamic origin
         : 'http://localhost:3001/api/chat'; // Development URL
 
+      console.log('Sending request to:', apiUrl); // Debug log
       const response = await fetch(apiUrl, options);
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.message || `HTTP error! status: ${response.status}`);
-      }
-      const data = await response.json();
       
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => null);
+        throw new Error(errorData?.message || `HTTP error! status: ${response.status}`);
+      }
+      
+      const data = await response.json();
       if (data.choices && data.choices[0]?.message?.content) {
         setMessages([{
           type: 'bot',
@@ -126,15 +130,20 @@ const ChatBot = () => {
         })
       };
 
+      // Get the base URL dynamically
+      const baseUrl = window.location.origin;
       const apiUrl = process.env.NODE_ENV === 'production' 
-        ? '/api/chat'  // Production URL (relative to domain)
+        ? `${baseUrl}/api/chat`  // Production URL with dynamic origin
         : 'http://localhost:3001/api/chat'; // Development URL
 
+      console.log('Sending request to:', apiUrl); // Debug log
       const response = await fetch(apiUrl, options);
+      
       if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.message || `HTTP error! status: ${response.status}`);
+        const errorData = await response.json().catch(() => null);
+        throw new Error(errorData?.message || `HTTP error! status: ${response.status}`);
       }
+      
       const data = await response.json();
 
       if (data.choices && data.choices[0]?.message?.content) {
