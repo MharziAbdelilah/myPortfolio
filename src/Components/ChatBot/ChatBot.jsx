@@ -62,10 +62,8 @@ const ChatBot = () => {
         })
       };
 
-      // Get the base URL dynamically
-      const baseUrl = window.location.origin;
-      const apiUrl = process.env.NODE_ENV === 'production' 
-        ? `${baseUrl}/api/chat`  // Production URL with dynamic origin
+      const apiUrl = process.env.NODE_ENV === 'production'
+        ? 'https://mharziabdelilah.com/api/chat.php'  // Production URL (Hostinger)
         : 'http://localhost:3001/api/chat'; // Development URL
 
       console.log('Sending request to:', apiUrl); // Debug log
@@ -130,10 +128,8 @@ const ChatBot = () => {
         })
       };
 
-      // Get the base URL dynamically
-      const baseUrl = window.location.origin;
-      const apiUrl = process.env.NODE_ENV === 'production' 
-        ? `${baseUrl}/api/chat`  // Production URL with dynamic origin
+      const apiUrl = process.env.NODE_ENV === 'production'
+        ? 'https://abdelilahmharzi.com/api/chat.php'  // Production URL (Hostinger)
         : 'http://localhost:3001/api/chat'; // Development URL
 
       console.log('Sending request to:', apiUrl); // Debug log
