@@ -1,39 +1,53 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { FaRobot } from 'react-icons/fa';
+import { FaRobot, FaPaperPlane, FaTimes } from 'react-icons/fa';
 import { IoClose } from 'react-icons/io5';
-import PulseLoader from "react-spinners/PulseLoader";
+import { BsEmojiSmile, BsThreeDots } from 'react-icons/bs';
+import { motion, AnimatePresence } from 'framer-motion';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 import './chatBot.css';
+import { getSystemPrompt } from './systemPrompt';
+import { useLanguage } from '../../context/LanguageContext';
 
 const ChatBot = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState([]);
-  const [inputMessage, setInputMessage] = useState('');
+  const [newMessage, setNewMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [showWelcome, setShowWelcome] = useState(true);
   const messagesEndRef = useRef(null);
   const inputRef = useRef(null);
+  const { currentLang } = useLanguage();
+  const [theme, setTheme] = useState(document.body.classList.contains('light') ? 'light' : 'dark');
+
+  // Update theme when body class changes
+  useEffect(() => {
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.attributeName === 'class') {
+          setTheme(document.body.classList.contains('light') ? 'light' : 'dark');
+        }
+      });
+    });
+
+    observer.observe(document.body, { attributes: true });
+
+    return () => observer.disconnect();
+  }, []);
 
   const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
   useEffect(() => {
-    scrollToBottom();
-  }, [messages]);
-
-  const handleInputClick = (e) => {
-    e.stopPropagation();
-  };
-
-  const handleOpen = () => {
-    setIsOpen(true);
-    if (messages.length === 0) {
-      handleInitialMessage();
+    if (isOpen) {
+      if (messages.length === 0) {
+        handleInitialMessage();
+      }
+      scrollToBottom();
+      inputRef.current?.focus();
     }
-  };
-
-  const handleClose = () => {
-    setIsOpen(false);
-  };
+  }, [messages, isOpen]);
 
   const handleInitialMessage = async () => {
     setIsLoading(true);
@@ -44,50 +58,51 @@ const ChatBot = () => {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          model: 'Qwen/Qwen2.5-72B-Instruct-Turbo',
+          model: 'llama3-8b-8192',
           messages: [
             {
               role: 'assistant',
-              content: 'You are a portfolio assistant trained to answer questions about Abdelilah mharzi\'s portfolio. Use the provided portfolio content to respond to any client questions. Stay concise and relevant while being professional and approachable. If a question is unrelated to the portfolio content, politely let the client know.'
+              content: "Hi! I'm Abdelilah, a software engineer. How can I help you?"
             },
-            {
-              role: 'system',
-              content: 'Portfolio Content: About Me: Abdelilah Mharzi is a fifth-year software engineering student in Morocco. Experienced in PHP, Symfony, Angular, and .NET technologies. Specializes in building RESTful APIs and implementing OOP principles. Projects: Barbershop Management App: Angular and Symfony-based app with role-based access, reservation system, and notifications. E-Commerce Website: Laravel-based platform with payment gateway integration and admin dashboards. Task Manager API: .NET Core project demonstrating clean architecture and advanced LINQ usage. Skills: Languages: PHP, C#, JavaScript, SQL. Frameworks: Symfony, ASP.NET Core, Angular. Tools: Docker, Git, Postman, Swagger. Soft Skills: Teamwork, problem-solving, and communication. Education: Bachelor\'s in Software Engineering, expected graduation: June 2024. Achievements: Google Certified Associate Developer. Finalist in Hackathon XYZ for innovative API design.'
-            },
+            getSystemPrompt(currentLang),
             {
               role: 'user',
-              content: 'Hello! Can you introduce yourself and tell me what you can help me with?'
+              content: 'Who are you?'
             }
           ]
         })
       };
 
       const apiUrl = process.env.NODE_ENV === 'production'
-        ? 'https://mharziabdelilah.com/api/chat.php'  // Production URL (Hostinger)
-        : 'http://localhost:3001/api/chat'; // Development URL
+        ? '/api/chat.php'
+        : 'http://localhost:8000/api/chat.php';
 
-      console.log('Sending request to:', apiUrl); // Debug log
+      console.log('Sending request to:', apiUrl);
       const response = await fetch(apiUrl, options);
       
       if (!response.ok) {
-        const errorData = await response.json().catch(() => null);
-        throw new Error(errorData?.message || `HTTP error! status: ${response.status}`);
+        const errorData = await response.json().catch(() => ({}));
+        throw new Error(errorData.message || `HTTP error! status: ${response.status}`);
       }
-      
+
       const data = await response.json();
+      if (data.error) {
+        throw new Error(data.message || 'Unknown error occurred');
+      }
+
       if (data.choices && data.choices[0]?.message?.content) {
         setMessages([{
           type: 'bot',
           content: data.choices[0].message.content
         }]);
       } else {
-        throw new Error('Invalid response format');
+        throw new Error('Invalid response format from API');
       }
     } catch (error) {
       console.error('Error fetching initial message:', error);
       setMessages([{
         type: 'bot',
-        content: 'Hello! I encountered an issue connecting to the server. Please try again later.'
+        content: 'I apologize, but I encountered an error. Please try again later.'
       }]);
     } finally {
       setIsLoading(false);
@@ -96,10 +111,10 @@ const ChatBot = () => {
 
   const handleSendMessage = async (e) => {
     e.preventDefault();
-    if (!inputMessage.trim() || isLoading) return;
+    if (!newMessage.trim() || isLoading) return;
 
-    const userMessage = inputMessage.trim();
-    setInputMessage('');
+    const userMessage = newMessage.trim();
+    setNewMessage('');
     setMessages(prev => [...prev, { type: 'user', content: userMessage }]);
     setIsLoading(true);
 
@@ -110,16 +125,13 @@ const ChatBot = () => {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          model: 'Qwen/Qwen2.5-72B-Instruct-Turbo',
+          model: 'llama3-groq-70b-8192-tool-use-preview',
           messages: [
             {
               role: 'assistant',
-              content: 'You are a portfolio assistant trained to answer questions about Abdelilah mharzi\'s portfolio. Use the provided portfolio content to respond to any client questions. Stay concise and relevant while being professional and approachable. If a question is unrelated to the portfolio content, politely let the client know.'
+              content: "Hi! I'm Abdelilah, a software engineer. How can I help you?"
             },
-            {
-              role: 'system',
-              content: 'Portfolio Content: About Me: Abdelilah Mharzi is a fifth-year software engineering student in Morocco. Experienced in PHP, Symfony, Angular, and .NET technologies. Specializes in building RESTful APIs and implementing OOP principles. Projects: Barbershop Management App: Angular and Symfony-based app with role-based access, reservation system, and notifications. E-Commerce Website: Laravel-based platform with payment gateway integration and admin dashboards. Task Manager API: .NET Core project demonstrating clean architecture and advanced LINQ usage. Skills: Languages: PHP, C#, JavaScript, SQL. Frameworks: Symfony, ASP.NET Core, Angular. Tools: Docker, Git, Postman, Swagger. Soft Skills: Teamwork, problem-solving, and communication. Education: Bachelor\'s in Software Engineering, expected graduation: June 2024. Achievements: Google Certified Associate Developer. Finalist in Hackathon XYZ for innovative API design.'
-            },
+            getSystemPrompt(currentLang),
             {
               role: 'user',
               content: userMessage
@@ -129,10 +141,10 @@ const ChatBot = () => {
       };
 
       const apiUrl = process.env.NODE_ENV === 'production'
-        ? 'https://abdelilahmharzi.com/api/chat.php'  // Production URL (Hostinger)
-        : 'http://localhost:3001/api/chat'; // Development URL
+        ? '/api/chat.php'
+        : 'http://localhost:8000/api/chat.php';
 
-      console.log('Sending request to:', apiUrl); // Debug log
+      console.log('Sending request to:', apiUrl);
       const response = await fetch(apiUrl, options);
       
       if (!response.ok) {
@@ -169,50 +181,123 @@ const ChatBot = () => {
   };
 
   return (
-    <div className="chatbot-container">
-      <button className="chat-button" onClick={handleOpen}>
+    <div className={`chatbot-container ${theme}`}>
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div 
+            className={`chat-window ${theme}`}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 20 }}
+            transition={{ duration: 0.2 }}
+          >
+            <div className="chat-header">
+              <div className="header-title">
+                <div className="avatar-container">
+                  <FaRobot className="avatar-icon" />
+                  <span className="status-dot"></span>
+                </div>
+                <div className="header-info">
+                  <div className="bot-name">Abdelilah MHARZI</div>
+                  <div className="online-status">Active now</div>
+                </div>
+              </div>
+              <div className="header-actions">
+                <button className="action-button">
+                  <BsThreeDots />
+                </button>
+                <button 
+                  className="close-button"
+                  onClick={() => setIsOpen(false)}
+                >
+                  <IoClose />
+                </button>
+              </div>
+            </div>
+
+            <div className="chat-messages" onScroll={() => setShowWelcome(false)}>
+              {showWelcome && (
+                <div className="welcome-message">
+                  <h3>👋 Welcome!</h3>
+                  <p>I'm here to assist you with any questions about my expertise in software engineering and marketing.</p>
+                </div>
+              )}
+              
+              {messages.map((message, index) => (
+                <motion.div
+                  key={index}
+                  className={`message ${message.type}`}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                    {message.content}
+                  </ReactMarkdown>
+                  <div className="message-time">
+                    {new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                  </div>
+                </motion.div>
+              ))}
+              
+              {isLoading && (
+                <motion.div 
+                  className="typing-indicator"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                >
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </motion.div>
+              )}
+              <div ref={messagesEndRef} />
+            </div>
+
+            <div className="chat-input">
+              <form onSubmit={handleSendMessage} className="input-container">
+                <button type="button" className="emoji-button">
+                  <BsEmojiSmile />
+                </button>
+                <input
+                  ref={inputRef}
+                  type="text"
+                  value={newMessage}
+                  onChange={(e) => setNewMessage(e.target.value)}
+                  onKeyPress={handleKeyPress}
+                  placeholder="Type a message..."
+                  className="message-input"
+                  disabled={isLoading}
+                />
+                <button 
+                  type="submit" 
+                  className={`send-button ${newMessage.trim() && !isLoading ? 'active' : ''}`}
+                  disabled={!newMessage.trim() || isLoading}
+                >
+                  <FaPaperPlane />
+                </button>
+              </form>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <motion.button 
+        className={`chat-button ${theme}`}
+        onClick={() => setIsOpen(!isOpen)}
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+      >
         <FaRobot className="bot-icon" />
-      </button>
-
-      {isOpen && (
-        <div className="chat-window" onClick={handleInputClick}>
-          <div className="chat-header">
-            <h3>Portfolio Assistant</h3>
-            <button className="close-button" onClick={handleClose}>
-              <IoClose size={24} />
-            </button>
-          </div>
-
-          <div className="chat-messages">
-            {messages.map((message, index) => (
-              <div key={index} className={`message ${message.type}-message`}>
-                {message.content}
-              </div>
-            ))}
-            {isLoading && (
-              <div className="message bot-message loading">
-                <PulseLoader color="#864ff5" size={8} />
-              </div>
-            )}
-            <div ref={messagesEndRef} />
-          </div>
-
-          <form className="chat-input-form" onSubmit={handleSendMessage}>
-            <input
-              ref={inputRef}
-              type="text"
-              value={inputMessage}
-              onChange={(e) => setInputMessage(e.target.value)}
-              onKeyPress={handleKeyPress}
-              placeholder="Type your message..."
-              disabled={isLoading}
-            />
-            <button type="submit" disabled={isLoading || !inputMessage.trim()}>
-              Send
-            </button>
-          </form>
-        </div>
-      )}
+        {!isOpen && messages.length === 0 && (
+          <motion.div 
+            className="notification-dot"
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            transition={{ delay: 1 }}
+          />
+        )}
+      </motion.button>
     </div>
   );
 };
