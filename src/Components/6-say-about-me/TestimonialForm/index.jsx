@@ -13,6 +13,7 @@ const TestimonialForm = () => {
     role: '',
     text: '',
     image: '',
+    socialLink: '', // Add this new field
   });
 
   const handleSubmit = async (e) => {
@@ -66,8 +67,7 @@ const TestimonialForm = () => {
           <div className="testimonial-success">
             {currentLang === 'en' 
               ? 'Thank you for your review! Redirecting...'
-              : 'شكراً لتقييمك! جاري التحويل...'
-            }
+              : 'شكراً لتقييمك! جاري التحويل...'}
           </div>
         )}
         
@@ -122,6 +122,21 @@ const TestimonialForm = () => {
           </div>
 
           <div className="testimonial-input-group">
+            <label htmlFor="socialLink" className="testimonial-label">
+              {currentLang === 'en' ? 'Social Media / Website Link' : 'رابط التواصل الاجتماعي / الموقع'}
+            </label>
+            <input
+              type="url"
+              id="socialLink"
+              name="socialLink"
+              className="testimonial-input"
+              value={formData.socialLink}
+              onChange={handleChange}
+              placeholder={currentLang === 'en' ? 'https://linkedin.com/in/yourprofile' : 'https://linkedin.com/in/yourprofile'}
+            />
+          </div>
+
+          <div className="testimonial-input-group">
             <label htmlFor="text" className="testimonial-label">
               {currentLang === 'en' ? 'Your Review' : 'تقييمك'}
             </label>
@@ -137,8 +152,7 @@ const TestimonialForm = () => {
               maxLength={500}
               placeholder={currentLang === 'en' 
                 ? 'Share your experience working with me...'
-                : 'شاركنا تجربتك في العمل معي...'
-              }
+                : 'شاركنا تجربتك في العمل معي...'}
             />
           </div>
 
