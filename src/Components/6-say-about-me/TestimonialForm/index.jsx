@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useLanguage } from '../../../context/LanguageContext';
+import { testimonialService } from '../../../firebase/testimonialService';
 import './TestimonialForm.css';
 
 const TestimonialForm = () => {
@@ -14,27 +15,33 @@ const TestimonialForm = () => {
     image: '',
   });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     
     // Add new testimonial
     const newTestimonial = {
       ...formData,
-      id: Date.now(),
       date: new Date().toISOString(),
       image: formData.image || `https://randomuser.me/api/portraits/${Math.random() > 0.5 ? 'men' : 'women'}/${Math.floor(Math.random() * 10)}.jpg`
     };
     
-    // Save to localStorage
-    localStorage.setItem('testimonials', JSON.stringify([newTestimonial]));
-    
-    // Show success message
-    setShowSuccess(true);
-    
-    // Redirect after 2 seconds
-    setTimeout(() => {
-      navigate('/');
-    }, 2000);
+    try {
+      // Save to Firebase
+      await testimonialService.add(newTestimonial);
+      
+      // Show success message
+      setShowSuccess(true);
+      
+      // Redirect after 2 seconds
+      setTimeout(() => {
+        navigate('/');
+      }, 2000);
+    } catch (error) {
+      console.error('Error adding testimonial:', error);
+      alert(currentLang === 'en' 
+        ? 'Error submitting testimonial. Please try again.' 
+        : 'خطأ في إرسال التقييم. يرجى المحاولة مرة أخرى.');
+    }
   };
 
   const handleChange = (e) => {
@@ -144,4 +151,4 @@ const TestimonialForm = () => {
   );
 };
 
-export default TestimonialForm; 
+export default TestimonialForm;
