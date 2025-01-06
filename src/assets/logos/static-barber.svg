@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="32px" viewBox="0 0 512 512" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <linearGradient id="chrome" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#FFFFFF"/>
+            <stop offset="50%" style="stop-color:#F0F0F0"/>
+            <stop offset="100%" style="stop-color:#E0E0E0"/>
+        </linearGradient>
+        <linearGradient id="red-stripe" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" style="stop-color:#FF0000"/>
+            <stop offset="100%" style="stop-color:#CC0000"/>
+        </linearGradient>
+        <linearGradient id="blue-stripe" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" style="stop-color:#0066CC"/>
+            <stop offset="100%" style="stop-color:#004C99"/>
+        </linearGradient>
+        <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur in="SourceAlpha" stdDeviation="2"/>
+            <feOffset dx="2" dy="2" result="offsetblur"/>
+            <feComponentTransfer>
+                <feFuncA type="linear" slope="0.5"/>
+            </feComponentTransfer>
+            <feMerge>
+                <feMergeNode/>
+                <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+        </filter>
+    </defs>
+
+    <!-- Background Circle -->
+    <circle cx="256" cy="256" r="240" fill="#FFFFFF"/>
+    <circle cx="256" cy="256" r="220" fill="#F8F8F8"/>
+    
+    <!-- Main Barber Pole -->
+    <g transform="translate(256, 256)" filter="url(#shadow)">
+        <!-- Base Pole -->
+        <rect x="-60" y="-160" width="120" height="320" rx="10" fill="url(#chrome)" stroke="#D0D0D0" stroke-width="2"/>
+        
+        <!-- Stripes -->
+        <g>
+            <!-- Red Stripes -->
+            <path d="M-60,-160 L60,160" stroke="url(#red-stripe)" stroke-width="40"/>
+            <path d="M-60,-80 L60,240" stroke="url(#red-stripe)" stroke-width="40"/>
+            <path d="M-60,-240 L60,80" stroke="url(#red-stripe)" stroke-width="40"/>
+            
+            <!-- Blue Stripes -->
+            <path d="M60,-160 L-60,160" stroke="url(#blue-stripe)" stroke-width="40"/>
+            <path d="M60,-80 L-60,240" stroke="url(#blue-stripe)" stroke-width="40"/>
+            <path d="M60,-240 L-60,80" stroke="url(#blue-stripe)" stroke-width="40"/>
+        </g>
+        
+        <!-- White Highlights -->
+        <rect x="-60" y="-160" width="120" height="320" rx="10" fill="#FFFFFF" opacity="0.2"/>
+        <rect x="-55" y="-160" width="20" height="320" fill="#FFFFFF" opacity="0.3"/>
+        
+        <!-- Top Cap -->
+        <ellipse cx="0" cy="-160" rx="60" ry="20" fill="#D0D0D0"/>
+        <ellipse cx="0" cy="-155" rx="55" ry="15" fill="#E0E0E0"/>
+        
+        <!-- Bottom Cap -->
+        <ellipse cx="0" cy="160" rx="60" ry="20" fill="#D0D0D0"/>
+        <ellipse cx="0" cy="155" rx="55" ry="15" fill="#E0E0E0"/>
+    </g>
+    
+    <!-- Decorative Border -->
+    <circle cx="256" cy="256" r="200" fill="none" stroke="#D0D0D0" stroke-width="4"/>
+    <circle cx="256" cy="256" r="195" fill="none" stroke="#E0E0E0" stroke-width="2"/>
+    
+    <!-- Corner Accents -->
+    <g fill="#D0D0D0">
+        <circle cx="106" cy="106" r="8"/>
+        <circle cx="406" cy="106" r="8"/>
+        <circle cx="106" cy="406" r="8"/>
+        <circle cx="406" cy="406" r="8"/>
+    </g>
+</svg>

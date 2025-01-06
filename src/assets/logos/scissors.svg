@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 512 512" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <linearGradient id="metal" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#E8E8E8"/>
+            <stop offset="50%" style="stop-color:#B0B0B0"/>
+            <stop offset="100%" style="stop-color:#E8E8E8"/>
+        </linearGradient>
+        <linearGradient id="handle" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#2C2C2C"/>
+            <stop offset="50%" style="stop-color:#4A4A4A"/>
+            <stop offset="100%" style="stop-color:#2C2C2C"/>
+        </linearGradient>
+    </defs>
+    <g>
+        <!-- Left Handle -->
+        <circle cx="120" cy="380" r="40" fill="url(#handle)" stroke="#1A1A1A" stroke-width="8"/>
+        <!-- Right Handle -->
+        <circle cx="392" cy="380" r="40" fill="url(#handle)" stroke="#1A1A1A" stroke-width="8"/>
+        <!-- Left Blade -->
+        <path d="M120,380 L240,180 L260,200 L150,380 Z" fill="url(#metal)" stroke="#808080" stroke-width="4"/>
+        <!-- Right Blade -->
+        <path d="M392,380 L272,180 L252,200 L362,380 Z" fill="url(#metal)" stroke="#808080" stroke-width="4"/>
+        <!-- Center Screw -->
+        <circle cx="256" cy="190" r="12" fill="#808080" stroke="#4A4A4A" stroke-width="4"/>
+        <!-- Shine Details -->
+        <path d="M150,200 L240,180" stroke="white" stroke-width="2" opacity="0.6"/>
+        <path d="M362,200 L272,180" stroke="white" stroke-width="2" opacity="0.6"/>
+    </g>
+</svg>

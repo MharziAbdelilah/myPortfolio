@@ -7,7 +7,7 @@ import { useLanguage } from '../../context/LanguageContext';
 import { heroTranslations } from './translations';
 
 function Hero() {
-  const { currentLang } = useLanguage();
+  const { currentLang } = useLanguage();  
   const [isProfileEnlarged, setIsProfileEnlarged] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 

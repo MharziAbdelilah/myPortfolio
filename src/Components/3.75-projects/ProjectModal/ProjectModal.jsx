@@ -1,142 +1,123 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useState, useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination } from 'swiper/modules';
+import { Navigation, Pagination, Keyboard } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 import './ProjectModal.css';
 
-const ProjectModal = ({ project, isOpen, onClose }) => {
-  const [activeTab, setActiveTab] = useState('non-technical');
+const ProjectModal = ({ project, onClose }) => {
+  const [fullscreenImage, setFullscreenImage] = useState(null);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-  // Use project images array or fallback to single image
-  const projectImages = project?.images || [project?.image];
+  useEffect(() => {
+    const handleEsc = (e) => {
+      if (e.key === 'Escape') {
+        if (fullscreenImage) {
+          setFullscreenImage(null);
+        } else {
+          onClose();
+        }
+      }
+    };
+    window.addEventListener('keydown', handleEsc);
+    return () => window.removeEventListener('keydown', handleEsc);
+  }, [fullscreenImage, onClose]);
+
+  if (!project) return null;
+
+  const handleImageClick = (image, index) => {
+    setFullscreenImage(image);
+    setCurrentImageIndex(index);
+  };
+
+  const navigateFullscreen = (direction) => {
+    const images = project.images || [];
+    const newIndex = direction === 'next'
+      ? (currentImageIndex + 1) % images.length
+      : (currentImageIndex - 1 + images.length) % images.length;
+    setCurrentImageIndex(newIndex);
+    setFullscreenImage(images[newIndex]);
+  };
+
+  const images = project.images || [];
 
   return (
-    <AnimatePresence>
-      {isOpen && (
-        <motion.div 
-          className="modal-overlay"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          onClick={onClose}
-        >
-          <motion.div 
-            className="modal-content"
-            initial={{ scale: 0.8, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            exit={{ scale: 0.8, opacity: 0 }}
-            onClick={e => e.stopPropagation()}
+    <div className="modal-overlay" onClick={(e) => {
+      if (e.target === e.currentTarget) onClose();
+    }}>
+      <div className="modal-content-fullsize">
+        <button className="modal-close" onClick={onClose}>×</button>
+        
+        {images.length > 0 ? (
+          <Swiper
+            modules={[Navigation, Pagination, Keyboard]}
+            spaceBetween={0}
+            slidesPerView={1}
+            navigation
+            pagination={{ clickable: true }}
+            keyboard={{ enabled: true }}
+            loop={images.length > 1}
+            className="modal-swiper-fullsize"
           >
-            <button className="modal-close" onClick={onClose}>×</button>
-
-            <div className="modal-image-gallery">
-              <Swiper
-                modules={[Navigation, Pagination]}
-                navigation
-                pagination={{ clickable: true }}
-                loop={true}
-                className="modal-swiper"
-              >
-                {projectImages.map((image, index) => (
-                  <SwiperSlide key={index}>
-                    <motion.div 
-                      className="gallery-image-container"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ delay: 0.2 }}
-                    >
-                      <img src={image} alt={`${project.title} - View ${index + 1}`} />
-                    </motion.div>
-                  </SwiperSlide>
-                ))}
-              </Swiper>
-            </div>
-
-            <div className="modal-scroll-content">
-              <div className="modal-info">
-                <motion.h2 
-                  initial={{ y: 20, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  className="modal-title"
+            {images.map((image, index) => (
+              <SwiperSlide key={index}>
+                <div 
+                  className="gallery-image-container-fullsize"
+                  onClick={() => handleImageClick(image, index)}
                 >
-                  {project.title}
-                </motion.h2>
-
-                <div className="tab-buttons">
-                  <button 
-                    className={`tab-button ${activeTab === 'non-technical' ? 'active' : ''}`}
-                    onClick={() => setActiveTab('non-technical')}
-                  >
-                    General Overview
-                  </button>
-                  <button 
-                    className={`tab-button ${activeTab === 'technical' ? 'active' : ''}`}
-                    onClick={() => setActiveTab('technical')}
-                  >
-                    Technical Details
-                  </button>
+                  <img src={image} alt={`View ${index + 1}`} />
                 </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        ) : (
+          <div className="no-images-message">No images available</div>
+        )}
+      </div>
 
-                <motion.div 
-                  className="tab-content"
-                  initial={{ y: 20, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  transition={{ delay: 0.2 }}
+      {fullscreenImage && (
+        <div className="fullscreen-overlay" onClick={(e) => {
+          if (e.target === e.currentTarget) setFullscreenImage(null);
+        }}>
+          <div className="fullscreen-image-container">
+            <img
+              src={fullscreenImage}
+              alt="Fullscreen view"
+              className="fullscreen-image"
+            />
+            {images.length > 1 && (
+              <>
+                <button
+                  className="fullscreen-nav prev"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    navigateFullscreen('prev');
+                  }}
                 >
-                  {activeTab === 'non-technical' ? (
-                    <div className="non-technical-content">
-                      <p>{project.nonTechnicalDescription || project.description}</p>
-                      <div className="project-impact">
-                        <h3>Key Features</h3>
-                        <ul>
-                          {project.keyFeatures?.map((feature, index) => (
-                            <li key={index}>{feature}</li>
-                          ))}
-                        </ul>
-                      </div>
-                    </div>
-                  ) : (
-                    <div className="technical-content">
-                      <div className="tech-stack-detailed">
-                        <h3>Technology Stack</h3>
-                        <div className="tech-tags">
-                          {project.technologies.map((tech, index) => (
-                            <span key={index} className="tech-tag">{tech}</span>
-                          ))}
-                        </div>
-                      </div>
-                      <div className="technical-details">
-                        <h3>Technical Implementation</h3>
-                        <p>{project.technicalDescription}</p>
-                      </div>
-                    </div>
-                  )}
-                </motion.div>
-
-                <div className="modal-actions">
-                  <a 
-                    href={project.liveDemo} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="demo-link"
-                  >
-                    View Live Demo
-                  </a>
-                  <a 
-                    href={project.github} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="github-link"
-                  >
-                    View Source Code
-                  </a>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        </motion.div>
+                  ‹
+                </button>
+                <button
+                  className="fullscreen-nav next"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    navigateFullscreen('next');
+                  }}
+                >
+                  ›
+                </button>
+              </>
+            )}
+            <button
+              className="fullscreen-close"
+              onClick={() => setFullscreenImage(null)}
+            >
+              ×
+            </button>
+          </div>
+        </div>
       )}
-    </AnimatePresence>
+    </div>
   );
 };
 

@@ -4,31 +4,20 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(10, 10, 20, 0.85);
-  backdrop-filter: blur(8px);
+  background: rgba(0, 0, 0, 0.95);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 1000;
-  padding: 1.5rem;
 }
 
-.modal-content {
-  background: #1a1a2e;
-  border: 1px solid rgba(135, 81, 245, 0.2);
-  border-radius: 20px;
+.modal-content-fullsize {
   width: 100%;
-  max-width: 900px;
-  height: 85vh;
+  height: 100%;
   position: relative;
   display: flex;
-  flex-direction: column;
-  gap: 0;
-  overflow: hidden;
-  max-height: 90vh;
-  overflow-y: auto;
-  scrollbar-width: thin;
-  scrollbar-color: rgba(135, 81, 245, 0.5) transparent;
+  align-items: center;
+  justify-content: center;
 }
 
 .modal-close {
@@ -38,413 +27,181 @@
   width: 2.5rem;
   height: 2.5rem;
   border-radius: 50%;
-  background: rgba(135, 81, 245, 0.1);
-  color: var(--titleM);
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  font-size: 1.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.5rem;
   cursor: pointer;
   transition: all 0.3s ease;
   z-index: 10;
 }
 
-.modal-close:hover {
-  background: rgba(135, 81, 245, 0.2);
-  transform: rotate(90deg);
-}
-
-/* Image Gallery Styles */
-.modal-image-gallery {
-  width: 100%;
-  height: 45%;
-  min-height: 300px;
-  position: relative;
-  background: #151523;
-  overflow: hidden;
-  margin-top: 0;
-}
-
-.modal-swiper {
+.modal-swiper-fullsize {
   width: 100%;
   height: 100%;
 }
 
-.gallery-image-container {
+.gallery-image-container-fullsize {
   width: 100%;
-  height: 100%;
+  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0;
+  cursor: pointer;
+  padding: 2rem;
 }
 
-.gallery-image-container img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 0;
-  box-shadow: none;
-  transition: transform 0.3s ease;
+.gallery-image-container-fullsize img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
 }
 
-/* Scrollable Content Area */
-.modal-scroll-content {
-  flex: 1;
-  overflow-y: auto;
-  padding: 1.5rem;
-}
-
-.modal-info {
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
-}
-
-.modal-title {
-  font-size: 1.75rem;
-  background: var(--title);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  padding: 0.5rem 0;
-  color: #fff;
-}
-
-.tab-buttons {
-  display: flex;
-  gap: 0.75rem;
-  margin-bottom: 0.75rem;
-}
-
-.tab-button {
-  padding: 0.6rem 1.2rem;
-  border-radius: 10px;
-  background: rgba(135, 81, 245, 0.1);
-  color: #e1e1e6;
-  font-weight: 500;
-  font-size: 0.95rem;
-  transition: all 0.3s ease;
-}
-
-.tab-button:hover {
-  background: rgba(135, 81, 245, 0.2);
-}
-
-.tab-button.active {
-  background: linear-gradient(45deg, #5731a2, #8751f5);
-  color: white;
-}
-
-.tab-content {
-  background: rgba(135, 81, 245, 0.05);
-  border-radius: 12px;
-  padding: 1.5rem;
-  font-size: 0.95rem;
-  line-height: 1.6;
-}
-
-.tech-stack-detailed {
-  margin-bottom: 2rem;
-}
-
-.tech-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.8rem;
-  margin-top: 1rem;
-}
-
-.tech-tag {
-  background: rgba(135, 81, 245, 0.3);
-  padding: 0.4rem 1rem;
-  border-radius: 20px;
-  font-size: 0.9rem;
-  color: var(--titleM);
-}
-
-.modal-actions {
-  display: flex;
-  gap: 1rem;
-  margin-top: 1rem;
-}
-
-.modal-actions a {
-  flex: 1;
-  padding: 1rem;
-  border-radius: 12px;
-  text-align: center;
-  font-weight: 500;
-  transition: all 0.3s ease;
-}
-
-/* Navigation Styles */
-.modal-swiper .swiper-button-next,
-.modal-swiper .swiper-button-prev {
-  background: rgba(135, 81, 245, 0.25);
-  width: 3rem !important;
-  height: 3rem !important;
+/* Navigation Arrows */
+.swiper-button-next,
+.swiper-button-prev {
+  color: white !important;
+  background: rgba(0, 0, 0, 0.5);
+  width: 50px !important;
+  height: 50px !important;
   border-radius: 50%;
-  color: #fff !important;
-  transition: all 0.3s ease;
-  backdrop-filter: blur(4px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.modal-swiper .swiper-button-next:hover,
-.modal-swiper .swiper-button-prev:hover {
-  background: rgba(135, 81, 245, 0.4);
-  transform: scale(1.1);
+.swiper-button-next:after,
+.swiper-button-prev:after {
+  font-size: 1.5rem !important;
 }
 
-.modal-swiper .swiper-button-next::after,
-.modal-swiper .swiper-button-prev::after {
-  font-size: 1.2rem !important;
-  font-weight: bold;
+/* Pagination */
+.swiper-pagination-bullet {
+  background: white !important;
+  opacity: 0.5;
 }
 
-/* Improve pagination bullets */
-.modal-swiper .swiper-pagination {
-  bottom: 10px !important;
+.swiper-pagination-bullet-active {
+  opacity: 1;
 }
 
-.modal-swiper .swiper-pagination-bullet {
-  width: 8px !important;
-  height: 8px !important;
-  background: rgba(255, 255, 255, 0.5) !important;
-  transition: all 0.3s ease;
-  margin: 0 6px !important;
+/* Fullscreen View */
+.fullscreen-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.95);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
 }
 
-.modal-swiper .swiper-pagination-bullet-active {
-  background: #fff !important;
-  transform: scale(1.3);
-  width: 20px !important;
-  border-radius: 4px !important;
+.fullscreen-image-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* Add image hover effect */
-.gallery-image-container:hover img {
-  transform: scale(1.02);
+.fullscreen-image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  padding: 2rem;
 }
 
-/* Add loading animation for images */
-.gallery-image-container.loading {
-  animation: imagePulse 1.5s ease-in-out infinite;
+.fullscreen-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 50px;
+  height: 50px;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.3s ease;
 }
 
-@keyframes imagePulse {
-  0% { opacity: 0.6; }
-  50% { opacity: 0.8; }
-  100% { opacity: 0.6; }
+.fullscreen-nav:hover {
+  background: rgba(255, 255, 255, 0.2);
 }
 
-/* Responsive Design */
+.fullscreen-nav.prev {
+  left: 20px;
+}
+
+.fullscreen-nav.next {
+  right: 20px;
+}
+
+.fullscreen-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.fullscreen-close:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.no-images-message {
+  color: #666;
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+/* Mobile Optimizations */
 @media (max-width: 768px) {
-  .modal-overlay {
+  .gallery-image-container-fullsize {
     padding: 1rem;
   }
 
-  .modal-content {
-    height: 90vh;
+  .fullscreen-image {
+    padding: 1rem;
   }
 
-  .modal-image-gallery {
-    height: 40%;
-    min-height: 250px;
-  }
-
-  .modal-scroll-content {
-    padding: 0 1rem 1rem;
-  }
-
-  .tab-buttons {
-    flex-direction: column;
-  }
-
-  .modal-actions {
-    flex-direction: column;
-  }
-
-  .modal-title {
+  .fullscreen-nav {
+    width: 40px;
+    height: 40px;
     font-size: 1.5rem;
   }
 
-  .tab-button {
-    padding: 0.5rem 1rem;
-    font-size: 0.9rem;
+  .fullscreen-nav.prev {
+    left: 10px;
   }
 
-  .gallery-image-container {
-    padding: 0.5rem;
+  .fullscreen-nav.next {
+    right: 10px;
   }
 
-  .modal-swiper .swiper-button-next,
-  .modal-swiper .swiper-button-prev {
-    width: 2.5rem !important;
-    height: 2.5rem !important;
+  .fullscreen-close {
+    top: 10px;
+    right: 10px;
+    width: 35px;
+    height: 35px;
+    font-size: 1.2rem;
   }
-
-  .modal-swiper .swiper-button-next::after,
-  .modal-swiper .swiper-button-prev::after {
-    font-size: 1rem !important;
-  }
-}
-
-/* Custom scrollbar for modal content */
-.modal-scroll-content::-webkit-scrollbar {
-  width: 6px;
-}
-
-.modal-scroll-content::-webkit-scrollbar-track {
-  background: rgba(135, 81, 245, 0.1);
-  border-radius: 10px;
-}
-
-.modal-scroll-content::-webkit-scrollbar-thumb {
-  background: rgba(135, 81, 245, 0.2);
-  border-radius: 10px;
-}
-
-.modal-scroll-content::-webkit-scrollbar-thumb:hover {
-  background: rgba(135, 81, 245, 0.3);
-}
-
-/* Add image loading state */
-.gallery-image-container img.loading {
-  animation: shimmer 1.5s infinite;
-  background: linear-gradient(
-    90deg,
-    rgba(255, 255, 255, 0.1),
-    rgba(255, 255, 255, 0.2),
-    rgba(255, 255, 255, 0.1)
-  );
-  background-size: 200% 100%;
-}
-
-@keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
-}
-
-/* Light Mode Styles */
-.light .modal-content {
-  background: rgb(248, 247, 249);
-  border: 1px solid rgba(135, 81, 245, 0.2);
-}
-
-.light .modal-image-gallery {
-  background: rgb(237, 230, 246);
-}
-
-.light .modal-title {
-  color: #2d1b69;
-}
-
-.light .tab-button {
-  background: rgba(135, 81, 245, 0.1);
-  color: #2d1b69;
-}
-
-.light .tab-button:hover {
-  background: rgba(135, 81, 245, 0.15);
-}
-
-.light .tab-button.active {
-  background: linear-gradient(45deg, #5731a2, #8751f5);
-  color: white;
-}
-
-.light .tab-content {
-  background: rgba(135, 81, 245, 0.05);
-  color: #2d1b69;
-}
-
-.light .tech-tag {
-  background: rgba(135, 81, 245, 0.15);
-  color: #2d1b69;
-  border: 1px solid rgba(135, 81, 245, 0.2);
-}
-
-.light .modal-actions .demo-link {
-  background: linear-gradient(45deg, #5731a2, #8751f5);
-  color: white;
-}
-
-.light .modal-actions .github-link {
-  background: transparent;
-  border: 2px solid #5731a2;
-  color: #2d1b69;
-}
-
-.light .modal-actions .github-link:hover {
-  background: rgba(135, 81, 245, 0.1);
-}
-
-/* Light mode navigation */
-.light .modal-swiper .swiper-button-next,
-.light .modal-swiper .swiper-button-prev {
-  background: rgba(135, 81, 245, 0.2);
-  color: #2d1b69 !important;
-}
-
-.light .modal-swiper .swiper-pagination-bullet {
-  background: rgba(87, 49, 162, 0.3) !important;
-}
-
-.light .modal-swiper .swiper-pagination-bullet-active {
-  background: #5731a2 !important;
-}
-
-/* Light mode scrollbar */
-.light .modal-scroll-content::-webkit-scrollbar-track {
-  background: rgba(135, 81, 245, 0.05);
-}
-
-.light .modal-scroll-content::-webkit-scrollbar-thumb {
-  background: rgba(135, 81, 245, 0.2);
-}
-
-.light .modal-scroll-content::-webkit-scrollbar-thumb:hover {
-  background: rgba(135, 81, 245, 0.3);
-}
-
-/* Light mode text colors */
-.light .modal-scroll-content h3 {
-  color: #2d1b69;
-}
-
-.light .modal-scroll-content p,
-.light .modal-scroll-content li {
-  color: #4a3b89;
-}
-
-/* Light mode close button */
-.light .modal-close {
-  background: rgba(135, 81, 245, 0.1);
-  color: #2d1b69;
-}
-
-.light .modal-close:hover {
-  background: rgba(135, 81, 245, 0.2);
-}
-
-/* Light mode overlay */
-.light .modal-overlay {
-  background: rgba(237, 230, 246, 0.85);
-}
-
-/* Custom scrollbar styles */
-.modal-scroll-content::-webkit-scrollbar {
-  width: 8px;
-}
-
-.modal-scroll-content::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.modal-scroll-content::-webkit-scrollbar-thumb {
-  background-color: rgba(135, 81, 245, 0.5);
-  border-radius: 20px;
-  border: 3px solid transparent;
 } 
