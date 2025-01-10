@@ -103,7 +103,7 @@ function Hero() {
               initial={{ transform: "scale(0)" }}
               animate={{ transform: "scale(1)" }}
               transition={{ damping: 6, type: "spring", stiffness: 100 }}
-              src="./1.png"
+              src="./img/Abdelilah mharzi.avif"
               className='avatar'
               alt="Profile"
               onClick={handleProfileClick}

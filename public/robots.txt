@@ -1,0 +1,19 @@
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://mharziabdelilah.com/sitemap.xml
+
+# Prevent access to specific directories
+Disallow: /api/
+Disallow: /admin/
+Disallow: /private/
+Disallow: /.git/
+Disallow: /node_modules/
+Disallow: /sayaboutme/
+
+# Allow crawling of static assets
+Allow: /static/
+Allow: /img/
+Allow: /css/
+Allow: /js/ 
