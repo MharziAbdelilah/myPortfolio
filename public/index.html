@@ -59,8 +59,8 @@
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
     <link rel="stylesheet" href="/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" defer>
     
     <!-- Structured Data -->
     <script type="application/ld+json">
@@ -291,9 +291,27 @@
       }
     }
     </script>
+    
+    <!-- Preload critical resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preload" href="%PUBLIC_URL%/critical.css" as="style">
+    <link rel="preload" href="%PUBLIC_URL%/main-banner.jpg" as="image" type="image/jpeg">
+    <link rel="preload" href="/style.css" as="style">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600&display=swap" as="style">
+    <link rel="preload" href="img/Abdelilah mharzi.avif" as="image" type="image/avif">
+    
+    <!-- Performance optimizations -->
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+    
+    <!-- Cache control -->
+    <meta http-equiv="cache-control" content="public, max-age=31536000">
+    <meta http-equiv="expires" content="31536000">
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" media="print" onload="this.media='all'">
   </body>
 </html>
