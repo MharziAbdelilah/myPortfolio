@@ -228,7 +228,7 @@ function Hero() {
       {isProfileEnlarged && (
         <>
           <div className="backdrop" onClick={handleCloseClick}></div>
-          <img src="./1.png" className="enlarged-profile" alt="Enlarged Profile" />
+          <img src="./img/Abdelilah mharzi.avif" className="enlarged-profile" alt="Enlarged Profile" />
           <div className="icon-close" onClick={handleCloseClick}></div>
         </>
       )}
