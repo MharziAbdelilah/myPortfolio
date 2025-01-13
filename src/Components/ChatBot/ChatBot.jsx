@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { FaRobot, FaPaperPlane, FaTimes } from 'react-icons/fa';
+import { FaRobot, FaPaperPlane } from 'react-icons/fa';
 import { IoClose } from 'react-icons/io5';
 import { BsEmojiSmile, BsThreeDots } from 'react-icons/bs';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -20,6 +20,49 @@ const ChatBot = () => {
   const { currentLang } = useLanguage();
   const [theme, setTheme] = useState(document.body.classList.contains('light') ? 'light' : 'dark');
 
+  // AI Context Management
+  const [aiContext, setAiContext] = useState({
+    currentTopic: '',
+    userIntent: '',
+    conversationFlow: [],
+    lastResponse: null,
+    confidenceScore: 1.0,
+    languagePreference: currentLang,
+    interactionHistory: []
+  });
+
+  // Update AI context based on user interaction
+  const updateAiContext = (message, type = 'user') => {
+    setAiContext(prev => ({
+      ...prev,
+      currentTopic: detectTopic(message),
+      conversationFlow: [...prev.conversationFlow, { type, content: message }],
+      lastResponse: type === 'assistant' ? message : prev.lastResponse,
+      interactionHistory: [...prev.interactionHistory, {
+        timestamp: Date.now(),
+        type,
+        content: message,
+        topic: detectTopic(message)
+      }]
+    }));
+  };
+
+  // Simple topic detection
+  const detectTopic = (message) => {
+    const topics = {
+      projects: /project|portfolio|work|github/i,
+      contact: /contact|email|reach|message/i,
+      skills: /skill|technology|stack|framework/i,
+      experience: /experience|work|job|career/i,
+      about: /about|who|background|education/i
+    };
+
+    for (const [topic, pattern] of Object.entries(topics)) {
+      if (pattern.test(message)) return topic;
+    }
+    return 'general';
+  };
+
   // Update theme when body class changes
   useEffect(() => {
     const observer = new MutationObserver((mutations) => {
@@ -31,7 +74,6 @@ const ChatBot = () => {
     });
 
     observer.observe(document.body, { attributes: true });
-
     return () => observer.disconnect();
   }, []);
 
@@ -109,67 +151,56 @@ const ChatBot = () => {
     }
   };
 
+  // Enhanced message handling with AI context
   const handleSendMessage = async (e) => {
-    e.preventDefault();
+    e?.preventDefault();
     if (!newMessage.trim() || isLoading) return;
 
     const userMessage = newMessage.trim();
     setNewMessage('');
-    setMessages(prev => [...prev, { type: 'user', content: userMessage }]);
     setIsLoading(true);
+    updateAiContext(userMessage, 'user');
 
     try {
-      const options = {
+      const response = await fetch('/api/chat', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          model: 'llama3-groq-70b-8192-tool-use-preview',
           messages: [
-            {
-              role: 'assistant',
-              content: "Hi! I'm Abdelilah, a software engineer. How can I help you?"
-            },
-            getSystemPrompt(currentLang),
-            {
-              role: 'user',
-              content: userMessage
-            }
-          ]
+            { role: 'system', content: getSystemPrompt(currentLang) },
+            ...messages.map(m => ({
+              role: m.role,
+              content: m.content
+            })),
+            { role: 'user', content: userMessage }
+          ],
+          aiContext: aiContext // Send AI context to backend
         })
-      };
+      });
 
-      const apiUrl = process.env.NODE_ENV === 'production'
-        ? '/api/chat.php'
-        : 'http://localhost:8000/api/chat.php';
-
-      console.log('Sending request to:', apiUrl);
-      const response = await fetch(apiUrl, options);
-      
-      if (!response.ok) {
-        const errorData = await response.json().catch(() => null);
-        throw new Error(errorData?.message || `HTTP error! status: ${response.status}`);
-      }
-      
+      if (!response.ok) throw new Error('Network response was not ok');
       const data = await response.json();
-
-      if (data.choices && data.choices[0]?.message?.content) {
-        setMessages(prev => [...prev, {
-          type: 'bot',
-          content: data.choices[0].message.content
-        }]);
-      } else {
-        throw new Error('Invalid response format');
-      }
+      
+      const assistantMessage = data.choices[0].message.content;
+      updateAiContext(assistantMessage, 'assistant');
+      
+      setMessages(prev => [
+        ...prev,
+        { role: 'user', content: userMessage },
+        { role: 'assistant', content: assistantMessage }
+      ]);
     } catch (error) {
-      console.error('Error sending message:', error);
-      setMessages(prev => [...prev, {
-        type: 'bot',
-        content: 'I apologize, but I encountered an error processing your message. Please try again.'
-      }]);
+      console.error('Error:', error);
+      setMessages(prev => [
+        ...prev,
+        { role: 'user', content: userMessage },
+        { role: 'assistant', content: 'I apologize, but I encountered an error. Please try again.' }
+      ]);
     } finally {
       setIsLoading(false);
+      scrollToBottom();
     }
   };
 
@@ -184,7 +215,7 @@ const ChatBot = () => {
     <div className={`chatbot-container ${theme}`}>
       <AnimatePresence>
         {isOpen && (
-          <motion.div 
+          <motion.div
             className={`chat-window ${theme}`}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
