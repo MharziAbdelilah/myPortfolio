@@ -3,6 +3,7 @@ import './about.css';
 import { useLanguage } from '../../context/LanguageContext';
 import WhatDrivesMe from './WhatDrivesMe/WhatDrivesMe';
 import WhyNow from './WhyNow/WhyNow';
+import profileImage from '../../assets/images-about/Abdelilah-mharzi-about.webp';
 
 const About = () => {
   const { currentLang } = useLanguage();
@@ -18,7 +19,7 @@ const About = () => {
                 <h1 className="about-title">Hi, I'm ABDELILAH</h1>
                 <div className="about-description">
                   <p>
-                    In my childhood, I dreamed of becoming Morocco's Maldini. But fate had other plans. While I was deep in my dreams of blocking Ronaldo's shots, I woke up to find myself in a white suit with a white belt, shouting "ICHI, NI, SAN" at the top of my lungs. Over ten years of practicing Karate, I collected championships across the East and Morocco, earning a black belt at sixteen.
+                    In my childhood, I dreamed of becoming <span className="morocco-text">Morocco's</span> <span className="maldini-text">MALDINI</span>. But fate had other plans. While I was deep in my dreams of blocking Ronaldo's shots, I woke up to find myself in a white suit with a white belt, shouting "ICHI, NI, SAN" at the top of my lungs. Over ten years of practicing Karate, I collected championships across the East and Morocco, earning a black belt at sixteen.
                   </p>
                   <p>
                     <strong>Lucky or not?</strong> I didn't have to walk ten kilometers barefoot to school; I grew up with <strong>"Uncle <span className="google-text"><span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span></span>"</strong>. I got instant answers, but my mind was like an energetic monkey jumping between ideas - sometimes an entrepreneur, other times a legend like El Tigre Enmascarado. <strong>The result?</strong> Two extra years of hard learning.
@@ -67,8 +68,8 @@ const About = () => {
           <div className="image-section">
             <div className="profile-image-container">
               <img 
-                src="https://picsum.photos/100" 
-                alt="Profile" 
+                src={profileImage}
+                alt="Abdelilah Mharzi Profile" 
                 className="profile-image"
               />
             </div>
