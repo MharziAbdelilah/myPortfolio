@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Header from "./Components/1-header/Header";
 import Hero from "./Components/2-hero/Hero";
@@ -64,6 +64,8 @@ function App() {
             <Route path="/articles" element={<Articles />} />
             <Route path="/articles/:id" element={<ArticlePage />} />
             <Route path="/sayaboutme" element={<TestimonialForm />} />
+            {/* Catch-all route - redirects to home for any unmatched URL */}
+            <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
           <Footer />
         </div>

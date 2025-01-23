@@ -6,6 +6,8 @@ const rateLimit = require('express-rate-limit');
 const helmet = require('helmet');
 const hpp = require('hpp');
 const mongoSanitize = require('express-mongo-sanitize');
+const path = require('path');
+const crypto = require('crypto');
 
 const app = express();
 
@@ -54,26 +56,32 @@ app.use(helmet({
   contentSecurityPolicy: {
     directives: {
       defaultSrc: ["'self'"],
-      scriptSrc: ["'self'", "'unsafe-inline'", 'https://apis.google.com'],
+      scriptSrc: ["'self'", "'unsafe-inline'", 'https://apis.google.com', 'https://www.googletagmanager.com'],
       styleSrc: ["'self'", "'unsafe-inline'", 'https://fonts.googleapis.com'],
-      imgSrc: ["'self'", 'data:', 'https:'],
-      connectSrc: ["'self'", 'https://api.together.xyz'],
+      imgSrc: ["'self'", 'data:', 'https:', 'blob:'],
+      connectSrc: ["'self'", 'https://api.together.xyz', 'https://www.google-analytics.com'],
       fontSrc: ["'self'", 'https://fonts.gstatic.com'],
       objectSrc: ["'none'"],
       mediaSrc: ["'self'"],
       frameSrc: ["'none'"],
+      upgradeInsecureRequests: [],
     },
   },
-  crossOriginEmbedderPolicy: true,
-  crossOriginOpenerPolicy: true,
+  crossOriginEmbedderPolicy: { policy: "credentialless" },
+  crossOriginOpenerPolicy: { policy: "same-origin" },
   crossOriginResourcePolicy: { policy: "same-site" },
   dnsPrefetchControl: { allow: false },
   frameguard: { action: "deny" },
-  hsts: { maxAge: 31536000, includeSubDomains: true, preload: true },
+  hsts: { 
+    maxAge: 31536000, 
+    includeSubDomains: true, 
+    preload: true 
+  },
   ieNoOpen: true,
   noSniff: true,
   referrerPolicy: { policy: "strict-origin-when-cross-origin" },
   xssFilter: true,
+  permittedCrossDomainPolicies: { permittedPolicies: "none" }
 }));
 
 app.use(limiter);
@@ -91,6 +99,12 @@ app.use(cors({
 }));
 app.use(express.json({ limit: '10kb' }));
 
+// Add request ID middleware at the top of your middleware chain
+app.use((req, res, next) => {
+  req.id = crypto.randomUUID();
+  next();
+});
+
 // Validate request middleware
 const validateRequest = (req, res, next) => {
   if (!req.body || !req.body.messages) {
@@ -102,6 +116,9 @@ const validateRequest = (req, res, next) => {
   }
   next();
 };
+
+// Serve static files
+app.use(express.static(path.join(__dirname, 'build')));
 
 app.post('/api/chat', validateRequest, async (req, res) => {
   try {
@@ -196,6 +213,28 @@ app.get('/api/test-together', async (req, res) => {
 // Health check endpoint
 app.get('/health', (req, res) => {
   res.status(200).json({ status: 'healthy' });
+});
+
+// Handle React routing, return all requests to React app
+app.get('*', function(req, res) {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
+
+// Add after other middleware
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  // Don't expose error details in production
+  if (process.env.NODE_ENV === 'production') {
+    res.status(500).json({ 
+      error: 'Internal Server Error',
+      requestId: req.id // For tracking issues without exposing details
+    });
+  } else {
+    res.status(500).json({ 
+      error: err.message,
+      stack: err.stack
+    });
+  }
 });
 
 const PORT = process.env.PORT || 3001;

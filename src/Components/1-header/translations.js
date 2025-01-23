@@ -14,7 +14,7 @@ export const headerTranslations = {
   ar: {
     menuItems: [
       { text: "الرئيسية", href: "/" },
-      { text: "حولي", href: "/about" },
+      { text: "من أنا", href: "/about" },
       { text: "مقالات", href: "/articles" },
       { text: "خدمات", href: "#services" },
       { text: "اتصل بي", href: "#contact" }

@@ -71,6 +71,11 @@ const About = () => {
                 src={profileImage}
                 alt="Abdelilah Mharzi Profile" 
                 className="profile-image"
+                loading="lazy"
+                width="400"
+                height="460"
+                fetchpriority="high"
+                onLoad={(e) => e.target.classList.add('loaded')}
               />
             </div>
             <div className="about-social-container">
